@@ -21,12 +21,12 @@
 .nav-menu{
     display: grid;
     grid-template-columns: repeat(6, auto);
-    grid-gap: 20px;
+    grid-gap: 10px;
     list-style: none;
     text-align: center;
-    width: 50vw;
+    width: 60vw;
     justify-content: start;
-    margin-left: 5rem;
+    margin-left: 1rem;
 }
 
 .nav-links{

@@ -1,10 +1,5 @@
 export const Menu = [
     {
-        title: 'About Us',
-        url: '#',
-        cName: 'nav-links'
-    },
-    {
         title: 'US',
         url: '#',
         cName: 'nav-links'
@@ -15,7 +10,7 @@ export const Menu = [
         cName: 'nav-links'
     },
     {
-        title: 'Filter by Country',
+        title: 'Country',
         url: '#',
         cName: 'nav-links'
     },
