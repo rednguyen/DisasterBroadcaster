@@ -1,3 +1,5 @@
+import './NavBar.css'
+
 export const Menu = [
     {
         title: 'US',

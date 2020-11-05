@@ -1,5 +1,5 @@
 .main-footer{
-    background: linear-gradient(90deg, rgb(213, 212, 223) 0%, rgb(159, 190, 100) 100%);
+    background: linear-gradient(90deg, rgb(54, 54, 59) 0%, rgb(21, 26, 51) 100%);
     height: 80px;
     display:flex;
     justify-content: center;
@@ -8,7 +8,7 @@
     bottom: 0;
 }
 .col-sm{
-    color: black;
+    color:  rgb(248, 239, 239);
     text-decoration: none;
     padding: 0.5rem 2rem;
     font-size: 1.2rem;

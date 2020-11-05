@@ -1,20 +1,16 @@
-import NavBar from './components/NavBar/NavBar';
-import Footer from './components/Footer/Footer';
-import './App.css';
-import Tsunami from "./Figure.jpg"
+import HomePage from "./pages/HomePage";
+import {
+  BrowserRouter as Router, Route
+} from 'react-router-dom';
 
 
 function App() {
     return (
-      <div className="App">
-        <div className="TopPage"><NavBar /></div>
-        <div className = "body">
-          <img  src={Tsunami} height="1000" width="1000"/>
+      <Router>
+        <div className="App">
+          <Route path="/" component = {HomePage} exact />      
         </div>
-        <div className = "Wrapper">
-          <div className = "BottomPage"><Footer /></div>
-        </div>
-      </div>
+      </Router>
     )
 }
 

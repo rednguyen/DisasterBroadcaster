@@ -1,4 +1,3 @@
-
 import React, { Component } from 'react';
 import {Menu} from "./Menu";
 import './NavBar.css'
@@ -9,11 +8,9 @@ class NavBar extends Component{
     render(){
         return(
             <nav className="NavbarItems">
-                <img className="navbar-logo" src={Logo}/>
-                <div className="menu-icon"> 
-
-                </div>
+              <img className="navbar-logo" src={Logo}/>
                 <ul className="nav-menu">
+                
                     {Menu.map((item, index)=>{
                         return(
                             <li key={index}>
