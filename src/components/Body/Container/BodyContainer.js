@@ -1,7 +1,6 @@
 import React from 'react'
 import Body from '../Style'
 import Icon from '../../Icons'
-import ABC from '../Figure.jpg'
 
 export default function BodyContainer() {
     return (
@@ -22,13 +21,6 @@ export default function BodyContainer() {
                     <Body.Link href="#">Design</Body.Link>
                 </Body.Column>
                 <Body.Column>
-                <Body.Title>Contact Us</Body.Title>
-                    <Body.Link href="#">United States</Body.Link>
-                    <Body.Link href="#">United Kingdom</Body.Link>
-                    <Body.Link href="#">Australia</Body.Link>
-                    <Body.Link href="#">Support</Body.Link>
-                </Body.Column>
-                <Body.Column>
                 <Body.Title>Social</Body.Title>
                     <Body.Link href="#"><Icon className="fab fa-facebook-f" />Facebook</Body.Link>
                     <Body.Link href="#"><Icon className="fab fa-instagram" />Instagram</Body.Link>
@@ -36,7 +28,13 @@ export default function BodyContainer() {
                     <Body.Link href="#"><Icon className="fab fa-twitter" />Twitter</Body.Link>
                 </Body.Column>
             </Body.Row>
-            </Body.Wrapper>
-    </Body>
+        </Body.Wrapper>
+        
+        <Body.Wrapper>
+            <Body.Link >___________________________________________________________________________</Body.Link>
+            <Body.Link >Copyright &copy;{new Date().getFullYear()} DISASTER BROADCASTER</Body.Link>
+        </Body.Wrapper>
+        
+        </Body>
     )
 }

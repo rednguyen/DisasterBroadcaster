@@ -12,7 +12,6 @@ import {GlobalStyles} from './components/Body/GlobalStyle'
 const store = createStore(rootReducer);
 
 ReactDOM.render(<Provider store={store}>
-  <GlobalStyles />
     <App />
   </Provider>,
   document.getElementById('root')

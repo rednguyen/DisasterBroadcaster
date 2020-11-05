@@ -1,15 +1,37 @@
 .row{
-    background: linear-gradient(90deg, rgb(54, 54, 59) 0%, rgb(21, 26, 51) 100%);
-    height: 80px;
+    background: linear-gradient(90deg, rgb(138, 138, 175) 0%, rgb(150, 164, 236) 100%);
+    height: 100vh;
     display:flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 1.2rem;
     bottom: 0;
 }
 .col-sm{
-    color:  rgb(248, 239, 239);
+    color:  rgb(241, 239, 248);
     text-decoration: none;
-    padding: 0.5rem 2rem;
+    padding: 2rem 4rem;
+    width: 400px;
     font-size: 1.2rem;
+    border-right: 1px solid rgb(18, 29, 66);
+}
+.col-bd1{
+    color:  rgb(26, 25, 31);
+    text-decoration: none;
+    width: 1500px;
+    padding: 2rem 4rem;
+    font-size: 1.2rem;
+    border-right: 1px solid rgb(18, 29, 66);
+    text-align: center
+}
+.col-bd2{
+    color:  rgb(26, 25, 31);
+    text-decoration: none;
+    width: 1000px;
+    padding: 2rem 4rem;
+    font-size: 1.2rem;
+    text-align: center
+}
+.Coun
+.CountryMenu{
+    color: rgb(34, 6, 99);
+    padding: 0.5rem 1rem;
+    font-size: 1.5rem;
 }

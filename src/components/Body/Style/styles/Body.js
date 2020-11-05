@@ -1,10 +1,10 @@
 import styled from 'styled-components';
 
 export const Container = styled.div`
-  padding: 80px 60px;
-  background: radial-gradient(circle, rgba(92,39,251,1) 0%, rgba(112,71,247,1) 100%);
+  background: linear-gradient(90deg, rgb(54, 54, 59) 0%, rgb(21, 26, 51) 100%);
   @media (max-width: 1000px) {
-    padding: 70px 30px;
+  padding: 70px 30px;
+  justify-content: center;
   }
 `;
 
@@ -12,9 +12,10 @@ export const Wrapper = styled.div`
     display: flex;
     flex-direction: column;
     justify-content: center;
-    max-width: 1000px;
+    max-width: 750px;
     margin: 0 auto;
-    /* background: red; */
+    text-align: center;
+    *background: red;* 
 `
 
 export const Column = styled.div`

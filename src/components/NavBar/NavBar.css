@@ -25,13 +25,13 @@
     list-style: none;
     text-align: center;
     width: 60vw;
-    justify-content: end;
+    justify-content: start;
     margin-right: 5rem;
-    margin-left: 5 rem;
+    margin-left: 5rem;
 }
 
 .nav-links{
-    color: rgb(248, 239, 239);
+    color: rgb(187, 194, 206);
     text-decoration: none;
     padding: 0.5rem 2rem;
     font-size: 2rem;

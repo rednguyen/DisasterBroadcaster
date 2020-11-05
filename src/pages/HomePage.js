@@ -10,9 +10,8 @@ class HomePage extends Component {
         return (
             <div className="Wrapper">
               <div className="TopPage"><NavBar /></div>
-              
-              <div className = "BottomPage"><Footer /></div>
-              <div class = "body"><Body /></div>
+              <div className = "body"><Footer /></div>
+              <div class = "BottomPage"><Body /></div>
             </div>
           )
     };  
