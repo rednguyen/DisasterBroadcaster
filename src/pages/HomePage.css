@@ -7,19 +7,11 @@
   
   
   .body{
-    background: linear-gradient(90deg, rgb(183, 181, 206) 0%, rgb(176, 139, 211) 100%);
-  
-    display:flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 1.2rem;
-  }
-  
-  .Wrapper{
+    background: linear-gradient(90deg, rgb(211, 209, 226) 0%, rgb(155, 150, 224) 100%);
     display: flex;
-    min-height: 100%;
-    flex-direction: column;
-    justify-content: space-between;
+    min-height: 100vh;
+    align-items: center;
+    justify-content: center;
   }
   
   .BottomPage{
