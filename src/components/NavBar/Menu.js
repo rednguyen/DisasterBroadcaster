@@ -2,7 +2,7 @@ import './NavBar.css'
 
 export const Menu = [
     {
-        title: 'US',
+        title: 'About',
         url: '#',
         cName: 'nav-links'
     },
