@@ -18,7 +18,7 @@ export const Menu = [
     },
     {
         title: 'Guide',
-        url: '#',
+        url: '/guide',
         cName: 'nav-links'
     },
     {
