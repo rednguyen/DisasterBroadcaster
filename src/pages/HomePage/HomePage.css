@@ -5,5 +5,11 @@
     font-family: 'Montserrat', sans-serif;
   }
     
+.Body{
+  min-height: 200vh;
+}
 
+.BottomPage{
+  margin-bottom: auto;
+}
   

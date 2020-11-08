@@ -1,6 +1,6 @@
-import NavBar from '../components/NavBar/NavBar';
-import Body from '../components/Body/Body';
-import Footer from '../components/Footer/Container/FooterContainer';
+import NavBar from '../../components/NavBar/NavBar';
+import Body from '../../components/Body/Body';
+import Footer from '../../components/Footer/Container/FooterContainer';
 import './HomePage.css';
 import { Component } from 'react';
 

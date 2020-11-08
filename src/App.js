@@ -1,5 +1,5 @@
-import HomePage from "./pages/HomePage";
-import Guide from "./pages/Guide";
+import HomePage from "./pages/HomePage/HomePage";
+import Guide from "./pages/Guide/GuideBody"
 import {
   BrowserRouter as Router, Route
 } from 'react-router-dom';
