@@ -1,6 +1,6 @@
 import NavBar from '../components/NavBar/NavBar';
-import Footer from '../components/Footer/Footer';
-import Body from '../components/Body/Container/BodyContainer';
+import Body from '../components/Body/Body';
+import Footer from '../components/Footer/Container/FooterContainer';
 import './HomePage.css';
 import { Component } from 'react';
 
@@ -10,8 +10,8 @@ class HomePage extends Component {
         return (
             <div className="Wrapper">
               <div className="TopPage"><NavBar /></div>
-              <div className = "body"><Footer /></div>
-              <div class = "BottomPage"><Body /></div>
+              <div className = "Body"><Body/></div>
+              <div class = "BottomPage"><Footer /></div>
             </div>
           )
     };  

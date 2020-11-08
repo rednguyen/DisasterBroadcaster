@@ -1,8 +1,8 @@
 import React from 'react';
-import "./Footer.css";
+import "./Body.css";
 import PIC from './Figure.jpg'
 
-const Footer = () => {
+const Body = () => {
     return (
             <div className = "row">
                 <p className = "col-sm">
@@ -69,4 +69,4 @@ const Footer = () => {
     )
 }
 
-export default Footer
+export default Body
