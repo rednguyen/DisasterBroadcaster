@@ -1,24 +1,17 @@
 html, body {
     margin: 0;
     padding: 0;
+    
 }  
 
-p {
-    font-size: 36px;
+.Pg {
+    font-size: 20px;
 }
 
-img {
-    width: 300px;
+.imgClass {
+    width: 250px;
 }
 
-h1 {
-    width: 100 px;
-    margin: 0;
-    text-align: center;
-    font-size: 36px;
-    font-weight: bold;
-    background: linear-gradient(90deg, rgb(138, 138, 175) 0%, rgb(150, 164, 236) 100%);
-}
 
 .row{
     background: linear-gradient(90deg, rgb(138, 138, 175) 0%, rgb(150, 164, 236) 100%);
@@ -34,6 +27,7 @@ h1 {
 .col-guide {
     text-align: center;
     padding: 3rem 3rem;
+    
 }
 
 .title {

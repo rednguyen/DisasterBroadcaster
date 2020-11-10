@@ -1,6 +1,7 @@
 import React from 'react';
+import NavBar from '../../components/NavBar/NavBar';
 import "./GuideBody.css";
-
+import Footer from '../../components/Footer/Container/FooterContainer';
 // Images
 import EQ_IMG from "./Icons/005-earthquake.png";
 import FL_IMG from "./Icons/007-flood.png";
@@ -11,23 +12,23 @@ import WF_IMG from "./Icons/006-burning.png";
 
 const GuideBody = () => {
     return(
-        <div>
-            <h1> GUIDES FOR NATURAL DISASTERS </h1>
+            <div className="Wrapper">
+              <div className="TopPage"><NavBar /></div>
             <div className="row">
                 <div className="col-bd">
                     <div className="col-guide">
-                        <img src={EQ_IMG} />
-                        <p> Earthquake </p>
+                        <img className = "imgClass" src={EQ_IMG} />
+                        <p className = "Pg"> Earthquake </p>
                     </div>
 
                     <div className="col-guide">
-                        <img src={FL_IMG} />
-                        <p> Flood </p>
+                        <img className = "imgClass" src={FL_IMG} />
+                        <p className = "Pg"> Flood </p>
                     </div>
 
                     <div className="col-guide">
-                        <img src={HU_IMG} />
-                        <p > Hurricane </p>
+                        <img className = "imgClass" src={HU_IMG} />
+                        <p className = "Pg"> Hurricane </p>
                     </div>
                 </div>
             </div>
@@ -35,21 +36,22 @@ const GuideBody = () => {
             <div className="row">
                 <div className="col-bd">
                     <div className="col-guide">
-                        <img src={VL_IMG} />
-                        <p> Volcano </p>
+                        <img className = "imgClass" src={VL_IMG} />
+                        <p className = "Pg"> Volcano </p>
                     </div>
 
                     <div className="col-guide">
-                        <img src={TR_IMG} />
-                        <p> Tornado </p>
+                        <img className = "imgClass" src={TR_IMG} />
+                        <p className = "Pg"> Tornado </p>
                     </div>
 
                     <div className="col-guide">
-                        <img src={WF_IMG} />
-                        <p > Wildfire </p>
+                        <img className = "imgClass" src={WF_IMG} />
+                        <p className = "Pg"> Wildfire </p>
                     </div>
                 </div>
             </div>
+            <div class = "BottomPage"><Footer /></div>
         </div>
     );
 }
