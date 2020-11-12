@@ -2,8 +2,13 @@ import './NavBar.css'
 
 export const Menu = [
     {
+        title: 'Home',
+        url: '/',
+        cName: 'nav-links'
+    },
+    {
         title: 'About',
-        url: '#',
+        url: '/about',
         cName: 'nav-links'
     },
     {
