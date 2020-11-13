@@ -1,5 +1,5 @@
 import HomePage from "./pages/HomePage/HomePage";
-import Guide from "./pages/Guide/GuideBody";
+import Guide from "./pages/Guide/Guide";
 import About from "./pages/About/AboutUs";
 
 import {

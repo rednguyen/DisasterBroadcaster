@@ -4,30 +4,30 @@ html, body {
     
 }  
 
-.Pg {
+.Wrapper {
+    justify-content: center;
+  align-items: center;
+}
+
+.p {
     font-size: 20px;
+    text-align: center;
 }
 
 .imgClass {
     width: 250px;
 }
 
-
-.row{
-    background: linear-gradient(90deg, rgb(138, 138, 175) 0%, rgb(150, 164, 236) 100%);
-    height: 50vh;
-    bottom: 0;
-}
-
+/*
 .col-bd {
     display: flex;
     margin: auto;
 }
+*/
 
 .col-guide {
     text-align: center;
     padding: 3rem 3rem;
-    
 }
 
 .title {
