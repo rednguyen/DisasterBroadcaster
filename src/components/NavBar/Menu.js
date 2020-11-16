@@ -13,7 +13,7 @@ export const Menu = [
     },
     {
         title: 'World',
-        url: '#',
+        url: '/world',
         cName: 'nav-links'
     },
     {
