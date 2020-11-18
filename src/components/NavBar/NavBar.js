@@ -21,7 +21,10 @@ class NavBar extends Component{
                         )                        
                     })}
                 </ul>    
-                <Button>Login<i class="fas fa-user"></i></Button>    
+                <Button onClick={(e) => {e.preventDefault(); window.location.href='/login'}}>
+                    Login
+                    <i class="fas fa-user"></i>
+                    </Button>    
             </nav>
         );
     }
