@@ -1,0 +1,14 @@
+.TopPage{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Montserrat', sans-serif;
+  }
+    
+.Body{
+  min-height: 200vh;
+}
+
+.BottomPage{
+  margin-bottom: auto;
+}

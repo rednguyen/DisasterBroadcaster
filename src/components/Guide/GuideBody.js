@@ -1,8 +1,6 @@
 import React from 'react';
-import NavBar from '../../components/NavBar/NavBar';
 import "./GuideBody.css";
 import Grid from '@material-ui/core/Grid';
-import Footer from '../../components/Footer/Container/FooterContainer';
 // Images
 import EQ_IMG from "./Icons/005-earthquake.png";
 import FL_IMG from "./Icons/007-flood.png";
