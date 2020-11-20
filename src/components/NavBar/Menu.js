@@ -30,5 +30,10 @@ export const Menu = [
         title: 'Donate',
         url: '#',
         cName: 'nav-links'
+    },
+    {
+        title: 'Login',
+        url: '#',
+        cName: 'nav-links-mobile'
     }
 ]
