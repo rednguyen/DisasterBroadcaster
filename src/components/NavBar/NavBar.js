@@ -19,7 +19,7 @@ class NavBar extends Component{
                     <i className={this.state.clicked? 'fas fa-times' : 'fas fa-bars'}></i>
                 </div>
                 <ul className={this.state.clicked ? 'nav-menu active':'nav-menu'}>
-                    {Menu.map((item, index)=>{
+                    <>{Menu.map((item, index)=>{
                         return(
                             <li key={index}>
                                 <a className ={item.cName} href={item.url}>
@@ -27,9 +27,13 @@ class NavBar extends Component{
                                 </a>
                             </li>
                         )                        
-                    })}
+                        })}     
+                    </>
                 </ul>    
-                <Button>Login<i class="fas fa-user"></i></Button>    
+                <ul className = 'button'>
+                    <Button >LogIn</Button>
+                    <Button >SignUp</Button>
+                </ul>   
             </nav>
         );
     }
@@ -37,3 +41,6 @@ class NavBar extends Component{
 
 
 export default NavBar
+
+
+

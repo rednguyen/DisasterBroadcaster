@@ -12,11 +12,6 @@ export const Menu = [
         cName: 'nav-links'
     },
     {
-        title: 'World',
-        url: '#',
-        cName: 'nav-links'
-    },
-    {
         title: 'Country',
         url: '#',
         cName: 'nav-links'
@@ -32,7 +27,7 @@ export const Menu = [
         cName: 'nav-links'
     },
     {
-        title: 'Login',
+        title: 'Login/SignUp',
         url: '#',
         cName: 'nav-links-mobile'
     }
