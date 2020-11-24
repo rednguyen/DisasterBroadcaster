@@ -53,9 +53,10 @@
 }
 
 .button{
+    position: relative;
     text-align: center;
     align-items: center;
-    justify-content: end;
+    justify-content: center;
     display: flex;
     grid-template-columns: repeat(2, auto);
     margin-left: 5rem;
