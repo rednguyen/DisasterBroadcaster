@@ -5,13 +5,13 @@
     font-family: 'Montserrat', sans-serif;
   }
     
-.Body{
+.Content{
   min-height: 100vh;
   margin: auto;
   position: relative;
   overflow: hidden;
   display: block;
- 
+  padding:100px;
   justify-content: center;
   align-items: center;
 }

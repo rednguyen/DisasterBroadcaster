@@ -1,0 +1,38 @@
+#what-desc {
+    font-family: Raleway;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 28px;
+    line-height: 33px;
+}
+
+#description {
+    font-family: Raleway;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 28px;
+    line-height: 28px;
+}
+
+.about-wrapper {
+    padding-bottom: 5rem;
+}
+
+.breakline {
+    padding: 2rem;
+}
+
+.question-title {
+    font-family: Raleway;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 48px;
+    line-height: 56px;
+}
+
+.rectangle {
+    height: 10px;
+    width: 90%;
+    margin: auto;
+    background-color: rgb(230,230,230);
+}
