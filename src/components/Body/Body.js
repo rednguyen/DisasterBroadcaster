@@ -12,9 +12,9 @@ const Body = () => {
     return (
         <div>
         <Grid container>
-            <Grid item sm = {7}>
+            <Grid item sm = {12}>
                 <Paper style = {{padding: 10}}>
-                    <h1 className = "col-bd1">News</h1>
+                    <h1 className = "col-bd1">Top Stories</h1>
                         <p Paper style = {{padding: 20, fontSize: 20}}>
                         <img className = "Storm" src = {PIC} width="250px" height="250px"/>
                             Votes continue to be counted in the handful of states where a winner has yet to be projected 
@@ -40,23 +40,21 @@ const Body = () => {
                     
                 </Paper>
             </Grid>
-            <Grid item sm = "5">
+            <Grid item sm = "12">
                 <Paper style = {{padding: 10}}>               
                     <h1 className = "col-bd2" style={{ color: 'rgb(32, 32, 32)' }}>Community</h1>
-                    <h2>
+                    <h5>
                         User 1
-                    </h2>
-
-                    <h2>
+                    </h5>
+                    <h5>
                         User 2
-                    </h2>
-
-                    <h2>
+                    </h5>
+                    <h5>
                         User 3
-                    </h2>
-                    <h2>
+                    </h5>
+                    <h5>
                         User 4
-                    </h2>               
+                    </h5>               
                 </Paper>
             </Grid>
         </Grid>

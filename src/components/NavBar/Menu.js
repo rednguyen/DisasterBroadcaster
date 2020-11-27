@@ -11,11 +11,7 @@ export const Menu = [
         url: '/about',
         cName: 'nav-links'
     },
-    {
-        title: 'World',
-        url: '#',
-        cName: 'nav-links'
-    },
+    
     {
         title: 'Country',
         url: '#',
