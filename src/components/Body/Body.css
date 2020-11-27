@@ -18,6 +18,7 @@
     padding: 1rem;
     font-size: 3rem;
     text-align: center;
+    font-weight: bold;
     
 }
 .col-bd2{
@@ -27,6 +28,7 @@
     font-size: 3rem;
     text-align: center;
     background-color: rgb(71, 234, 255);
+    font-weight: bold;
 }
 .CountryMenu{
     color: rgb(34, 6, 99);

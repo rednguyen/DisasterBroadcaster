@@ -4,13 +4,18 @@ html, body {
     
 }  
 
+.top {
+    padding-bottom: 500px;
+}
+
 .Wrapper {
     justify-content: center;
   align-items: center;
 }
 
-.p {
+.Pg {
     font-size: 20px;
+    font-family: Raleway;
     text-align: center;
 }
 
@@ -18,16 +23,13 @@ html, body {
     width: 250px;
 }
 
-/*
-.col-bd {
-    display: flex;
-    margin: auto;
-}
-*/
-
 .col-guide {
     text-align: center;
     padding: 3rem 3rem;
+}
+
+.guide-content {
+    padding-bottom: 10rem;
 }
 
 .title {

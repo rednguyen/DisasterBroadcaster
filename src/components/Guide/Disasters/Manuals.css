@@ -1,0 +1,43 @@
+.manual-title {
+    text-align: center; 
+    font-family: 'Raleway';
+    font-size: 40px;
+    color: rgb(34, 63, 124);
+    padding-top: 5rem;
+    padding-bottom: 0rem;
+    font-weight: bold;
+}
+
+.subsection {
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+}
+
+.subtitle {
+    font-family: 'Raleway';
+    font-weight: bold;
+    font-size: 40px;
+}
+
+.content {
+    padding: 3rem;
+}
+
+
+.list {
+    font-family: 'Raleway';
+    font-size: 25px;
+    margin-bottom: 1rem;
+    list-style-type: circle;
+}
+
+
+
+
+.return-link {
+    font-family: 'Raleway';
+    font-size: 30px;
+    margin-bottom: 5rem;
+    text-align: center;
+    
+}
