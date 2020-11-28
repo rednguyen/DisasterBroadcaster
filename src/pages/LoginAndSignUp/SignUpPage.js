@@ -1,24 +1,19 @@
-import NavBar from '../../components/NavBar/NavBar';
-import Body from '../../components/Body/Body';
-import Footer from '../../components/Footer/Container/FooterContainer';
-import './HomePage.css';
+
 import { Component } from 'react';
-import Slider from '../../components/Slider'
+import NavBar from '../../components/NavBar/NavBar';
+import Footer from '../../components/Footer/Container/FooterContainer';
+import SignUp from '../../components/Auth/SignUp';
 
-
-
-class HomePage extends Component {
+class SignUpPage extends Component {
     render(){
         return (
             <div className="Wrapper">
               <div className="TopPage"><NavBar /></div>
-              <Slider/>
-              <div className = "Body"><Body/></div>
-              {/* <div className = "Blog"><Blog/></div> */}
+              <div className = "Body"><SignUp/></div>
               <div class = "BottomPage"><Footer /></div>
             </div>
           )
     };  
 }
 
-export default HomePage;
+export default SignUpPage;

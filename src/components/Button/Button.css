@@ -3,13 +3,14 @@
 
 }
 
-.btn{
-    padding: 4px 10px;
-    border-radius: 4px;
+/* .btn{
+    padding: 3px 5px;
+    border-radius: 100px;
     outline: none;
     border: none;
     cursor: pointer;
-}
+    border-radius: 50px;
+} */
 
 .btn:hover{
     padding: 4px 10px;
@@ -29,13 +30,13 @@
 }
 
 .btn--medium{
-    padding: 4px 10px;
+    padding: 0px 20px;
     border-radius: 10px;
-    font-size: 20px;
+    font-size: 15px;
     color: rgb(28, 28, 37);
 }
 .btn--large{
-    padding:4px 10px;
+    padding: 20px 26px;
     border-radius: 4px;
     font-size: 20px;
     color: rgb(191, 194, 211);

@@ -6,7 +6,7 @@ import SignUpPage from './pages/LoginAndSignUp/SignUpPage'
 import {BrowserRouter, Switch, Route} from 'react-router-dom'
 import PwResetPage from "./pages/LoginAndSignUp/PwResetPage";
 import CreateNewPwPage from "./pages/LoginAndSignUp/CreateNewPwPage";
-
+import Post from "./pages/Post/Post"
 import Earthquake from "./pages/Guide/Disasters/Earthquake";
 import Wildfire from "./pages/Guide/Disasters/Wildfire";
 import Volcano from "./pages/Guide/Disasters/Volcano";
@@ -33,7 +33,7 @@ function App() {
           <Route path="/flood" component = {Flood} exact />
           <Route path="/tornado" component = {Tornado} exact />
           <Route path="/hurricane" component = {Hurricane} exact />
-
+          <Route path="/post" component = {Post} exact />
         </Switch> 
         </div>
       </BrowserRouter>
