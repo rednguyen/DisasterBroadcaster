@@ -5,6 +5,7 @@
     color: rgb(34, 63, 124);
     padding-top: 5rem;
     padding-bottom: 0rem;
+    font-weight: bold;
 }
 
 .subsection {
@@ -14,6 +15,7 @@
 
 .subtitle {
     font-family: 'Raleway';
+    font-weight: bold;
     font-size: 40px;
 }
 
@@ -21,15 +23,21 @@
     padding: 3rem;
 }
 
+
 .list {
     font-family: 'Raleway';
-    font-size: 30px;
+    font-size: 25px;
     margin-bottom: 1rem;
+    list-style-type: circle;
 }
+
+
+
 
 .return-link {
     font-family: 'Raleway';
     font-size: 30px;
     margin-bottom: 5rem;
     text-align: center;
+    
 }
