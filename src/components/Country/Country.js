@@ -25,7 +25,7 @@ class Country extends Component{
         <Container component="main" maxWidth = "sm">
           <form onSubmit={this.handleSubmit} className = "white">
           <div className = 'post'>
-            <h5 >SELECT A COUNTRY</h5>
+            <h5 className= "grey-text text-darken-3">SEARCH DISASTER BY WORLD</h5>
               <Grid item xs={12} sm={12}>     
               <CountryDropdown className = "browser-default"
               value={country}

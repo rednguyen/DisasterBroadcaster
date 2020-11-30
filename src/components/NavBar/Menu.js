@@ -24,7 +24,7 @@ export const Menu = [
     },
     {
         title: 'Donate',
-        url: '#',
+        url: '#DonateSection',
         cName: 'nav-links'
     },
     {
