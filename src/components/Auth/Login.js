@@ -25,8 +25,8 @@ handleSubmit = (e) => {
 
 render(){
     return (
-           
-        <Container component="main" maxWidth = "sm">
+        <div className = "LoginBackground">
+        <Container component="main" maxWidth = "sm" className = "loginBackground">
         <div className = "container">
             <form onSubmit={this.handleSubmit} className = "white" class = "form1">
                 <h5 className= "grey-text text-darken-3">Login</h5>
@@ -56,6 +56,7 @@ render(){
             </form>
         </div>
         </Container>
+        </div>
         )
     }
 }

@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
 import Link from '@material-ui/core/Link';
 import Container from '@material-ui/core/Container';
-
+import "./auth.css"
 // const useStyles = makeStyles()
 
 class CreateNewPw extends Component {
@@ -23,7 +23,7 @@ render(){
     return (
         <Container component="main" maxWidth = "sm">
         <div className = "container">
-            <form onSubmit={this.handleSubmit} className = "white">
+            <form onSubmit={this.handleSubmit} className = "white" class = "form1">
                 <h5 className= "grey-text text-darken-3">Create New Password</h5>
                 
                 <div className = "input-field">

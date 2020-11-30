@@ -9,8 +9,8 @@ class CreateNewPwPage extends Component {
         return (
             <div className="Wrapper">
               <div className="TopPage"><NavBar /></div>
-              <div className = "Body"><CreateNewPw/></div>
-              <div class = "BottomPage"><Footer /></div>
+              <div className = "PwReset"><CreateNewPw/></div>
+              <div className = "BottomPage"><Footer /></div>
             </div>
           )
     };  

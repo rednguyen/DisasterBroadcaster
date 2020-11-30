@@ -24,8 +24,6 @@ class Slider extends Component {
         }}
         className="slider"
       >
-        {/* If you want fullscreen slider then add fullscreen to
-      this div */}
         <ul className="slides">
           <li>
           <a href="https://www.thenewhumanitarian.org/maps-and-graphics/2020/11/16/typhoon-vamco-philippines-vietnam-flooding-climate-change">
