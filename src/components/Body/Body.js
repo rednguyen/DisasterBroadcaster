@@ -11,13 +11,8 @@ const classes = {
 const Body = () => {
     return (
         <div>
-<<<<<<< HEAD
-    
-            <Grid >
-=======
         <Grid container>
             <Grid item sm = {12}>
->>>>>>> jiaao1
                 <Paper style = {{padding: 10}}>
                     <h1 className = "col-bd1">Top Stories</h1>
                         <p Paper style = {{padding: 20, fontSize: 20}}>
@@ -45,11 +40,7 @@ const Body = () => {
                     
                 </Paper>
             </Grid>
-<<<<<<< HEAD
-            <Grid>
-=======
             <Grid item sm = "12">
->>>>>>> jiaao1
                 <Paper style = {{padding: 10}}>               
                     <h1 className = "col-bd2" style={{ color: 'rgb(32, 32, 32)' }}>Community</h1>
                     <h5>
@@ -66,7 +57,7 @@ const Body = () => {
                     </h5>               
                 </Paper>
             </Grid>
-      
+      </Grid>
         </div>
     )
     
