@@ -6,13 +6,14 @@ import SignUpPage from './pages/LoginAndSignUp/SignUpPage'
 import {BrowserRouter, Switch, Route} from 'react-router-dom'
 import PwResetPage from "./pages/LoginAndSignUp/PwResetPage";
 import CreateNewPwPage from "./pages/LoginAndSignUp/CreateNewPwPage";
-
+import Post from "./pages/Post/Post"
 import Earthquake from "./pages/Guide/Disasters/Earthquake";
 import Wildfire from "./pages/Guide/Disasters/Wildfire";
 import Volcano from "./pages/Guide/Disasters/Volcano";
 import Flood from "./pages/Guide/Disasters/Flood";
 import Tornado from "./pages/Guide/Disasters/Tornado";
 import Hurricane from "./pages/Guide/Disasters/Hurricane";
+import Country from "./pages/CountryPage/CountryPage";
 
 function App() {
     return (
@@ -28,12 +29,13 @@ function App() {
           <Route path = '/createnewpw' component = {CreateNewPwPage} exact />
           {/* Guide:  */}
           <Route path="/earthquake" component = {Earthquake} exact />
-          <Route path="/wildfire" component = {Wildfire} exact />
+          <Route path="/wildfire" component = {Wildfire} exact gi/>
           <Route path="/volcano" component = {Volcano} exact />
           <Route path="/flood" component = {Flood} exact />
           <Route path="/tornado" component = {Tornado} exact />
           <Route path="/hurricane" component = {Hurricane} exact />
-
+          <Route path="/post" component = {Post} exact />
+          <Route path="/country" component = {Country} exact />
         </Switch> 
         </div>
       </BrowserRouter>

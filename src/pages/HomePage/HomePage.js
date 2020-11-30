@@ -4,6 +4,7 @@ import Footer from '../../components/Footer/Container/FooterContainer';
 import './HomePage.css';
 import { Component } from 'react';
 import Slider from '../../components/Slider'
+import Donate from '../../components/Donate/Donate'
 
 
 
@@ -14,7 +15,7 @@ class HomePage extends Component {
               <div className="TopPage"><NavBar /></div>
               <Slider/>
               <div className = "Body"><Body/></div>
-              {/* <div className = "Blog"><Blog/></div> */}
+              <div id="DonateSection"> <Donate/></div>
               <div class = "BottomPage"><Footer /></div>
             </div>
           )

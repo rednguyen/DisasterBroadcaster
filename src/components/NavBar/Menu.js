@@ -14,7 +14,7 @@ export const Menu = [
     
     {
         title: 'Country',
-        url: '#',
+        url: '/country',
         cName: 'nav-links'
     },
     {
@@ -24,11 +24,16 @@ export const Menu = [
     },
     {
         title: 'Donate',
-        url: '#',
+        url: '#DonateSection',
         cName: 'nav-links'
     },
     {
         title: 'Login',
+        url: '#',
+        cName: 'nav-links-mobile'
+    },
+    {
+        title: 'SignUp',
         url: '#',
         cName: 'nav-links-mobile'
     }

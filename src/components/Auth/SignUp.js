@@ -1,7 +1,6 @@
 import React, {Component} from 'react'
 import Link from '@material-ui/core/Link';
 import Container from '@material-ui/core/Container';
-import Grid from '@material-ui/core/Grid';
 import { CountryDropdown} from 'react-country-region-selector';
 
 class SignUp extends Component {
@@ -41,9 +40,7 @@ render(){
                     <label htmlFor="username">Username</label>
                     <input type="text" id="username" onChange={this.handleChange}/>
                 </div>
-                
-            
-                    
+                                    
                 <label>Country</label>
                 <div>
                 <CountryDropdown className = "browser-default"
@@ -51,7 +48,6 @@ render(){
                     onChange={(val) => this.selectCountry(val)} />              
                 </div>
                 
-
                 <div className = "input-field">
                     <label htmlFor="email">Email</label>
                     <input type="email" id="email" onChange={this.handleChange}/>

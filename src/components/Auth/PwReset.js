@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
 import Link from '@material-ui/core/Link';
 import Container from '@material-ui/core/Container';
-import "./auth.css"
+
 // const useStyles = makeStyles()
 
 class PwReset extends Component {
@@ -23,7 +23,7 @@ render(){
     return (
         <Container component="main" maxWidth = "sm">
         <div className = "container">
-            <form onSubmit={this.handleSubmit} >
+            <form onSubmit={this.handleSubmit}>
                 <h5 className= "grey-text text-darken-3">Password Reset</h5>
                 <div className = "input-field">
                     <label htmlFor="email">Email</label>

@@ -3,6 +3,7 @@ import "./Body.css";
 import PIC from './Figure.jpg';
 import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
+import {Button} from '../Button/Button';
 
 const classes = {
     Paper:{padding: 20, marginTop: 10, marginBottom: 10}
@@ -43,18 +44,27 @@ const Body = () => {
             <Grid item sm = "12">
                 <Paper style = {{padding: 10}}>               
                     <h1 className = "col-bd2" style={{ color: 'rgb(32, 32, 32)' }}>Community</h1>
-                    <h5>
-                        User 1
-                    </h5>
-                    <h5>
-                        User 2
-                    </h5>
-                    <h5>
-                        User 3
-                    </h5>
-                    <h5>
-                        User 4
-                    </h5>               
+                <div className = "post">
+                        <h2>
+                            User 1
+                        </h2>
+
+                        <h2>
+                            User 2
+                        </h2>
+
+                        <h2>
+                             User 3
+                        </h2>
+                        <h2>
+                            User 4
+                        </h2>           
+                        <Button className = "post" type="button"
+                            onClick={(e) => {e.preventDefault();
+                            window.location.href='/post';
+                             }}> Make a Post </Button> 
+                    </div>
+                    
                 </Paper>
             </Grid>
         </Grid>

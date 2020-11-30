@@ -21,7 +21,7 @@ class NavBar extends Component{
                     <i className={this.state.clicked? 'fas fa-times' : 'fas fa-bars'}></i>
                 </div>
                 <ul className={this.state.clicked ? 'nav-menu active':'nav-menu'}>
-                    {Menu.map((item, index)=>{
+                    <>{Menu.map((item, index)=>{
                         return(
                             <li key={index}>
                                 <a className ={item.cName} href={item.url}>
@@ -29,11 +29,12 @@ class NavBar extends Component{
                                 </a>
                             </li>
                         )                        
-                    })}
+                        })}     
+                    </>
                 </ul>    
                 <Button onClick={(e) => {e.preventDefault(); window.location.href='/login'}}>
                     Login
-                    {/* <i class="fas fa-user"></i> */}
+                    <i class="fas fa-user"></i>
                     </Button>
                 {/* <SignedInLinks/>    */}
                 <ul><NavLink to='/' className ='btn btn-floating blue darken-3'>JM</NavLink> </ul>
