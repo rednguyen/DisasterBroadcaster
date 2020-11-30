@@ -13,6 +13,7 @@ import Volcano from "./pages/Guide/Disasters/Volcano";
 import Flood from "./pages/Guide/Disasters/Flood";
 import Tornado from "./pages/Guide/Disasters/Tornado";
 import Hurricane from "./pages/Guide/Disasters/Hurricane";
+import Country from "./pages/CountryPage/CountryPage";
 
 function App() {
     return (
@@ -34,6 +35,7 @@ function App() {
           <Route path="/tornado" component = {Tornado} exact />
           <Route path="/hurricane" component = {Hurricane} exact />
           <Route path="/post" component = {Post} exact />
+          <Route path="/country" component = {Country} exact />
         </Switch> 
         </div>
       </BrowserRouter>

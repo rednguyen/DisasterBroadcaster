@@ -1,32 +1,48 @@
 import React, { Component } from 'react';
+import NavBar from '../NavBar/NavBar';
+import Footer from '../Footer/Container/FooterContainer';
+import { CountryDropdown} from 'react-country-region-selector';
+import Container from '@material-ui/core/Container';
+import Grid from '@material-ui/core/Grid';
+import { TextBoxComponent } from '@syncfusion/ej2-react-inputs';
 
-// note that you can also export the source data via CountryRegionData. It's in a deliberately concise format to 
-// keep file size down
-import { CountryDropdown, RegionDropdown, CountryRegionData } from 'react-country-region-selector';
+class Country extends Component{
+    state = {
+        country: '',
+    }
 
-class Example extends Component {
-  constructor (props) {
-    super(props);
-    this.state = { country: '', region: '' };
-  }
+    selectCountry (val) {
+        this.setState({ country: val });
+      }
+      handleSubmit = (e) => {
+        e.preventDefault(this.state)
+        console.log(this.state)
+    } 
 
-  selectCountry (val) {
-    this.setState({ country: val });
-  }
+    render() {
+        const { country } = this.state;
+        return(
+        <Container component="main" maxWidth = "sm">
+          <form onSubmit={this.handleSubmit} className = "white">
+          <div className = 'post'>
+            <h5 >SELECT A COUNTRY</h5>
+              <Grid item xs={12} sm={12}>     
+              <CountryDropdown className = "browser-default"
+              value={country}
+                onChange={(val) => this.selectCountry(val)} />              
+              </Grid>
 
-  selectRegion (val) {
-    this.setState({ region: val });
-  }
 
-  render () {
-    const { country, region } = this.state;
-    return (
-      <div>
-        <CountryDropdown
-          value={country}
-          onChange={(val) => this.selectCountry(val)} />
-      </div>
-    );
-  }
+              <div className = "input-field">
+                <button className = "btn  blue darken-3 z-depth-0">SUBMIT</button>
+              </div>
+          </div>
+          
+           </form>
+                    
+         </Container>
+        );
+    }
 }
-export default Example
+
+export default Country
