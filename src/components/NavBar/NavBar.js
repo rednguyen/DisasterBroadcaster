@@ -32,19 +32,12 @@ class NavBar extends Component{
                         })}     
                     </>
                 </ul>    
-<<<<<<< HEAD
-                <ul className = 'button'>
-                    <Button >LogIn</Button>
-                    <Button >SignUp</Button>
-                </ul>   
-=======
                 <Button onClick={(e) => {e.preventDefault(); window.location.href='/login'}}>
                     Login
                     <i class="fas fa-user"></i>
                     </Button>
                 {/* <SignedInLinks/>    */}
                 <ul><NavLink to='/' className ='btn btn-floating blue darken-3'>JM</NavLink> </ul>
->>>>>>> jiaao1
             </nav>
         );
     }

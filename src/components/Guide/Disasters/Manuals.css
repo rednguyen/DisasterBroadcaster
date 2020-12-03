@@ -5,10 +5,7 @@
     color: rgb(34, 63, 124);
     padding-top: 5rem;
     padding-bottom: 0rem;
-<<<<<<< HEAD
-=======
     font-weight: bold;
->>>>>>> jiaao1
 }
 
 .subsection {
@@ -18,10 +15,7 @@
 
 .subtitle {
     font-family: 'Raleway';
-<<<<<<< HEAD
-=======
     font-weight: bold;
->>>>>>> jiaao1
     font-size: 40px;
 }
 
@@ -29,14 +23,6 @@
     padding: 3rem;
 }
 
-<<<<<<< HEAD
-.list {
-    font-family: 'Raleway';
-    font-size: 30px;
-    margin-bottom: 1rem;
-}
-
-=======
 
 .list {
     font-family: 'Raleway';
@@ -48,14 +34,10 @@
 
 
 
->>>>>>> jiaao1
 .return-link {
     font-family: 'Raleway';
     font-size: 30px;
     margin-bottom: 5rem;
     text-align: center;
-<<<<<<< HEAD
-=======
     
->>>>>>> jiaao1
 }
