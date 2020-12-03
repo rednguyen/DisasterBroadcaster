@@ -10,7 +10,13 @@
 .navbar-logo{
     position: relative;
     justify-self: start;
+<<<<<<< HEAD
+    margin-left:  5px;
+    top: 0;
+    left: 0;
+=======
     margin-left:  1px;
+>>>>>>> jiaao1
     cursor: pointer;
 }
 

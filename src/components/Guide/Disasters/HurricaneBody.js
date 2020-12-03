@@ -8,7 +8,11 @@ const HurricaneBody = () => {
             <div className="content">
                 <div className="subsection">
                     <h2 className="subtitle"> Preparing for a Hurricane </h2>
+<<<<<<< HEAD
+                    <ul>
+=======
                     <ul className>
+>>>>>>> jiaao1
                         <li className="list">Prepare an Emergency Kit. This kit will be utilized after a hurricane to help sustain
                             you and other household members in the case of a severe earthquake where you are cut off 
                             from access to food, water, medicine, and other resources. 
