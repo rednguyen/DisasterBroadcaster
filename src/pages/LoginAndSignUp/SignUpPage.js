@@ -1,7 +1,7 @@
-
 import { Component } from 'react';
 import NavBar from '../../components/NavBar/NavBar';
 import Footer from '../../components/Footer/Container/FooterContainer';
+import "./Background.css"
 import SignUp from '../../components/Auth/SignUp';
 
 class SignUpPage extends Component {
@@ -9,11 +9,12 @@ class SignUpPage extends Component {
         return (
             <div className="Wrapper">
               <div className="TopPage"><NavBar /></div>
-              <div className = "Body"><SignUp/></div>
-              <div class = "BottomPage"><Footer /></div>
+              <div className = "signup"><SignUp/></div>
+              <div className = "BottomPage"><Footer /></div>
             </div>
           )
     };  
 }
 
 export default SignUpPage;
+

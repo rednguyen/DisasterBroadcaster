@@ -23,7 +23,7 @@ render(){
     return (
         <Container component="main" maxWidth = "sm">
         <div className = "container">
-            <form onSubmit={this.handleSubmit} className = "white">
+            <form onSubmit={this.handleSubmit}>
                 <h5 className= "grey-text text-darken-3">Password Reset</h5>
                 <div className = "input-field">
                     <label htmlFor="email">Email</label>

@@ -1,0 +1,49 @@
+
+
+.login{
+    min-height: 100vh;
+    margin: auto;
+    position: relative;
+    overflow: hidden;
+    display: block;
+    justify-content: center;
+    align-items: center;
+
+    background-image: url("./overlay3.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    
+  }
+
+  .signup{
+    min-height: 100vh;
+    margin: auto;
+    position: relative;
+    overflow: hidden;
+    display: block;
+    justify-content: center;
+    align-items: center;
+
+    background-image: url("overlay3.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    
+  }
+
+  .PwReset{
+    min-height: 100vh;
+    margin: auto;
+    position: relative;
+    overflow: hidden;
+    display: block;
+    justify-content: center;
+    align-items: center;
+
+    background-image: url("overlay1.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    
+  }

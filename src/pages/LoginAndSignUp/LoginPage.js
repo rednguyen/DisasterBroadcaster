@@ -1,16 +1,16 @@
-
 import { Component } from 'react';
 import NavBar from '../../components/NavBar/NavBar';
 import Footer from '../../components/Footer/Container/FooterContainer';
 import Login from '../../components/Auth/Login';
-//ssss
+import "./Background.css"
+
 class SignInPage extends Component {
     render(){
         return (
             <div className="Wrapper">
               <div className="TopPage"><NavBar /></div>
-              <div className = "Body"><Login/></div>
-              <div class = "BottomPage"><Footer /></div>
+              <div className = "login"><Login/></div>
+              <div className = "BottomPage"><Footer /></div>
             </div>
           )
     };  

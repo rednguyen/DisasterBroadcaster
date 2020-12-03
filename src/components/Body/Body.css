@@ -43,3 +43,10 @@
     padding: 1rem;
     margin-left:-1%;
 }
+
+.post{
+    align-items: center;
+    text-align: center;
+    align-content: center;
+    align-self: center;
+}

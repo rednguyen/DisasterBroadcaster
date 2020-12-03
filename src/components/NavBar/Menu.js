@@ -17,7 +17,7 @@ export const Menu = [
 >>>>>>> jiaao1
     {
         title: 'Country',
-        url: '#',
+        url: '/country',
         cName: 'nav-links'
     },
     {
@@ -27,7 +27,7 @@ export const Menu = [
     },
     {
         title: 'Donate',
-        url: '#',
+        url: '#DonateSection',
         cName: 'nav-links'
     },
     {
