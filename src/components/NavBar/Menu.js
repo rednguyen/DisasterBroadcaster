@@ -11,10 +11,7 @@ export const Menu = [
         url: '/about',
         cName: 'nav-links'
     },
-<<<<<<< HEAD
-=======
     
->>>>>>> jiaao1
     {
         title: 'Country',
         url: '/country',
