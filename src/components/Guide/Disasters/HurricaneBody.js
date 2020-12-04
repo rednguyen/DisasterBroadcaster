@@ -10,7 +10,7 @@ const HurricaneBody = () => {
                     <h2 className="subtitle"> Preparing for a Hurricane </h2>
                     <ul className>
                         <li className="list">Prepare an Emergency Kit. This kit will be utilized after a hurricane to help sustain
-                            you and other household members in the case of a severe earthquake where you are cut off 
+                            you and other household members in the case of a severe hurricane where you are cut off 
                             from access to food, water, medicine, and other resources. 
                             Your kit should include at least the following items: non-perishable food, 
                             water bottles, first-aid kit,

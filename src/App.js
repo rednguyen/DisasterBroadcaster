@@ -13,6 +13,8 @@ import Volcano from "./pages/Guide/Disasters/Volcano";
 import Flood from "./pages/Guide/Disasters/Flood";
 import Tornado from "./pages/Guide/Disasters/Tornado";
 import Hurricane from "./pages/Guide/Disasters/Hurricane";
+import Drought from "./pages/Guide/Disasters/Drought";
+import Tsunami from "./pages/Guide/Disasters/Tsunami";
 import Country from "./pages/CountryPage/CountryPage";
 
 function App() {
@@ -34,6 +36,8 @@ function App() {
           <Route path="/flood" component = {Flood} exact />
           <Route path="/tornado" component = {Tornado} exact />
           <Route path="/hurricane" component = {Hurricane} exact />
+          <Route path="/drought" component = {Drought} exact />
+          <Route path="/tsunami" component = {Tsunami} exact />
           <Route path="/post" component = {Post} exact />
           <Route path="/country" component = {Country} exact />
         </Switch> 
