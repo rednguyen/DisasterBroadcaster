@@ -1,4 +1,4 @@
-import { api_domain } from "../../settings";
+import { api_domain } from "./settings";
 import axios from "axios";
 
 export default class ApiServices {
