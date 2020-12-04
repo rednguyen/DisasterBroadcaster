@@ -1,4 +1,4 @@
-import ApiServices from "ApiServices";
+import ApiServices from "./ApiServices";
 import axios from "axios";
 
 export default class CommentServices extends ApiServices {
