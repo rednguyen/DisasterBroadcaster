@@ -11,7 +11,7 @@ class CreateNewPwPage extends Component {
             <div className="Wrapper">
               <div className="TopPage"><NavBar /></div>
               <div className = "countybg"><Country/></div>
-              <div class = "BottomPage"><Footer /></div>
+              <div className = "BottomPage"><Footer /></div>
             </div>
           )
     };  
