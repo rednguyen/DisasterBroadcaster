@@ -14,7 +14,7 @@ export const Menu = [
     
     {
         title: 'Country',
-        url: '/country',
+        url: '/searchbycountry',
         cName: 'nav-links'
     },
     {
