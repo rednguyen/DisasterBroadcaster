@@ -36,12 +36,17 @@
     font-size: 1.5rem;
 }
 
-.Storm{
+.media{
     text-align: center;
     display: block;
     float: right;
     padding: 1rem;
     margin-left:-1%;
+}
+
+.a{
+  color: black;
+  text-decoration: none;
 }
 
 .post{
