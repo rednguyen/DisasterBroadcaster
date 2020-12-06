@@ -25,7 +25,7 @@ function Body(posts, newss) {
                     <ul>
                       <a href={news.url} className = "a">
                       <p Paper style = {{padding: 20, fontSize: 20}}>
-                      <li><img className = "media" src = {news.media} width="250px" height="250px"/></li>
+                      <li><img className = "media" src = {news.media} alt="" width="250px" height="250px"/></li>
                       <li>{news.content}</li>
                       </p>
                       </a>
@@ -47,9 +47,9 @@ function Body(posts, newss) {
                           {/* <a href={BASE URL FOR SINGLE POST + "/post/" + post.id.toString()}  className="a"></a> */}
                           <p Paper style = {{padding: 20, fontSize: 20}}>
                           <li>{post.content}</li>
-                          <li><img className = "media" src = {post.media} width="250px" height="250px"/></li>
+                          <li><img className = "media" src = {post.media} alt="" width="250px" height="250px"/></li>
                           <li>{post.user_id.username}</li>
-                          <li><img className = "avatar" src = {post.user_id.avatar} width="50px" height="50px"/></li>
+                          <li><img className = "avatar" src = {post.user_id.avatar} alt="" width="50px" height="50px"/></li>
                           </p>
                         </ul>
                       )}    
@@ -76,7 +76,7 @@ function Body(posts, newss) {
                     <ul>
                       <a href={news.url} className = "a">
                       <p Paper style = {{padding: 20, fontSize: 20}}>
-                      <li><img className = "media" src = {news.media} width="250px" height="250px"/></li>
+                      <li><img className = "media" src = {news.media} alt="" width="250px" height="250px"/></li>
                       <li>{news.content}</li>
                       </p>
                       </a>
@@ -99,9 +99,9 @@ function Body(posts, newss) {
                   {/* <a href={BASE URL FOR SINGLE POST + "/post/" + post.id.toString()}  className="a"></a> */}
                   <p Paper style = {{padding: 20, fontSize: 20}}>
                   <li>{post.content}</li>
-                  <li><img className = "media" src = {post.media} width="250px" height="250px"/></li>
+                  <li><img className = "media" src = {post.media} alt="" width="250px" height="250px"/></li>
                   <li>{post.user_id.username}</li>
-                  <li><img className = "avatar" src = {post.user_id.avatar} width="50px" height="50px"/></li>
+                  <li><img className = "avatar" src = {post.user_id.avatar} alt="" width="50px" height="50px"/></li>
                   </p>
                 </ul>
               )}    
