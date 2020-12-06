@@ -5,10 +5,6 @@ import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
 import {Button} from '../Button/Button';
 
-const classes = {
-    Paper:{padding: 20, marginTop: 10, marginBottom: 10}
-}
-
 function Body(posts, newss) {
     if (posts.length > 0 && newss.length > 0){
       return (

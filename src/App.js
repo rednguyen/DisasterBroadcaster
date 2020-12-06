@@ -1,6 +1,7 @@
 import HomePage from "./pages/HomePage/HomePage";
 import AllNews from "./pages/Post/AllNews";
 import AllPost from "./pages/Post/AllPost";
+import OnePost from "./pages/Post/OnePost";
 import CountryHomePage from "./pages/CountryPage/CountryHomePage";
 import Guide from "./pages/Guide/Guide";
 import About from "./pages/About/AboutUs";
@@ -28,6 +29,8 @@ function App() {
           <Route path="/" component = {HomePage} exact />
           <Route path="/allnews" component = {AllNews} exact />
           <Route path="/allpost" component = {AllPost} exact />
+          <Route path="/post/:id" component = {OnePost} exact />
+          <Route path="/post" component = {Post} exact />
           <Route path="/guide" component = {Guide} exact />
           <Route path="/about" component = {About} exact />
           <Route path = '/login' component = {LoginPage} exact />  

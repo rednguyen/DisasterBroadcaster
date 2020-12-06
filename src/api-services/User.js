@@ -34,5 +34,13 @@ export default class UserServices extends ApiServices {
       return this.handleError(error, {});
     }
   };
+
+  currentUser = async () => {
+    try {
+      return await axios.get(`${this.base_url()}/current_user/`);
+    } catch (error) {
+      return this.handleError(error, {});
+    }
+  }
 }
 
