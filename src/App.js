@@ -1,4 +1,7 @@
 import HomePage from "./pages/HomePage/HomePage";
+import AllNews from "./pages/Post/AllNews";
+import AllPost from "./pages/Post/AllPost";
+import CountryHomePage from "./pages/CountryPage/CountryHomePage";
 import Guide from "./pages/Guide/Guide";
 import About from "./pages/About/AboutUs";
 import LoginPage from './pages/LoginAndSignUp/LoginPage'
@@ -13,6 +16,8 @@ import Volcano from "./pages/Guide/Disasters/Volcano";
 import Flood from "./pages/Guide/Disasters/Flood";
 import Tornado from "./pages/Guide/Disasters/Tornado";
 import Hurricane from "./pages/Guide/Disasters/Hurricane";
+import Drought from "./pages/Guide/Disasters/Drought";
+import Tsunami from "./pages/Guide/Disasters/Tsunami";
 import Country from "./pages/CountryPage/CountryPage";
 
 function App() {
@@ -20,7 +25,9 @@ function App() {
       <BrowserRouter> 
         <div className="App">
         <Switch> 
-          <Route path="/" component = {HomePage} exact />  
+          <Route path="/" component = {HomePage} exact />
+          <Route path="/allnews" component = {AllNews} exact />
+          <Route path="/allpost" component = {AllPost} exact />
           <Route path="/guide" component = {Guide} exact />
           <Route path="/about" component = {About} exact />
           <Route path = '/login' component = {LoginPage} exact />  
@@ -34,8 +41,12 @@ function App() {
           <Route path="/flood" component = {Flood} exact />
           <Route path="/tornado" component = {Tornado} exact />
           <Route path="/hurricane" component = {Hurricane} exact />
+          <Route path="/drought" component = {Drought} exact />
+          <Route path="/tsunami" component = {Tsunami} exact />
           <Route path="/post" component = {Post} exact />
-          <Route path="/country" component = {Country} exact />
+          <Route path="/searchbycountry" component = {Country} exact />
+          <Route path="/country/:id" component = {CountryHomePage} exact />
+          
         </Switch> 
         </div>
       </BrowserRouter>

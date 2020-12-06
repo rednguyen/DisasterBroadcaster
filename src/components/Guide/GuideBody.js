@@ -10,13 +10,15 @@ import HU_IMG from "./Icons/012-hurricane.png";
 import VL_IMG from "./Icons/030-volcano.png";
 import TR_IMG from "./Icons/025-tornado.png";
 import WF_IMG from "./Icons/006-burning.png";
+import DR_IMG from "./Icons/004-desertification.png";
+import TM_IMG from "./Icons/027-tsunami.png";
 
 const GuideBody = () => {
     return(
         <div className="guide-content">
             <GuideHeader/>
             <Grid container spacing={1} justify="space-between" direction="column">
-                <Grid container spacing={10} item xs={12} justify="space-evenly" alignItems="center">
+                <Grid container item xs={12} justify="space-evenly" alignItems="center">
                     <div className="col-guide">
                         <a href="/earthquake">
                             <img className = "imgClass" src={EQ_IMG} alt="Earthquake"/>
@@ -38,9 +40,16 @@ const GuideBody = () => {
                         </a>
                         <p className = "Pg"> Hurricane </p>
                     </div>
+
+                    <div className="col-guide">
+                        <a href="/drought">
+                            <img className = "imgClass" src={DR_IMG} alt="Drought"/>
+                        </a>
+                        <p className = "Pg"> Drought </p>
+                    </div>
                     </Grid>
                 
-                <Grid container spacing={10} item xs={12} justify="space-evenly" alignItems="center">
+                <Grid container spacing={12} item xs={12} justify="space-evenly" alignItems="center">
                     <div className="col-guide">
                         <a href="/volcano">
                             <img className = "imgClass" src={VL_IMG} alt="Volcano"/>
@@ -61,6 +70,13 @@ const GuideBody = () => {
                             <img className = "imgClass" src={WF_IMG} alt="Wildfire"/>
                         </a>
                         <p className = "Pg"> Wildfire </p>
+                    </div>
+
+                    <div className="col-guide">
+                        <a href="/tsunami">
+                            <img className = "imgClass" src={TM_IMG} alt="Tsunami"/>
+                        </a>
+                        <p className = "Pg"> Tsunami </p>
                     </div>
                 </Grid>
             </Grid>

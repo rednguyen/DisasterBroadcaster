@@ -2,6 +2,9 @@ import React, {Component} from 'react'
 import Link from '@material-ui/core/Link';
 import Container from '@material-ui/core/Container';
 import { CountryDropdown} from 'react-country-region-selector';
+import UserServices from "../../api-services/User";
+import { countries } from "../../api-services/countries";
+const userServices = new UserServices();
 
 class SignUp extends Component {
     state = {
@@ -23,9 +26,26 @@ handleChange = (e) => {
     })
 } 
 handleSubmit = (e) => {
-    e.preventDefault(this.state)
-    console.log(this.state)
-} 
+  e.preventDefault(this.state)
+  const user = {
+      email: this.state.email,
+      password: this.state.password,
+      username: this.state.username, 
+      country_id: countries[this.state.country],
+      answer: this.state.security_question
+  };
+  console.log(user.country);
+  console.log(user);
+  userServices.create(user)
+  .then(
+      res => {
+          console.log(res);
+      }).catch(
+          err => {
+              console.log(err);     
+          }
+      )
+}
 
 render(){
 
