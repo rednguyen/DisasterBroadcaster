@@ -3,7 +3,7 @@ import "./postBody.css";
 import Grid from '@material-ui/core/Grid';
 import Button from '@material-ui/core/Button';
 /* Image */
-import PostServices from "../../api-services/Post";
+import PostServices from "../../api-services/ApiServices";
 const postServices = new PostServices();
 
   function mapPost(props) {
@@ -28,7 +28,7 @@ class PostBody extends Component {
         content: '',
         img: null,
     };
-    const UserPost = postServices.getUserPosts()
+    const UserPost = postServices.retrieve(1)
     .then(
       res => {
           let responseJSON = res; 

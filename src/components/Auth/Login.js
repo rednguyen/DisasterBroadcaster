@@ -2,62 +2,62 @@ import React, {Component} from 'react'
 import Link from '@material-ui/core/Link';
 import Container from '@material-ui/core/Container';
 import Grid from '@material-ui/core/Grid';
-import Paper from '@material-ui/core/Paper';
-import Button from '@material-ui/core/Button';
-import UserServices from "../../api-services/User";
 import "./auth.css"
-import axios from "axios"
 import { Redirect } from "react-router-dom";
-// const useStyles = makeStyles()
-const userServices = new UserServices();
+import { connect } from 'react-redux';
+import {Spin} from 'antd';
+import Icon from '@ant-design/icons';
+import * as actions from '../../actions/auth';
+
+
+const antIcon = <Icon type="loading" style={{ fontSize: 24 }} spin />;
 
 class Login extends Component {
-    state = {
-        username: '',
-        password: '',
-        loggedIn: false
-}
-handleChange = (e) => {
-    this.setState({
-        [e.target.id]: e.target.value
-    })
-} 
-handleSubmit = (e) => {
-    e.preventDefault(this.state)
-    console.log(this.state)
-    const user = { 
-        username: this.state.username, 
-        password: this.state.password,
-    };
-    axios.post('https://disaster-broadcaster.herokuapp.com/api/disaster_broadcaster/user-authenticate/',
-    user)
-    .then(
-        res => {
-            let responseJSON = res; 
-            sessionStorage.setItem('userData', responseJSON)   
-            this.setState({loggedIn: true})
-            // console.log(res)
-
-        }).catch(
-            err => {
-                console.log(err.message);     
-            }
-        )
-    //userServices.login(user)
-} 
+  state = {
+      username: '',
+      password: '',
+      loggedIn: ''
+  }
+  handleChange = (e) => {
+      this.setState({
+          [e.target.id]: e.target.value
+      })
+  } 
+  handleSubmit = (e) => {
+    e.preventDefault();
+    //this.state.loggedIn = true;
+    this.setState({loggedIn: true});
+    this.props.onAuth(this.state.username, this.state.password);
+  } 
 
 render(){
-    if(this.state.loggedIn){
-        return <Redirect to= {'/'}/>
+    let errorMessage = null;
+    // if (this.props.error) {
+    //     errorMessage = (
+    //         <p>{this.props.error.message}</p>
+    //     );
+    // }
+    if(this.props.isAuthenticated){
+      return <Redirect to= {'/'}/>;
+    } else {
+      errorMessage = "Please enter in valid credentials.";
     }
-    if(sessionStorage.getItem("userData")){
-        return <Redirect to= {'/'}/>
-    }
+
     return (
+      <div>
+        
+        {
+            this.props.loading ?
+
+            <Spin indicator={antIcon} />
+
+            :
         
         <Container component="main" maxWidth = "sm">
         <div className = "container">
+        
             <form onSubmit={this.handleSubmit} className = "white" class = "form1">
+              {errorMessage}
                 <h5 className= "grey-text text-darken-3">Login</h5>
                 <div className = "input-field">
                     <label htmlFor="username">Username</label>
@@ -67,6 +67,7 @@ render(){
                     <label htmlFor="password">password</label> 
                     <input type="password" id="password" onChange={this.handleChange}/>
                 </div>
+                
                 <Grid container>
                 <Grid container xs={12} sm={6}>
                 <Link href="/signup" variant="body2">
@@ -86,10 +87,27 @@ render(){
             </form>
         </div>
         </Container>
-        )
+        }
+      </div>
+    )
+  }
+}
+
+const mapStateToProps = (state) => {
+    return {
+        loading: state.loading,
+        error: state.error,
+        isAuthenticated: state.token !== null && state.token != undefined
     }
 }
-// export default SignIn;
-export default Login;
+
+const mapDispatchToProps = dispatch => {
+    return {
+        onAuth: (username, password) => dispatch(actions.authLogin(username, password))
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Login);
+
 
 

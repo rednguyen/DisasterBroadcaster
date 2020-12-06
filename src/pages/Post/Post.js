@@ -14,7 +14,7 @@ class BasicTextFields extends Component{
     render() {
         return(
         <div className="Wrapper">
-            <div className="TopPage"><NavBar /></div>
+            
 
         <CreatePost/>
          

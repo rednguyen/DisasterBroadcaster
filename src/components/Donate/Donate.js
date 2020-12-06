@@ -46,7 +46,7 @@ class Donate extends Component {
                 
                 <Grid item style={{textAlign:"center"}} xs={12} sm={3}>
                     <div className = "Org">
-                    <a href="https://www.redcross.org/"><img width="220px" height="220px"src = {Org1}/></a>
+                    <a href="https://www.redcross.org/"><img width="220px" height="220px" src = {Org1} alt=""/></a>
                     </div>
                     
                     
@@ -54,20 +54,20 @@ class Donate extends Component {
 
                 <Grid item style={{textAlign:"center"}} xs={12} sm={3} justify="center">
                     <div className = "Org">
-                    <a href="https://www.agape-volunteers.com/"> <img  width="220px" height="220px" src = {Org2}/></a>
+                    <a href="https://www.agape-volunteers.com/"> <img  width="220px" height="220px" src = {Org2} alt=""/></a>
                     </div>
                 
                 </Grid>         
                         
                 <Grid item style={{textAlign:"center"}} xs={12} sm={3} justify="center">
                     <div className = "Org">
-                    <a href="https://www.feedingamerica.org/"> <img width="220px" height="220px"src = {Org3}/>   </a>
+                    <a href="https://www.feedingamerica.org/"> <img width="220px" height="220px" src = {Org3} alt=""/>   </a>
                     </div>
                 </Grid>     
     
                 <Grid item style={{textAlign:"center"}} xs={12} sm={3} justify="center">       
                 <div className = "Org">
-                <a href="https://www.salvationarmyusa.org/usn/"> <img  width="220px" height="220px" src = {Org4}/></a>
+                <a href="https://www.salvationarmyusa.org/usn/"> <img  width="220px" height="220px" src = {Org4} alt=""/></a>
                 </div>
                 
                 </Grid>
