@@ -20,6 +20,7 @@ import Drought from "./pages/Guide/Disasters/Drought";
 import Tsunami from "./pages/Guide/Disasters/Tsunami";
 import Country from "./pages/CountryPage/CountryPage";
 
+import viewPost from "./pages/viewPost/viewPost";
 function App() {
     return (
       <BrowserRouter> 
@@ -34,6 +35,7 @@ function App() {
           <Route path = '/signup' component = {SignUpPage} exact />   
           <Route path = '/pwreset' component = {PwResetPage} exact />  
           <Route path = '/createnewpw' component = {CreateNewPwPage} exact />
+          <Route path = '/viewpost' component = {viewPost} exact />
           {/* Guide:  */}
           <Route path="/earthquake" component = {Earthquake} exact />
           <Route path="/wildfire" component = {Wildfire} exact gi/>

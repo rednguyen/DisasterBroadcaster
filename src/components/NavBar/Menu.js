@@ -34,7 +34,7 @@ export const Menu = [
     },
     {
         title: 'SignUp',
-        url: '#',
+        url: '/viewPost',
         cName: 'nav-links-mobile'
     }
 ]

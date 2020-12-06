@@ -1,0 +1,16 @@
+h3 {
+    text-align:center;
+}
+.post-img{
+    width:20%;
+    float:left;
+}
+.posts{
+    width:50%;
+    margin: 100px auto 100px auto;
+    text-align:left;
+    
+}
+.Button{
+    float:right;
+}
