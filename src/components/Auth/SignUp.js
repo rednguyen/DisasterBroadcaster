@@ -10,7 +10,6 @@ class SignUp extends Component {
     state = {
         email: '',
         password: '',
-        comfirm_password: '',
         username: '',
         age: null ,
         country: '',
@@ -76,11 +75,6 @@ render(){
                 <div className = "input-field">
                     <label htmlFor="password">password</label>
                     <input type="password" id="password" onChange={this.handleChange}/>
-                </div>
-
-                <div className = "input-field">
-                    <label htmlFor="comfirm_password">Comfirm Password</label>
-                    <input type="password" id="comfirm_password" onChange={this.handleChange}/>
                 </div>
 
                 <div className = "input-field">
