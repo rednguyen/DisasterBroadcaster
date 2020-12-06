@@ -19,7 +19,6 @@ class Country extends Component{
     }
     handleSubmit = (e) => {
       e.preventDefault(this.state)
-      console.log(this.state)
     } 
 
     render() {
@@ -34,11 +33,13 @@ class Country extends Component{
                 value={country}
                   onChange={(val) => this.selectCountry(val)} />              
                 </Grid>
-
+              <div style={{marginTop: "10px"}}>
               <Link href={"/country/"+countries[this.state.country.toString()]} variant="body2">
-                <Button className="btn  blue darken-3 z-depth-0" type="button"> SUBMIT
+                <Button  className="btn  blue darken-3 z-depth-0" type="button"> SUBMIT
                 </Button> 
               </Link>
+              </div>
+              
 
             </div>
           </form>             
