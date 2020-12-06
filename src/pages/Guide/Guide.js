@@ -8,12 +8,8 @@ import { Component } from 'react';
 class Guide extends Component {
     render(){
         return (
-            <div className="Wrapper">
-              <div className="TopPage"><NavBar /></div>
-              <div className = "Body"><GuideBody /></div>
-              <div class = "BottomPage"><Footer /></div>
-            </div>
-          )
+            <div className = "Body"><GuideBody /></div>
+        )
     };  
 }
 

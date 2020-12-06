@@ -8,11 +8,7 @@ import "./CountryPage.css"
 class CreateNewPwPage extends Component {
     render(){
         return (
-            <div className="Wrapper">
-              <div className="TopPage"><NavBar /></div>
-              <div className = "countybg"><Country/></div>
-              <div className = "BottomPage"><Footer /></div>
-            </div>
+            <div className = "countybg"><Country/></div>
           )
     };  
 }

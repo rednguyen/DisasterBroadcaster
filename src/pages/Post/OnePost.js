@@ -1,6 +1,4 @@
-import NavBar from '../../components/NavBar/NavBar';
 import Post from '../../components/BodyPost/BodyPost';
-import Footer from '../../components/Footer/Container/FooterContainer';
 import { Component } from 'react';
 import PostServices from "../../api-services/Post";
 
@@ -30,10 +28,7 @@ class OnePost extends Component {
     const { post, isLoaded } = this.state;
     if (isLoaded) {
       return (
-        <div className="Wrapper">
-          <div className="TopPage"><NavBar /></div>
-      <div className = "BodyPost"><Post {...this.state}/></div>
-        </div>
+        <div className = "BodyPost"><Post {...this.state}/></div>
       )
     } else {
       return <div>Loading...</div>;

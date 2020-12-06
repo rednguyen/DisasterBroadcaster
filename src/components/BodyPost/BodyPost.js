@@ -19,50 +19,43 @@ class Post extends Component {
 
   }
 
-  // setComments(comments) {
-  //   const [comments, setComments] = useState([]);
-  //   function addComment(e) {
-  //     const comment = e.target.value;
-  //     console.log(comment);
-  //     setComments(comments => [...comments, comment]);
-  //   }
-  // }
-
   handleChange = (e) => {
     this.setState({
         [e.target.id]: e.target.value
     })
-  } 
+  }
   handleSubmit = (e) => {
     e.preventDefault(this.state)
+    // const token_data = {
+    //   "token": localStorage.getItem('token')
+    // }
+    // userServices.currentUser(token_data)
+    // .then(
+    //   res => {
+    //     console.log(res.data)
+    //     const user_id = res.data.id;
+    //     this.setState({
+    //       user_id: user_id,
+    //     })
+    // })
+    // const reaction = this.state.reaction;
+    // const comment ={
+    //   user_id: this.state.user_id,
+    //   post_id: this.props.post.id,
+    //   comment: this.state.comment
+    // }
+    // console.log(comment);
 
-    userServices.currentUser()
-    .then(
-      res => {
-        const user_id = res.data.id;
-        this.setState({
-          user_id: user_id,
-        })
-    })
-    const reaction = this.state.reaction;
-    const comment ={
-      user_id: this.state.user_id,
-      post_id: this.props.post.id,
-      comment: this.state.comment
-    }
+    // commentServices.create(comment)
+    // .then(
+    //     res => {
+    //       console.log(res);
+    // }).catch(
+    //     err => {
+    //       console.log(err);     
+    // })
 
-    console.log(comment);
-
-    commentServices.create(comment)
-    .then(
-        res => {
-          console.log(res);
-    }).catch(
-        err => {
-          console.log(err);     
-    })
-
-    window.location.reload();
+    // window.location.reload();
   } 
 
   makeDate(date) {
