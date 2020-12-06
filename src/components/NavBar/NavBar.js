@@ -2,9 +2,10 @@ import React, { Component } from 'react';
 import {Menu} from "./Menu";
 import './NavBar.css'
 import Logo from './Logo.png';
-import {Button} from "../Button/Button"
-import SignedInLinks from './SignedInLinks'
 import {NavLink} from 'react-router-dom'
+import {Button} from "../Button/Button"
+
+
 
 class NavBar extends Component{
     state = {clicked:false}
@@ -34,10 +35,9 @@ class NavBar extends Component{
                 </ul>    
                 <Button onClick={(e) => {e.preventDefault(); window.location.href='/login'}}>
                     Login
-                    <i class="fas fa-user"></i>
+                    <span>&nbsp;&nbsp;</span><i class="fas fa-user"></i>
                     </Button>
-                {/* <SignedInLinks/>    */}
-                <ul><NavLink to='/' className ='btn btn-floating blue darken-3'>JM</NavLink> </ul>
+                
             </nav>
         );
     }
