@@ -21,16 +21,22 @@ function Body(posts, newss) {
                     <h1 className = "col-bd1">Top Stories</h1>
                   </Link>
                   <div>
+                  <ul>
                   {newss.map(news => 
-                    <ul>
+                    
                       <a href={news.url} className = "a">
                       <p Paper style = {{padding: 20, fontSize: 20}}>
-                      <li><img className = "media" src = {news.media} width="250px" height="250px"/></li>
-                      <li>{news.content}</li>
+                      <li >
+                      <img className = "media" src = {news.media} width="250px" height="250px"/>
+                      <p>{news.content}</p>
+                      </li>
+                     
+                      {/* <li>{news.content}</li> */}
                       </p>
                       </a>
-                    </ul>
+                    
                   )}
+                  </ul>
                   </div>
                 </Paper>
             </Grid>

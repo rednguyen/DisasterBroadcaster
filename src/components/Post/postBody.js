@@ -11,7 +11,7 @@ const postServices = new PostServices();
      <div>
         <h3>  {props.id} Post</h3>
            <div className = "posts">
-               <img className="post-img" src = {props.media} alt="SUNPOST"></img>
+               <img className="post-img" src = {props.media} alt="Image"></img>
                <p className = "info">{props.content}</p>
                <Button className = "Button" variant="outlined" size="medium" color="primary" >
          Edit Post
@@ -28,7 +28,7 @@ class PostBody extends Component {
         content: '',
         img: null,
     };
-    const UserPost = postServices.retrieve(4)
+    const UserPost = postServices.getUserPosts()
     .then(
       res => {
           let responseJSON = res; 
@@ -58,7 +58,7 @@ render(){
 }
 
 
-export default PostBody
+export default PostBody;
 /* <div>
 <h1> View My Post</h1>
 <div className = "posts">

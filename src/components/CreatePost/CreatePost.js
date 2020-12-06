@@ -25,7 +25,7 @@ class CreatePost extends Component {
     }
 
 onChange(e) {
-    this.setState({img:e.target.files['0']});
+    this.setState({img:e.target.files[0]});
 }
 
 
@@ -41,21 +41,19 @@ handleChange = (e) => {
 
 handleSubmit = (e) => {
     e.preventDefault(this.state)
-    const formData = new FormData();
-    formData.append('myImage',this.state.file);
+    let formData = new FormData();
+    formData.append('media',this.state.img,this.state.img.name);
+    formData.append('content',this.state.description);
+    formData.append('country_id',countries[this.state.country]);
+    formData.append('user_id',5);
     const post = {
         user_id:5,
         country_id: countries[this.state.country], 
         content: this.state.description,
         media: this.state.img
     };
-    console.log(post);
-    console.log(this.state.img);
-    console.log(post.media);
 
-    
-
-    postServices.create(post)
+    postServices.create(formData)
     .then(
         res => {
             console.log(res);
@@ -76,7 +74,7 @@ handleSubmit = (e) => {
     
                 <h5>CREATE A NEW POST</h5>
 
-                <input type="file" name="myImage" onChange= {this.onChange} />
+                <input type="file" name="myImage" accept="image/png, image/jpeg" onChange= {this.onChange} />
                 
                 <h6>
                     CONTENT
@@ -92,7 +90,7 @@ handleSubmit = (e) => {
                 </h6>
                 
                 <div >     
-                    <CountryDropdown className = "browser-default"
+                    <CountryDropdown className = "browser-default" id="country"
                     value={country}
                     onChange={(val) => this.selectCountry(val)} />              
                 </div>
@@ -112,4 +110,4 @@ handleSubmit = (e) => {
     }
 }
 
-export default CreatePost
+export default CreatePost;
