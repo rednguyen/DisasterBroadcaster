@@ -25,7 +25,8 @@ class Login extends Component {
   } 
   handleSubmit = (e) => {
     e.preventDefault();
-    this.state.loggedIn = true;
+    //this.state.loggedIn = true;
+    this.setState({loggedIn: true});
     this.props.onAuth(this.state.username, this.state.password);
   } 
 
