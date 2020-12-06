@@ -1,7 +1,3 @@
-const iniState = {
-    post: []
-}
-
 const rootReducer = (state, action) => {
     return state;
 }

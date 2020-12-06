@@ -6,11 +6,7 @@ import './AboutUs.css'
 
 const AboutUs = () =>{
     return(
-        <div className="Wrapper">
-        <div className="TopPage"><NavBar /></div>
         <div className="Body"><AboutBody /></div>
-        <div class = "BottomPage"><Footer /></div>
-      </div>
     )
 
 }

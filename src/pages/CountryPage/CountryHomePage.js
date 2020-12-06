@@ -36,11 +36,9 @@ class CountryHomePage extends Component {
   render() {
 
     return (
-      <div className="Wrapper">
-        <div className="TopPage"><NavBar /></div>
+      <div>
         <Slider/>
         <div className = "Body">{Body(this.state.posts, this.state.news)}</div>
-        <div class = "BottomPage"><Footer /></div>
       </div>
     )
   }
