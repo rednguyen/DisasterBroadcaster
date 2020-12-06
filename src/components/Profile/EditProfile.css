@@ -1,0 +1,123 @@
+@import url("https://fonts.googleapis.com/css2?family=Raleway:wght@500&display=swap");
+form.main {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100vh;
+}
+div.profile {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  object-fit: cover;
+  background-color: #1b3e80;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+div.profile h1 {
+  color: white;
+  font-size: 52px;
+  margin: 0px;
+}
+
+p.changeprofile {
+  margin-bottom: 30px;
+  color: #1b3e80;
+  font-family: "Raleway";
+  font-size: 14px;
+  font-weight: 400;
+}
+
+p.changeprofile:hover {
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+div.label {
+  margin-bottom: 5px;
+  width: 100%;
+}
+
+div.label label {
+  text-align: left;
+  font-family: "Raleway";
+  font-weight: 500;
+  font-size: 14px;
+  margin-bottom: 2px;
+}
+input[type="text"] {
+  width: 450px;
+  border: 1px solid rgba(0, 0, 0, 0.3);
+  outline: none;
+  padding: 5px;
+}
+
+input[name="country"] {
+  width: 100%;
+  outline: none;
+  border: 1px solid rgba(0, 0, 0, 0.3);
+  padding: 5px;
+  margin-bottom: 20px;
+  color: black;
+}
+
+input[type="submit"] {
+  padding: 15px;
+  width: 150px;
+  border-radius: 0px;
+  background-color: #1b3e80;
+  color: white;
+  font-family: "Raleway";
+  font-weight: 700;
+  text-transform: uppercase;
+  border: none;
+  outline: none;
+  font-size: 14px;
+  margin: 10px;
+  text-align: center;
+}
+
+button.resetpassword {
+  padding: 10px;
+  width: 120px;
+  border-radius: 0px;
+  background-color: #1b3e80;
+  color: white;
+  font-family: "Raleway";
+  font-weight: 700;
+  text-transform: uppercase;
+  border: none;
+  outline: none;
+  margin-bottom: 10px;
+}
+
+button.deleteaccount {
+  padding: 10px;
+  width: 120px;
+  border-radius: 0px;
+  background-color: #862e2e;
+  color: white;
+  font-family: "Raleway";
+  font-weight: 700;
+  text-transform: uppercase;
+  border: none;
+  outline: none;
+  margin-bottom: 10px;
+}
+
+input[type="submit"]:hover,
+button.resetpassword:hover,
+button.deleteaccount:hover {
+  cursor: pointer;
+}
+
+div.formcontent {
+  max-width: 750px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}

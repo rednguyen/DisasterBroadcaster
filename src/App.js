@@ -1,4 +1,3 @@
-
 import {BrowserRouter, Switch, Route, withRouter} from 'react-router-dom'
 import BaseRouter from "./routes";
 import { connect } from 'react-redux';

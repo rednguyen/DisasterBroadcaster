@@ -1,0 +1,103 @@
+@import url("https://fonts.googleapis.com/css2?family=Raleway:wght@500&display=swap");
+
+.main {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100vh;
+}
+
+p.chooseAnAvatar {
+  margin-bottom: 50px;
+  color: #1b3e80;
+  font-family: "Raleway";
+  font-size: 28px;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+div.profile {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  object-fit: cover;
+  background-color: #1b3e80;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-size: auto;
+  background-repeat: no-repeat;
+}
+
+div.profile h1 {
+  color: white;
+  font-size: 52px;
+}
+
+div.avatarOptions {
+  width: 60%;
+  display: flex;
+  padding: 60px 15px 60px 15px;
+  justify-content: space-evenly;
+}
+
+img.avatar {
+  width: 80px;
+  height: 80px;
+  transition: border 0.2s;
+}
+
+img.avatarOption:hover {
+  cursor: pointer;
+}
+
+img.avatarOption {
+  width: 75px;
+  height: 75px;
+}
+
+div.avatarButtons {
+  display: flex;
+  width: 24%;
+  justify-content: space-between;
+}
+
+button.saveAvatar {
+  padding: 10px;
+  width: 120px;
+  border-radius: 0px;
+  background-color: #1b3e80;
+  color: white;
+  font-family: "Raleway";
+  font-weight: 700;
+  text-transform: uppercase;
+  border: none;
+  outline: none;
+  margin-bottom: 10px;
+}
+
+button.deleteAvatar {
+  padding: 10px;
+  width: 120px;
+  border-radius: 0px;
+  background-color: #862e2e;
+  color: white;
+  font-family: "Raleway";
+  font-weight: 700;
+  text-transform: uppercase;
+  border: none;
+  outline: none;
+  margin-bottom: 10px;
+}
+
+button.saveAvatar:hover,
+button.deleteAvatar:hover {
+  cursor: pointer;
+}
+
+a.save {
+  color: white;
+  text-decoration: none;
+}
