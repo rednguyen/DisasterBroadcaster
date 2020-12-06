@@ -71,10 +71,10 @@ class Post extends Component {
       <Grid container>
         <Grid item sm = {12}>
             <Paper style = {{padding: 10}}>
-            <img className="header-post" src={post.user_id.avatar} width="50px" height="50px"/>
+            <img className="header-post" src={post.user_id.avatar} alt="" width="50px" height="50px"/>
             <p className="credential-post header-post">Posted by {post.user_id.username} on {d.toDateString()}</p>
             <div className="single-post">
-                <img className="media-post" src={post.media}/>
+                <img className="media-post" src={post.media} alt=""/>
                 <p className="content-post">{post.content}</p>
             </div>
             
@@ -108,7 +108,7 @@ class Post extends Component {
                 {post.comments.map(comment => 
                   <ul>
                     <p Paper style = {{padding: 20, fontSize: 10}}>
-                    <li><img src = {comment.avatar} width="50" height="50px"/></li>
+                    <li><img src = {comment.avatar} alt="" width="50" height="50px"/></li>
                     <p>{comment.comment}</p>
                     <p>Posted by {comment.username} on {this.makeDate(comment.date_created).toDateString()}</p>
                     </p>
