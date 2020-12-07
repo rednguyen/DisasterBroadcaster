@@ -15,7 +15,7 @@ import ReactionServices from "../../api-services/Reaction";
 
 const commentServices = new CommentServices();
 const userServices = new UserServices();
-const reactionServices = new UserServices();
+const reactionServices = new ReactionServices();
 
 class Post extends Component {
   state ={
@@ -27,13 +27,20 @@ class Post extends Component {
     like_count: 0,
     love_count: 0,
     sad_count: 0,
-    liked: false,
-    loved: false,
-    saddened: false,
     reaction_id: ''
   }
 
   componentDidMount() {
+    const token_data = {
+      "token": localStorage.getItem('token')
+    }
+    userServices.currentUser(token_data)
+    .then(
+      res => {
+        this.setState({
+          user_id: res.data.id
+        })
+    })
     this.setState({
       comments: this.props.post.comments,
       like_count: this.props.post.like_count,
@@ -43,7 +50,6 @@ class Post extends Component {
   }
 
   postComment(){
-    const reaction = this.state.reaction;
     const comment ={
       user_id: this.state.user_id,
       post_id: this.props.post.id,
@@ -91,7 +97,7 @@ class Post extends Component {
         }
         this.setState({
           comment: new_comment,
-          user_id: res.data.id,
+          user_id: res.data.id
         })
         this.postComment();
     })
@@ -109,7 +115,7 @@ class Post extends Component {
       res => {
         console.log(res.data)
         this.setState({
-          reaction_id: res.data.id
+          reaction_id: res.data.id,
         })
       }).catch(
         err => {
@@ -118,40 +124,24 @@ class Post extends Component {
   }  
 
   handleClickLike = (e) => {
-    this.setState({
-      liked: !this.state.liked
+    this.makeReaction('1'); 
+    this.setState(prevState => {
+      return {like_count: prevState.like_count + 1}
     })
-    if(this.state.liked){
-      makeReaction('1');
-    } else {
-      reactionServices.destroy(this.state.reaction_id);
-    }
-    
   }
 
-  handleClickSad= (e) => {
-    this.setState({
-      saddened: !this.state.saddened
+  handleClickSad = (e) => {
+    this.makeReaction('2'); 
+    this.setState(prevState => {
+      return {sad_count: prevState.sad_count + 1}
     })
-    if(this.state.saddened){
-      makeReaction('2');
-    } else {
-      reactionServices.destroy(this.state.reaction_id);
-    }
-    
   }
 
   handleClickLove = (e) => {
-    this.setState({
-      loved: !this.state.loved
+    this.makeReaction('3'); 
+    this.setState(prevState => {
+      return {love_count: prevState.love_count + 1}
     })
-    if(this.state.loved){
-      makeReaction('3');
-    }
-    else {
-      reactionServices.destroy(this.state.reaction_id);
-    }
-    
   }
 
   makeDate(date) {
