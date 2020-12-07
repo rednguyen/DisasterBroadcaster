@@ -28,5 +28,5 @@ export default class PostServices extends ApiServices {
     } catch (error) {
       return this.handleError(error, {});
     }
-  }
+  };
 }
