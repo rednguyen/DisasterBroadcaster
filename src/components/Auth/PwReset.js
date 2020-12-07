@@ -3,63 +3,58 @@ import Link from '@material-ui/core/Link';
 import Container from '@material-ui/core/Container';
 import UserServices from "../../api-services/User";
 import Grid from '@material-ui/core/Grid';
-import axios from "axios"
-import { Redirect } from 'react-router-dom';
+
 const userServices = new UserServices();
-// const useStyles = makeStyles()
 
 class PwReset extends Component {
     state = {
         email: '',
         security_question: '',
-
         emailError: '',
         answerError: '',
         invalidError: '',
         Valid: false
-
     }
+
     handleChange = (e) => {
         this.setState({
             [e.target.id]: e.target.value
         })
-    }
+    } 
     handleSubmit = (e) => {
         e.preventDefault(this.state)
         console.log(this.state)
-        const user = {
+        const user = { 
             email: this.state.email,
-            answer: this.state.security_question
+            answer: this.state.security_question 
         };
-        if (this.state.email && this.state.security_question) {
-            axios.post('https://disaster-broadcaster.herokuapp.com/api/disaster_broadcaster/password-reset/', user)
-                .then(
-                    res => {
-                        console.log(res);
-                        this.setState({ loggedIn: true })
-                    }).catch(
-                        err => {
-                            console.log(err);
-                            this.setState({
-                                invalidError: "*Please enter the correct Email/Answer"
-                            })
-                        }
-                    )
-        }
+        userServices.passwordReset(user)
+        .then(
+            res => {
+                if(res.status !== 200){
+                  throw new Error(res.status)
+                }
+                const token = res.data.token;
+                const expirationDate = new Date(new Date().getTime() + 3600* 1000);
+                localStorage.setItem('token', token);
+                localStorage.setItem('expirationDate', expirationDate);
+            }).catch(
+                err => {
+                    console.log(err);
+                    this.setState({
+                      invalidError: "*Please enter the correct Email/Answer"
+                  })  
+                }
+            )
         if (!this.state.email) {
-            this.setState({ emailError: "*Email is required" })
+          this.setState({ emailError: "*Email is required" })
         }
         if (!this.state.security_question) {
             this.setState({ answerError: "*Security answer is required" })
         }
-    }
+    } 
 
     render() {
-        
-        if (this.state.loggedIn) {
-            return <Redirect to={'createnewpw'} />
-        }
-
         return (
             <Container component="main" maxWidth="sm">
                 <div className="container">
@@ -100,6 +95,5 @@ class PwReset extends Component {
         )
     }
 }
-// export default SignIn;
+
 export default PwReset;
-// onClick={(e) => {e.preventDefault(); window.location.href='/createnewpw'}}

@@ -2,9 +2,9 @@ import React, { Component } from 'react';
 import {Menu} from "./Menu";
 import './NavBar.css'
 import Logo from './Logo.png';
-
 import {Button} from "../Button/Button"
-
+import { connect } from 'react-redux';
+import * as actions from '../../actions/auth';
 
 
 class NavBar extends Component{
@@ -15,9 +15,23 @@ class NavBar extends Component{
     }
 
     render(){
+      var button = this.props.isAuthenticated ? 
+                  <Button onClick={(e) => {
+                    e.preventDefault();
+                    this.props.onLogout();
+                  }}>
+                    Logout
+                    <span>&nbsp;&nbsp;</span><i class="fas fa-user"></i>
+                  </Button>
+                  :
+                  <Button onClick={(e) => {e.preventDefault(); window.location.href='/login'}}>
+                    Login
+                    <span>&nbsp;&nbsp;</span><i class="fas fa-user"></i>
+                  </Button>
+
         return(
             <nav className="NavbarItems">
-                <img className="navbar-logo" src={Logo}/>
+                <img className="navbar-logo" src={Logo} alt=""/>
                 <div className="menu-icon" onClick={this.handleClick}>
                     <i className={this.state.clicked? 'fas fa-times' : 'fas fa-bars'}></i>
                 </div>
@@ -33,18 +47,20 @@ class NavBar extends Component{
                         })}     
                     </>
                 </ul>    
-                <Button onClick={(e) => {e.preventDefault(); window.location.href='/login'}}>
-                    Login<span>&nbsp;&nbsp;</span>
-                    <i class="fas fa-user"></i>
-                    </Button>
-                
+                {button}
             </nav>
         );
     }
 }
 
+const mapDispatchToProps = dispatch => {
+  return {
+    onLogout: () => dispatch(actions.logout())
+  }
+}
 
-export default NavBar
+export default connect(null, mapDispatchToProps)(NavBar);
+
 
 
 

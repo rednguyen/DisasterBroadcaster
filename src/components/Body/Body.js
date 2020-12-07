@@ -5,11 +5,6 @@ import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
 import {Button} from '../Button/Button';
 
-
-const classes = {
-    Paper:{padding: 20, marginTop: 10, marginBottom: 10}
-}
-
 function Body(posts, newss) {
     if (posts.length > 0 && newss.length > 0){
       return (
@@ -51,13 +46,13 @@ function Body(posts, newss) {
                     <div className = "post">
                       {posts.map(post => 
                         <ul>
-                          {/* <a href={BASE URL FOR SINGLE POST + "/post/" + post.id.toString()}  className="a"></a> */}
+                          <Link href={"/post/" + post.id.toString()} color="inherit" variant="body2">
                           <h3>{post.user_id.username}<span>&nbsp;</span><img className = "avatar" src = {post.user_id.avatar} width="40px" height="40px"/></h3>
                           <p Paper style = {{padding: 20, fontSize: 20}}>
                           <li>{post.content}</li>
                           <li><img className = "newsImg" src = {post.media} width="450px" height="325px"/></li>
-                          
                           </p>
+                          </Link>
                         </ul>
                       )}    
                     </div>      
@@ -83,7 +78,7 @@ function Body(posts, newss) {
                     <ul>
                       <a href={news.url} className = "a">
                       <p Paper style = {{padding: 20, fontSize: 20}}>
-                      <li><img className = "media" src = {news.media} width="250px" height="250px"/></li>
+                      <li><img className = "media" src = {news.media} alt="" width="250px" height="250px"/></li>
                       <li>{news.content}</li>
                       </p>
                       </a>
@@ -103,13 +98,14 @@ function Body(posts, newss) {
             <div className = "post">
               {posts.map(post => 
                 <ul>
-                  {/* <a href={BASE URL FOR SINGLE POST + "/post/" + post.id.toString()}  className="a"></a> */}
+                  <Link href={"/post/" + post.id.toString()} color="inherit" variant="body2">
                   <p Paper style = {{padding: 20, fontSize: 20}}>
                   <li>{post.content}</li>
-                  <li><img className = "media" src = {post.media} width="250px" height="250px"/></li>
+                  <li><img className = "media" src = {post.media} alt="" width="250px" height="250px"/></li>
                   <li>{post.user_id.username}</li>
-                  <li><img className = "avatar" src = {post.user_id.avatar} width="50px" height="50px"/></li>
+                  <li><img className = "avatar" src = {post.user_id.avatar} alt="" width="50px" height="50px"/></li>
                   </p>
+                  </Link>
                 </ul>
               )}    
             </div>      
@@ -118,6 +114,17 @@ function Body(posts, newss) {
                 window.location.href='/post';
                   }}> Make a Post 
             </Button> 
+            <Button
+              className="post"
+              type="button"
+              onClick={(e) => {
+                e.preventDefault();
+                window.location.href = "/editpost";
+              }}
+            >
+              {" "}
+              Edit a Post
+            </Button>
             </Paper>
           </Grid>
           </div>

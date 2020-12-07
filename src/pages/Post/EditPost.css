@@ -1,0 +1,110 @@
+@import url("https://fonts.googleapis.com/css2?family=Raleway:wght@500&display=swap");
+
+.main {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100vh;
+  text-transform: uppercase;
+  font-family: "Raleway";
+  margin: 20px;
+}
+
+input[type="submit"] {
+  padding: 10px;
+  width: 120px;
+  border-radius: 0px;
+  background-color: #1b3e80;
+  color: white;
+  font-family: "Raleway";
+  font-weight: 700;
+  text-transform: uppercase;
+  border: none;
+  outline: none;
+  margin: 5px;
+
+  transition: background-color 0.3s, color 0.3s;
+}
+
+button.deletePost {
+  padding: 10px;
+  width: 120px;
+  border-radius: 0px;
+  background-color: #862e2e;
+  color: white;
+  font-family: "Raleway";
+  font-weight: 700;
+  text-transform: uppercase;
+  border: none;
+  outline: none;
+  margin: 5px;
+
+  transition: background-color 0.3s, color 0.3s;
+}
+
+input[type="submit"]:hover {
+  cursor: pointer;
+  background-color: #245bc2;
+  color: #000000;
+}
+button.deletePost:hover {
+  cursor: pointer;
+  background-color: #c73c3c;
+  color: #000000;
+}
+div.inputImage {
+  border: 1px solid rgba(0, 0, 0, 0.3);
+  margin: 20px 0 30px 0;
+  width: 525px;
+  height: 250px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+textarea {
+  resize: none;
+  border: 1px solid rgba(0, 0, 0, 0.3);
+  outline: none;
+  box-sizing: border-box;
+  padding: 15px;
+  width: 525px;
+  height: 400px;
+  line-height: 1.5;
+}
+
+.inputCountry {
+  margin-bottom: 5px;
+  width: 100%;
+}
+
+#country {
+  display: block;
+  width: 525px;
+  margin: 0 0 30px;
+  outline: none;
+  padding: 5px 0 5px 0;
+}
+
+h2 {
+  font-size: 18px;
+  font-weight: 600;
+}
+
+img.thumbnail {
+  height: 150px;
+  margin: 10px;
+}
+
+input[type="file"] {
+  display: none;
+}
+
+div.horizontalbuttons {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}

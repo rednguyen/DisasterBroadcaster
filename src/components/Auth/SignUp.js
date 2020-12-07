@@ -2,9 +2,10 @@ import React, { Component } from 'react'
 import Link from '@material-ui/core/Link';
 import Container from '@material-ui/core/Container';
 import { CountryDropdown } from 'react-country-region-selector';
-import UserServices from "../../api-services/User";
 import { countries } from "../../api-services/countries";
-const userServices = new UserServices();
+import { connect } from 'react-redux';
+import * as actions from '../../actions/auth';
+
 const initialState = {
     username: '',
     email: '',
@@ -20,61 +21,53 @@ const initialState = {
 
     invalidError: ''
 }
+
 class SignUp extends Component {
     state = initialState
 
     selectCountry(val) {
         this.setState({ country: val });
+      }
+  handleChange = (e) => {
+      this.setState({
+          [e.target.id]: e.target.value
+      })
+  } 
+  handleSubmit = (e) => {
+    e.preventDefault();
+    if (this.state.username && this.state.password && this.state.email && this.state.country
+      && this.state.security_question) {
+        this.props.onAuth(
+          this.state.username,
+          this.state.password,
+          this.state.email,
+          countries[this.state.country],
+          this.state.security_question
+        );
     }
-    handleChange = (e) => {
-        this.setState({
-            [e.target.id]: e.target.value
-        })
+    if (!this.state.username) {
+        this.setState({ usernameError: "*Username is required" })
     }
-    handleSubmit = (e) => {
-        e.preventDefault(this.state)
-        const user = {
-            email: this.state.email,
-            password: this.state.password,
-            username: this.state.username,
-            country_id: countries[this.state.country],
-            answer: this.state.security_question
-        };
-        if (this.state.username && this.state.password && this.state.email && this.state.country
-            && this.state.security_question) {
-            userServices.create(user)
-                .then(
-                    res => {
-                        console.log(res);
-                    }).catch(
-                        err => {
-                            
-                            console.log(err)
-                            this.setState({
-                                invalidError: "err.response.data.message"
-                            })
-                        }
-                    )
-        }
-        if (!this.state.username) {
-            this.setState({ usernameError: "*Username is required" })
-        }
-        if (!this.state.password) {
-            this.setState({ passwordError: "*Password cannot be Empty" })
-        }
-        if (!this.state.email) {
-            this.setState({ emailError: "*Email is required" })
-        }
-        if (!this.state.country) {
-            this.setState({ countryError: "*Please select your country" })
-        }
-        if (!this.state.security_question) {
-            this.setState({ answerError: "*Security answer is required" })
-        }
+    if (!this.state.password) {
+        this.setState({ passwordError: "*Password cannot be Empty" })
     }
+    if (!this.state.email) {
+        this.setState({ emailError: "*Email is required" })
+    }
+    if (!this.state.country) {
+        this.setState({ countryError: "*Please select your country" })
+    }
+    if (!this.state.security_question) {
+        this.setState({ answerError: "*Security answer is required" })
+    }
+      this.setState({
+        invalidError: this.props.error
+    })
 
+    }
 
     render() {
+      
         console.log("xxx ", this.state.invalidError)
         const { country } = this.state;
         return (
@@ -143,18 +136,18 @@ class SignUp extends Component {
         )
     }
 }
-// export default SignIn;
-export default SignUp;
 
-// if (err.response) {
-                            //     // Request made and server responded
-                            //     console.log(err.response.data);
-                            //     console.log(err.response.status);
-                            //     console.log(err.response.headers);
-                            //   } else if (err.request) {
-                            //     // The request was made but no response was received
-                            //     console.log(err.request);
-                            //   } else {
-                            //     // Something happened in setting up the request that triggered an Error
-                            //     console.log('Error', err.message);
-                            //   }
+const mapStateToProps = (state) => {
+  return {
+      loading: state.loading,
+      error: state.error
+  }
+}
+
+const mapDispatchToProps = dispatch => {
+  return {
+      onAuth: (username, password, email, country_id, answer) => dispatch(actions.authSignup(username, password, email, country_id, answer)) 
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(SignUp);
