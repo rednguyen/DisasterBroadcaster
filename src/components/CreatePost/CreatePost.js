@@ -4,9 +4,6 @@ import { CountryDropdown} from 'react-country-region-selector';
 import Container from '@material-ui/core/Container';
 import PostServices from "../../api-services/Post";
 import { countries } from "../../api-services/countries";
-import UserServices from '../../api-services/User';
-import axios from 'axios'
-
 
 const postServices = new PostServices();
 
