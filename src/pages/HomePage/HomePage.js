@@ -21,16 +21,15 @@ class HomePage extends Component {
   }
 
   componentDidMount() {
-    postServices.list()
-      .then(res => {
-        const posts = res.data;
-        this.setState({ posts });
-      })
-
     newsServices.list()
       .then(res => {
         const news = res.data;
         this.setState({ news });
+      })
+    postServices.list()
+      .then(res => {
+        const posts = res.data;
+        this.setState({ posts });
       })
   }
 
