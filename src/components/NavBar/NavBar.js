@@ -15,7 +15,7 @@ class NavBar extends Component{
     }
 
     render(){
-      var button = this.props.isAuthenticated ? 
+      var button = this.props.isauthenticated ? 
                   <Button onClick={(e) => {
                     e.preventDefault();
                     this.props.onLogout();

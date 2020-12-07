@@ -1,9 +1,9 @@
-import React, {Component} from 'react'
-import Link from '@material-ui/core/Link';
-import Container from '@material-ui/core/Container';
-import "./auth.css"
-import Grid from '@material-ui/core/Grid';
-import axios from 'axios'
+import React, { Component } from "react";
+import Link from "@material-ui/core/Link";
+import Container from "@material-ui/core/Container";
+import "./auth.css";
+import Grid from "@material-ui/core/Grid";
+import axios from "axios";
 class CreateNewPw extends Component {
     state = {
         new_password: '',
@@ -39,7 +39,7 @@ handleSubmit = (e) => {
         )
   } 
 
-render(){
+  render() {
     return (
         <Container component="main" maxWidth = "sm">
         <div className = "container">
@@ -52,26 +52,31 @@ render(){
                     <input type="password" id="new_password" onChange={this.handleChange}/>
                 </div>
 
-                {/* <div className = "input-field">
-                    <label htmlFor="new_comfirm_password">Comfirm New Password</label>
-                    <input type="password" id="new_comfirm_password" onChange={this.handleChange}/>
-                </div> */}
                 <div className = "input-field">
                 {this.state.message}
                 <Grid container>
                     <Grid container xs={12} sm={6}>
                         <button className = "btn  blue darken-3 z-depth-0" href="/about">Reset</button>
                 </Grid>
-                    <Grid container xs={12} sm={6} justify="flex-end">
-                        <button onClick={(e) => {e.preventDefault(); window.location.href='/PwReset'}} className = "btn  blue darken-3 z-depth-0" href="/about">Back</button>
-                    </Grid>
+                <Grid container xs={12} sm={6} justify="flex-end">
+                  <button
+                    onClick={(e) => {
+                      e.preventDefault();
+                      window.location.href = "/PwReset";
+                    }}
+                    className="btn  blue darken-3 z-depth-0"
+                    href="/about"
+                  >
+                    Back
+                  </button>
                 </Grid>
-                </div>
-            </form>
+              </Grid>
+            </div>
+          </form>
         </div>
-        </Container>
-        )
-    }
+      </Container>
+    );
+  }
 }
 // export default SignIn;
 export default CreateNewPw;

@@ -4,6 +4,7 @@ import Footer from "../Footer/Container/FooterContainer";
 import React from "react";
 import countries from "./countries.js";
 import Select from "react-select";
+import UserServices from "../../api-services/User";
 
 class Profile extends React.Component {
   constructor(props) {
@@ -15,32 +16,31 @@ class Profile extends React.Component {
   }
 
   componentDidMount() {
-    fetch(
-      "https://disaster-broadcaster.herokuapp.com/api/disaster_broadcaster/user/4/"
-    )
-      .then((response) => response.json())
-      .then((data) => {
-        console.log(data);
-        this.setState({
-          user: {
-            username: data.username,
-            email: data.email,
-            country_id: data.country_id,
-            avatar: data.avatar,
-          },
-          country_id: countries[data.country_id],
-        });
-        console.log(this.state);
+    const token_data = {
+      token: localStorage.getItem("token"),
+    };
+    let userServices = new UserServices();
+
+    userServices.currentUser(token_data).then((res) => {
+      console.log(res.data);
+      this.setState({
+        user: {
+          username: res.data.username,
+          email: res.data.email,
+          country_id: res.data.country_id,
+          avatar: res.data.avatar,
+          userId: res.data.id,
+        },
+        country_id: countries[res.data.country_id],
       });
+      console.log(this.state);
+    });
   }
 
   render() {
     console.log(this.state.country);
     return (
       <div className="Wrapper">
-        <div className="TopPage">
-          <NavBar />
-        </div>
         <form className="main">
           <div className="mainprofile">
             <img src={this.state.user.avatar} className="avatar" />
@@ -81,9 +81,6 @@ class Profile extends React.Component {
             </a>
           </div>
         </form>
-        <div className="BottomPage">
-          <Footer />
-        </div>
       </div>
     );
   }

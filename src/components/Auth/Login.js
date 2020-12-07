@@ -37,7 +37,7 @@ class Login extends Component {
 
     render() {
         
-        if(this.props.isAuthenticated){
+        if(this.props.isauthenticated){
           return <Redirect to= {'/'}/>;
         }
 
@@ -102,7 +102,7 @@ const mapStateToProps = (state) => {
   return {
       loading: state.loading,
       error: state.error,
-      isAuthenticated: state.token !== null && state.token != undefined
+      isauthenticated: state.token !== null && state.token != undefined
   }
 }
 
