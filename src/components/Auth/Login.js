@@ -4,11 +4,11 @@ import Container from '@material-ui/core/Container';
 import Grid from '@material-ui/core/Grid';
 import "./auth.css"
 import { Redirect } from "react-router-dom";
-import { connect } from 'react-redux';
 import {Spin} from 'antd';
 import Icon from '@ant-design/icons';
-import * as actions from '../../actions/auth';
 
+import * as actions from '../../actions/auth';
+import { connect } from 'react-redux';
 
 const antIcon = <Icon type="loading" style={{ fontSize: 24 }} spin />;
 
@@ -30,23 +30,18 @@ class Login extends Component {
     this.props.onAuth(this.state.username, this.state.password);
   } 
 
-render(){
-    let errorMessage = null;
-    // if (this.props.error) {
-    //     errorMessage = (
-    //         <p>{this.props.error.message}</p>
-    //     );
-    // }
-    if(this.props.isAuthenticated){
-      return <Redirect to= {'/'}/>;
-    } else {
-      errorMessage = "Please enter in valid credentials.";
-    }
+  render(){
+      let errorMessage = null;
+      if(this.props.isAuthenticated){
+        return <Redirect to= {'/'}/>;
+      } else {
+        errorMessage = "Please enter in valid credentials.";
+      }
 
-    return (
-      <div>
-        
-        {
+      return (
+        <div>
+          
+          {
             this.props.loading ?
 
             <Spin indicator={antIcon} />

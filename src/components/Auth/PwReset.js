@@ -3,9 +3,9 @@ import Link from '@material-ui/core/Link';
 import Container from '@material-ui/core/Container';
 import UserServices from "../../api-services/User";
 import Grid from '@material-ui/core/Grid';
-import axios from "axios"
+
+
 const userServices = new UserServices();
-// const useStyles = makeStyles()
 
 class PwReset extends Component {
     state = {
@@ -24,10 +24,16 @@ handleSubmit = (e) => {
         email: this.state.email,
         answer: this.state.security_question 
     };
-    axios.post('https://disaster-broadcaster.herokuapp.com/api/disaster_broadcaster/password-reset/', user)
+    userServices.passwordReset(user)
     .then(
         res => {
-            console.log(res);
+            if(res.status !== 200){
+              throw new Error(res.status)
+            }
+            const token = res.data.token;
+            const expirationDate = new Date(new Date().getTime() + 3600* 1000);
+            localStorage.setItem('token', token);
+            localStorage.setItem('expirationDate', expirationDate);
         }).catch(
             err => {
                 console.log(err);     

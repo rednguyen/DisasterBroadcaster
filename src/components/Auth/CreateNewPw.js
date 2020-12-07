@@ -7,6 +7,7 @@ import axios from 'axios'
 class CreateNewPw extends Component {
     state = {
         new_password: '',
+        message: '',
         
 }
 handleChange = (e) => {
@@ -17,26 +18,33 @@ handleChange = (e) => {
 handleSubmit = (e) => {
     e.preventDefault(this.state)
     console.log(this.state)
-    const user = { 
-         
-        new_password: this.state.new_password,
+    const token = localStorage.getItem('token')
+    const reset = { 
+      new_password: this.state.new_password,
+      token: token
     };
-    axios.post('https://disaster-broadcaster.herokuapp.com/api/disaster_broadcaster/password-reset/')
+    axios.post('https://disaster-broadcaster.herokuapp.com/api/disaster_broadcaster/user/new_password/', reset)
     .then(
         res => {
+            if(res.status !== 200){
+              this.setState({ message: "Invalid!" });
+              throw new Error(res.status)
+            }
+            this.setState({ message: "Successful!" });
             console.log(res);
         }).catch(
             err => {
                 console.log(err);     
             }
         )
-} 
+  } 
 
 render(){
     return (
         <Container component="main" maxWidth = "sm">
         <div className = "container">
             <form onSubmit={this.handleSubmit} >
+                
                 <h5 className= "grey-text text-darken-3">Create New Password</h5>
                 
                 <div className = "input-field">
@@ -49,6 +57,7 @@ render(){
                     <input type="password" id="new_comfirm_password" onChange={this.handleChange}/>
                 </div> */}
                 <div className = "input-field">
+                {this.state.message}
                 <Grid container>
                     <Grid container xs={12} sm={6}>
                         <button className = "btn  blue darken-3 z-depth-0" href="/about">Reset</button>
