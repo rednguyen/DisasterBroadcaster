@@ -43,6 +43,8 @@
     float: right;
     padding: 1rem;
     margin-left:-1%;
+    
+
 }
 
 .a{
@@ -55,4 +57,16 @@
     text-align: center;
     align-content: center;
     align-self: center;
+}
+
+.headline{
+    font-weight: bold;
+}
+.border{
+    border-bottom: 1px solid black;
+    width: 100%;
+  }
+
+.newsImg{
+    padding: 15px;
 }

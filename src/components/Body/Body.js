@@ -5,6 +5,7 @@ import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
 import {Button} from '../Button/Button';
 
+
 const classes = {
     Paper:{padding: 20, marginTop: 10, marginBottom: 10}
 }
@@ -13,20 +14,26 @@ function Body(posts, newss) {
     if (posts.length > 0 && newss.length > 0){
       return (
         <div>
-        <Grid container>
+        
             {/* List of News */}
+          <Grid container>
             <Grid item sm = {12}>
                 <Paper style = {{padding: 10}}>
                   <Link href="/allnews" variant="body2">
-                    <h1 className = "col-bd1">Top Stories</h1>
+                    <h1 className = "col-bd1">NEWS</h1>
                   </Link>
                   <div>
+                  {console.log(newss[1])}
                   {newss.map(news => 
                     <ul>
                       <a href={news.url} className = "a">
                       <p Paper style = {{padding: 20, fontSize: 20}}>
-                      <li><img className = "media" src = {news.media} width="250px" height="250px"/></li>
+                      
+                      <h2 className="headline">{news.headline}</h2>
                       <li>{news.content}</li>
+                      <li><img className = "newsImg" src = {news.media} width="340px" height="250px"/></li>
+                      <div className="border"/>
+                      
                       </p>
                       </a>
                     </ul>
@@ -45,11 +52,11 @@ function Body(posts, newss) {
                       {posts.map(post => 
                         <ul>
                           {/* <a href={BASE URL FOR SINGLE POST + "/post/" + post.id.toString()}  className="a"></a> */}
+                          <h3>{post.user_id.username}<span>&nbsp;</span><img className = "avatar" src = {post.user_id.avatar} width="40px" height="40px"/></h3>
                           <p Paper style = {{padding: 20, fontSize: 20}}>
                           <li>{post.content}</li>
-                          <li><img className = "media" src = {post.media} width="250px" height="250px"/></li>
-                          <li>{post.user_id.username}</li>
-                          <li><img className = "avatar" src = {post.user_id.avatar} width="50px" height="50px"/></li>
+                          <li><img className = "newsImg" src = {post.media} width="450px" height="325px"/></li>
+                          
                           </p>
                         </ul>
                       )}    
@@ -61,7 +68,7 @@ function Body(posts, newss) {
                 </Button> 
                 </Paper>
             </Grid>
-        </Grid>
+            </Grid>
         </div>
       )
     } else if (newss.length > 0) {

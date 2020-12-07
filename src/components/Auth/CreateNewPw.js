@@ -4,6 +4,9 @@ import Container from '@material-ui/core/Container';
 import "./auth.css"
 import Grid from '@material-ui/core/Grid';
 import axios from 'axios'
+import UserServices from "../../api-services/User";
+
+const userServices = new UserServices();
 class CreateNewPw extends Component {
     state = {
         new_password: '',
@@ -17,11 +20,13 @@ handleChange = (e) => {
 handleSubmit = (e) => {
     e.preventDefault(this.state)
     console.log(this.state)
+    
     const user = { 
          
         new_password: this.state.new_password,
     };
     axios.post('https://disaster-broadcaster.herokuapp.com/api/disaster_broadcaster/password-reset/')
+    // userServices.passwordReset()
     .then(
         res => {
             console.log(res);

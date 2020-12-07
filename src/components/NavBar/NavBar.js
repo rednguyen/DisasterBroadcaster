@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import {Menu} from "./Menu";
 import './NavBar.css'
 import Logo from './Logo.png';
-import {NavLink} from 'react-router-dom'
+
 import {Button} from "../Button/Button"
 
 
@@ -34,8 +34,8 @@ class NavBar extends Component{
                     </>
                 </ul>    
                 <Button onClick={(e) => {e.preventDefault(); window.location.href='/login'}}>
-                    Login
-                    <span>&nbsp;&nbsp;</span><i class="fas fa-user"></i>
+                    Login<span>&nbsp;&nbsp;</span>
+                    <i class="fas fa-user"></i>
                     </Button>
                 
             </nav>

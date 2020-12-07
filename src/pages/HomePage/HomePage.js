@@ -73,38 +73,17 @@ class HomePage extends Component {
           <div class = "BottomPage"><Footer /></div>
         </div>
         )
-      } else {
+      } 
+      else {
         return (
-          <div className="Wrapper">  
-            <nav className="NavbarItems">
-              <img className="navbar-logo" src={Logo}/>
-              <div className="menu-icon" onClick={this.handleClick}>
-                  <i className={this.state.clicked? 'fas fa-times' : 'fas fa-bars'}></i>
-              </div>
-              <ul className={this.state.clicked ? 'nav-menu active':'nav-menu'}>
-                  <>{Menu.map((item, index)=>{
-                      return(
-                          <li key={index}>
-                              <a className ={item.cName} href={item.url}>
-                                  {item.title}
-                              </a>
-                          </li>
-                      )                        
-                      })}     
-                  </>
-              </ul>    
-              <Button onClick={this.logout}>Logout<span>&nbsp;&nbsp;</span><i class="fas fa-user"></i>
-                  </Button>
-              <ul><NavLink to='/' className ='btn btn-floating blue darken-3'>JM</NavLink> </ul>
-          </nav>
-
-            <Slider/>
-            {/* <button type='button' className="button" onClick={this.logout}>Logout</button> */}
-            
-            <div className = "Body">{Body(this.state.posts, this.state.news)}</div>
-            <div id="DonateSection"> <Donate/></div>                
-            <div class = "BottomPage"><Footer /></div>
-          </div>       
+          <div className="Wrapper">
+          <div className="TopPage"><NavBarTwo /></div>
+          <Slider/>
+          <div className = "Body">{Body(this.state.posts, this.state.news)}</div>
+          <div id="DonateSection"> <Donate/></div>                
+          <div class = "BottomPage"><Footer /></div>
+        </div>
+         
         )         
       }  
     };  
@@ -112,3 +91,38 @@ class HomePage extends Component {
 
 
 export default HomePage;
+
+
+
+
+
+ // <div className="Wrapper">  
+          //   <nav className="NavbarItems">
+          //     <img className="navbar-logo" src={Logo}/>
+          //     <div className="menu-icon" onClick={this.handleClick}>
+          //         <i className={this.state.clicked? 'fas fa-times' : 'fas fa-bars'}></i>
+          //     </div>
+          //     <ul className={this.state.clicked ? 'nav-menu active':'nav-menu'}>
+          //         <>{Menu.map((item, index)=>{
+          //             return(
+          //                 <li key={index}>
+          //                     <a className ={item.cName} href={item.url}>
+          //                         {item.title}
+          //                     </a>
+          //                 </li>
+          //             )                        
+          //             })}     
+          //         </>
+          //     </ul>    
+          //     <Button onClick={this.logout}>Logout<span>&nbsp;&nbsp;</span><i class="fas fa-user"></i>
+          //         </Button>
+          //     <ul><NavLink to='/' className ='btn btn-floating blue darken-3'>JM</NavLink> </ul>
+          // </nav>
+
+          //   <Slider/>
+          //   {/* <button type='button' className="button" onClick={this.logout}>Logout</button> */}
+            
+          //   <div className = "Body">{Body(this.state.posts, this.state.news)}</div>
+          //   <div id="DonateSection"> <Donate/></div>                
+          //   <div class = "BottomPage"><Footer /></div>
+          // </div>       
