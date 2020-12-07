@@ -40,14 +40,14 @@ function Body(posts, newss) {
                     <div className = "post">
                       {posts.map(post => 
                         <ul>
-                          <a href={"localhost:3000" + "/post/" + post.id.toString()}  className="a">
-                          <p Paper style = {{padding: 20, fontSize: 20}}>
-                          <li>{post.content}</li>
-                          <li><img className = "media" src = {post.media} alt="" width="250px" height="250px"/></li>
-                          <li>{post.user_id.username}</li>
-                          <li><img className = "avatar" src = {post.user_id.avatar} alt="" width="50px" height="50px"/></li>
-                          </p>
-                          </a>
+                          <Link href={"/post/" + post.id.toString()} color="inherit" variant="body2">
+                            <p Paper style = {{padding: 20, fontSize: 20}}>
+                            <li>{post.content}</li>
+                            <li><img className = "media" src = {post.media} alt="" width="250px" height="250px"/></li>
+                            <li>{post.user_id.username}</li>
+                            <li><img className = "avatar" src = {post.user_id.avatar} alt="" width="50px" height="50px"/></li>
+                            </p>
+                          </Link>
                         </ul>
                       )}    
                     </div>      

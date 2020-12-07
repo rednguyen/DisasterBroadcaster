@@ -33,7 +33,7 @@ const BaseRouter = () => (
     <Route path = '/login' component = {LoginPage} exact />
     <Route path = '/signup' component = {SignUpPage} exact />   
     <Route path = '/pwreset' component = {PwResetPage} exact />  
-    <Route path = '/createnewpw' component = {CreateNewPwPage} exact />
+    <Route path = '/createnewpw/:token' component = {CreateNewPwPage} exact />
     <Route path="/post" component = {Post} exact />
     <Route path="/searchbycountry" component = {Country} exact />
     <Route path="/country/:id" component = {CountryHomePage} exact />
