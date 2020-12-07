@@ -14,13 +14,13 @@ export default class PostServices extends ApiServices {
   };
 
   // Get all posts of the logged in user
-  getUserPosts = async () => {
+  getUserPosts = async (token) => {
     try {
-      return await axios.get(`${this.url()}/?personal`);
+      return await axios.post(`${this.url()}/own_post/`, token);
     } catch (error) {
-      return this.handleError(error, []);
+      return this.handleError(error, {});
     }
-  };
+  }
 
   // Get posts by country
   getCountryPosts = async (country_id) => {

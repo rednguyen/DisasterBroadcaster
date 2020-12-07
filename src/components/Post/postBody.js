@@ -3,20 +3,21 @@ import "./postBody.css";
 import Grid from '@material-ui/core/Grid';
 import Button from '@material-ui/core/Button';
 /* Image */
-import PostServices from "../../api-services/ApiServices";
+import PostServices from "../../api-services/Post";
+import UserServices from "../../api-services/User";
+import axios from "axios";
 const postServices = new PostServices();
+const userServices = new UserServices();
+
 
   function mapPost(props) {
    return(
-     <div>
-        <h3>  {props.id} Post</h3>
-           <div className = "posts">
+     <div className = "posts">
                <img className="post-img" src = {props.media} alt="Image"></img>
                <p className = "info">{props.content}</p>
-               <Button className = "Button" variant="outlined" size="medium" color="primary" >
+               <Button className = "Button" variant="outlined" size="medium" color="primary" href="/editpost">
          Edit Post
        </Button>
-           </div>
      </div>
    )
   }
@@ -24,33 +25,34 @@ class PostBody extends Component {
   constructor(props) {
     super(props);
     this.state ={
-        id: '',
-        content: '',
-        img: null,
+        contentArray: []
     };
-    const UserPost = postServices.retrieve(1)
-    .then(
-      res => {
-          let responseJSON = res; 
-          sessionStorage.getItem('data', responseJSON)   
-          console.log(res.data);
-          //PostArray.append(Post)
-          //console.log(Post.content)
-          this.setState({
-            id: res.data.user_id.username,
-            content: res.data.content
-        })
-      }).catch(
-          err => {
-              console.log(err.message);     
-          }
-      )
+    
+  }
+
+
+componentDidMount() {
+  const token_data = {
+    "token": localStorage.getItem('token')
+  }
+  postServices.getUserPosts(token_data)
+  .then(
+    res => {
+      console.log(res.data)
+      const content = {
+        user_post: res.data,
+    }
+    this.setState({contentArray: content.user_post})
+     console.log(this.state.contentArray)
+     })
 }
+
+
 render(){
-  console.log(this.state.content);
   return(
     <div>
-      {mapPost(this.state)}
+      <h3>Post</h3>
+      {(this.state.contentArray).map(mapPost)}
     </div>
  );
 }

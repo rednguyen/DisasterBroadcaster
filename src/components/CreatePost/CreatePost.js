@@ -2,10 +2,13 @@ import React, { Component, useState } from 'react';
 import TextField from '@material-ui/core/TextField';
 import { CountryDropdown} from 'react-country-region-selector';
 import Container from '@material-ui/core/Container';
+import UserServices from "../../api-services/User"
 import PostServices from "../../api-services/Post";
+
 import { countries } from "../../api-services/countries";
 
 const postServices = new PostServices();
+const userServices = new UserServices();
 
 class CreatePost extends Component {
     constructor(props) {
@@ -36,19 +39,41 @@ handleChange = (e) => {
     })
 } 
 
+componentDidMount() {
+    const token_data = {
+        "token": localStorage.getItem('token')
+      }
+      userServices.currentUser(token_data)
+      .then(
+        res => {
+          console.log(res.data.id)
+         const post = {
+             user_id: res.data.id,
+         }
+         this.setState({username: post.user_id})
+          console.log(this.state.username)
+          })
+    
+}
+
 handleSubmit = (e) => {
+    
     e.preventDefault(this.state)
+     //this.setState({username: res.data.id})
+
     let formData = new FormData();
+    formData.append('user_id', this.state.username);
     formData.append('media',this.state.img,this.state.img.name);
     formData.append('content',this.state.description);
     formData.append('country_id',countries[this.state.country]);
-    formData.append('user_id',5);
-    const post = {
-        user_id:5,
-        country_id: countries[this.state.country], 
-        content: this.state.description,
-        media: this.state.img
-    };
+    
+    console.log(this.state)
+    // const post = {
+    //     user_id:5,
+    //     country_id: countries[this.state.country], 
+    //     content: this.state.description,
+    //     media: this.state.img
+    // };
 
     postServices.create(formData)
     .then(

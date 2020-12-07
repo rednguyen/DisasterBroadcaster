@@ -9,8 +9,9 @@ import './viewPost.css';
 const viewPost = ()=> {
     return(
         <div className="Wrapper">
+          <div className ="Top" ></div>
         <div className="Body"><PostBody /></div>
-        <div class = "BottomPage"><Footer /></div>
+        <div class = "BottomPage">></div>
       </div>
     )
 }
