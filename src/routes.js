@@ -10,7 +10,7 @@ import SignUpPage from "./pages/LoginAndSignUp/SignUpPage";
 import { Route } from "react-router-dom";
 import PwResetPage from "./pages/LoginAndSignUp/PwResetPage";
 import CreateNewPwPage from "./pages/LoginAndSignUp/CreateNewPwPage";
-import Post from "./pages/Post/Post";
+import Post from "./components/CreatePost/CreatePost";
 import Earthquake from "./pages/Guide/Disasters/Earthquake";
 import Wildfire from "./pages/Guide/Disasters/Wildfire";
 import Volcano from "./pages/Guide/Disasters/Volcano";
@@ -24,6 +24,9 @@ import Profile from "./components/Profile/Profile.js";
 import EditProfile from "./components/Profile/EditProfile.js";
 import ChangeAvatar from "./components/Profile/ChangeAvatar.js";
 import EditPost from "./pages/Post/EditPost.js";
+import ViewPost from "./pages/viewPost/viewPost.js";
+import DonateSection from "./components/Donate/Donate";
+import Donate from "./components/Donate/Donate"
 
 const BaseRouter = () => (
   <div>
@@ -31,7 +34,6 @@ const BaseRouter = () => (
     <Route path="/allnews" component={AllNews} exact />
     <Route path="/allpost" component={AllPost} exact />
     <Route path="/post/:id" component={OnePost} exact />
-    <Route path="/post" component={Post} exact />
     <Route path="/guide" component={Guide} exact />
     <Route path="/about" component={About} exact />
     <Route path="/login" component={LoginPage} exact />
@@ -46,7 +48,10 @@ const BaseRouter = () => (
     <Route path="/editprofile" component={EditProfile} exact />
     <Route path="/changeavatar" component={ChangeAvatar} exact />
     {/* Post:  */}
-    <Route path="/editpost" component={EditPost} exact />
+    <Route path = "/viewpost" component={ViewPost} exact />
+    <Route path="/editpost/:id" component={EditPost} exact />
+
+    <Route path="/DonateSection" component={DonateSection} exact />
     {/* Guide:  */}
     <Route path="/earthquake" component={Earthquake} exact />
     <Route path="/wildfire" component={Wildfire} exact gi />

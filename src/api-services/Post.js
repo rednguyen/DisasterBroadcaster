@@ -13,15 +13,6 @@ export default class PostServices extends ApiServices {
     }
   };
 
-  // Get posts by country
-  getCountryPosts = async (country_id) => {
-    try {
-      return await axios.get(`${this.url()}/?country=${country_id}`);
-    } catch (error) {
-      return this.handleError(error, []);
-    }
-  };
-
   getUserPosts = async (token) => {
     try {
       return await axios.post(`${this.url()}/own_post/`, token);
@@ -29,4 +20,14 @@ export default class PostServices extends ApiServices {
       return this.handleError(error, {});
     }
   }
+
+  getCountryPosts = async (country_id) => {
+    try {
+      return await axios.get(`${this.url()}/?country=${country_id}`);
+    } catch (error) {
+      return this.handleError(error, {});
+    }
+  }
+
+  
 }
