@@ -21,16 +21,15 @@ class HomePage extends Component {
   }
 
   componentDidMount() {
-    postServices.list()
-      .then(res => {
-        const posts = res.data;
-        this.setState({ posts });
-      })
-
     newsServices.list()
       .then(res => {
         const news = res.data;
         this.setState({ news });
+      })
+    postServices.list()
+      .then(res => {
+        const posts = res.data;
+        this.setState({ posts });
       })
   }
 
@@ -39,7 +38,7 @@ class HomePage extends Component {
       <div className = "Body">{Body(this.state.posts, this.state.news)}
       <div id="DonateSection"> <Donate/></div>
       </div>
-    ) 
+    )
   };  
 }
 

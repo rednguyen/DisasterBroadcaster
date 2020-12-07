@@ -3,20 +3,48 @@ import {Menu} from "./Menu";
 import './NavBar.css'
 import Logo from './Logo.png';
 import {Button} from "../Button/Button"
-
+import { Redirect } from "react-router-dom";
 import {NavLink} from 'react-router-dom'
+import { useHistory } from 'react-router-dom'
 
 class NavBarTwo extends Component{
-    state = {clicked:false}
+    // state = {
+    //     clicked:false,
+    //     redirect:false
+    // }
+    constructor(props) {
+        super(props);
+        this.state = {
+          
+          redirect: false
+        };
+        this.logout = this.logout.bind(this)
+      }
+
+    componentWillMount(){
+        if(sessionStorage.getItem("userData")){
+          console.log("Call")
+        }
+        else{
+          this.setState({redirect:true})
+        }
+      }
+
+    logout(){
+        // userServices.logout()
+        
+        sessionStorage.setItem("userData","");
+        sessionStorage.clear();
+        this.setState({
+          redirect:true
+        })
+        window.location.href='/'
+      }
 
     handleClick = () => {
         this.setState({clicked: !this.state.clicked})
     }
 
-    // logout(){
-    //     sessionStorage.setItem("userData","");
-    //     sessionStorage.clear();
-    // }
 
     render(){
         return(
@@ -37,10 +65,8 @@ class NavBarTwo extends Component{
                         })}     
                     </>
                 </ul>    
-                <Button onClick={(e) => {e.preventDefault(); window.location.href='/login'}}>
-                    Logout
-                    <i class="fas fa-user"></i>
-                    </Button>
+                <Button onClick={this.logout}>Logout<span>&nbsp;&nbsp;</span><i class="fas fa-user"></i>
+                  </Button>
                 <ul><NavLink to='/' className ='btn btn-floating blue darken-3'>JM</NavLink> </ul>
             </nav>
         );

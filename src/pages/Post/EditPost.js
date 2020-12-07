@@ -17,26 +17,39 @@ class EditPost extends React.Component {
       country: "",
       description: "",
       img: null,
+      post: {}
     };
     this.handleSubmit = this.handleSubmit.bind(this);
-    this.onChange = this.onChange.bind(this);
+    this.onChange = this.onChange.bind(this)
     this.handleChange = this.handleChange.bind(this);
   }
 
   componentDidMount() {
-    fetch(
-      "https://disaster-broadcaster.herokuapp.com/api/disaster_broadcaster/post/39/"
-    )
-      .then((response) => response.json())
-      .then((data) => {
-        console.log(data);
-        this.setState({
+    postServices.retrieve(parseInt(this.props.match.params.id))
+      .then(res => {
+        const data = res.data;
+        this.setState({ 
+          post: data,
           country: countriesArray[data.country_id.id],
           description: data.content,
           img: data.media,
         });
-        console.log(this.state);
-      });
+      })
+
+
+    // fetch(
+    //   "https://disaster-broadcaster.herokuapp.com/api/disaster_broadcaster/post/39/"
+    // )
+    //   .then((response) => response.json())
+    //   .then((data) => {
+    //     console.log(data);
+    //     this.setState({
+    //       country: countriesArray[data.country_id.id],
+    //       description: data.content,
+    //       img: data.media,
+    //     });
+    //     console.log(this.state);
+    //   });
   }
 
   onChange(e) {
@@ -72,7 +85,7 @@ class EditPost extends React.Component {
     };
 
     postServices
-      .partial_update(39, formData)
+      .partial_update(this.state.post.id, formData)
       .then((res) => {
         console.log(res);
       })
@@ -81,13 +94,6 @@ class EditPost extends React.Component {
       });
   };
 
-  //   partial_update = async (id, patchBody) => {
-  //     try {
-  //       return await axios.patch(`${this.url()}/${id}/`, patchBody);
-  //     } catch (error) {
-  //       return this.handleError(error, {});
-  //     }
-  //   };
 
   render() {
     const { country } = this.state;
