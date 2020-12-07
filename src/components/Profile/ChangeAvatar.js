@@ -2,6 +2,7 @@ import "./ChangeAvatar.css";
 import NavBar from "../NavBar/NavBar";
 import Footer from "../Footer/Container/FooterContainer";
 import React from "react";
+import UserServices from "../../api-services/User";
 
 class ChangeAvatar extends React.Component {
   constructor(props) {
@@ -12,23 +13,25 @@ class ChangeAvatar extends React.Component {
     };
   }
   componentDidMount() {
-    fetch(
-      "https://disaster-broadcaster.herokuapp.com/api/disaster_broadcaster/user/4/"
-    )
-      .then((response) => response.json())
-      .then((data) => {
-        console.log("original", data);
-        this.setState({
-          user: {
-            username: data.username,
-            email: data.email,
-            country_id: data.country_id,
-            avatar: "",
-          },
-          original: data.avatar,
-        });
+    const token_data = {
+      token: localStorage.getItem("token"),
+    };
+    let userServices = new UserServices();
+
+    userServices.currentUser(token_data).then((res) => {
+      this.setState({
+        user: {
+          username: res.data.username,
+          email: res.data.email,
+          country_id: res.data.country_id,
+          avatar: res.data.avatar,
+          userId: res.data.id,
+        },
+        original: res.data.avatar,
       });
+    });
   }
+
   handleChange = (img) => {
     this.setState({
       user: {
@@ -36,6 +39,7 @@ class ChangeAvatar extends React.Component {
         country_id: this.state.user.country_id,
         email: this.state.user.email,
         avatar: img,
+        userId: this.state.user.userId,
       },
     });
     let newAvatar = document.createElement("img");
@@ -48,9 +52,9 @@ class ChangeAvatar extends React.Component {
   };
 
   handleSubmit = () => {
-    console.log(this.state.user);
+    console.log("before submit:", this.state.user);
     fetch(
-      "https://disaster-broadcaster.herokuapp.com/api/disaster_broadcaster/user/4/",
+      `https://disaster-broadcaster.herokuapp.com/api/disaster_broadcaster/user/${this.state.user.userId}`,
       {
         method: "PATCH",
         headers: { "Content-type": "application/json" },
@@ -61,7 +65,10 @@ class ChangeAvatar extends React.Component {
         console.log(response.status);
         return response.json();
       })
-      .then((data) => console.log(data));
+      .then((data) => {
+        console.log(data);
+        window.location.href = `/editprofile`;
+      });
   };
 
   handleDelete = () => {
@@ -99,10 +106,6 @@ class ChangeAvatar extends React.Component {
     ];
     return (
       <div className="Wrapper">
-        <div className="TopPage">
-          <NavBar />
-        </div>
-
         <div className="main">
           <p className="chooseAnAvatar">Choose an avatar</p>
           <div className="profile">
@@ -123,18 +126,12 @@ class ChangeAvatar extends React.Component {
           </div>
           <div className="avatarButtons">
             <button className="saveAvatar" onClick={this.handleSubmit}>
-              <a href="/editprofile" className="save">
-                save
-              </a>
+              save
             </button>
             <button className="deleteAvatar" onClick={this.handleDelete}>
               clear
             </button>
           </div>
-        </div>
-
-        <div className="BottomPage">
-          <Footer />
         </div>
       </div>
     );
