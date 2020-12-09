@@ -142,18 +142,15 @@ class EditProfile extends React.Component {
       `https://disaster-broadcaster.herokuapp.com/api/disaster_broadcaster/user/${this.state.user.userId}/`,
       {
         method: "DELETE",
-        headers: { "Content-type": "application/json" },
-        body: JSON.stringify(this.state.user),
       }
     )
       .then((response) => {
-        return response.json();
+        response.text();
       })
-      .then((data) => {
-        console.log(data);
-        window.location.reload(false);
-        window.location.href = "/";
-      });
+      .then((response) => {
+        console.log(response);
+      })
+      .then(this.logout);
   };
 
   render() {
@@ -223,7 +220,7 @@ class EditProfile extends React.Component {
             value="Delete Account"
             onClick={this.handleDeleteAccount}
           /> */}
-          <Button onClick={(this.logout, this.handleDeleteAccount)}>
+          <Button onClick={this.handleDeleteAccount}>
             Delete Account<span>&nbsp;&nbsp;</span>
             <i class="fas fa-user"></i>
           </Button>

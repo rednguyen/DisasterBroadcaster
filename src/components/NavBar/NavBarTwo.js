@@ -79,7 +79,7 @@ class NavBarTwo extends Component {
             })}
           </>
         </ul>{" "}
-        <Button onClick={this.logout}>
+        <Button className="deleteaccount" onClick={this.logout}>
           Logout<span>&nbsp;&nbsp;</span>
           <i class="fas fa-user"></i>
         </Button>
