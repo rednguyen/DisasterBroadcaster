@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import * as actions from './actions/auth';
 import React, { Component } from 'react';
 import CustomLayout from './containers/Layout';
+import UserServices from "./api-services/User";
 
 class App extends Component {
 
@@ -24,7 +25,9 @@ class App extends Component {
 
 const mapStateToProps = state => {
   return {
-    isauthenticated: state.token !== null
+    isauthenticated: state.token !== null,
+    token: state.token,
+    user: state.user
   }
 }
 

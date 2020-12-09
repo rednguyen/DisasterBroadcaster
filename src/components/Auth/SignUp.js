@@ -5,6 +5,30 @@ import { CountryDropdown } from 'react-country-region-selector';
 import { countries } from "../../api-services/countries";
 import { connect } from 'react-redux';
 import * as actions from '../../actions/auth';
+import { Redirect } from "react-router-dom";
+
+const images = [
+  {
+    name: "moon",
+    src: "https://www.flaticon.com/svg/static/icons/svg/3815/3815448.svg",
+  },
+  {
+    name: "cloudy",
+    src: "https://www.flaticon.com/svg/static/icons/svg/3815/3815389.svg",
+  },
+  {
+    name: "sunny",
+    src: "https://www.flaticon.com/svg/static/icons/svg/3815/3815445.svg",
+  },
+  {
+    name: "wind",
+    src: "https://www.flaticon.com/svg/static/icons/svg/3815/3815323.svg",
+  },
+  {
+    name: "snowflake",
+    src: "https://www.flaticon.com/svg/static/icons/svg/3815/3815402.svg",
+  },
+];
 
 const initialState = {
     username: '',
@@ -12,6 +36,7 @@ const initialState = {
     password: '',
     country: '',
     security_question: '',
+    avatar: images[3].src,
 
     usernameError: '',
     passwordError: '',
@@ -23,26 +48,42 @@ const initialState = {
 }
 
 class SignUp extends Component {
-    state = initialState
+  state = initialState
 
-    selectCountry(val) {
-        this.setState({ country: val });
-      }
+  selectCountry(val) {
+      this.setState({ country: val });
+    }
   handleChange = (e) => {
       this.setState({
           [e.target.id]: e.target.value
       })
   } 
+
+  handleChangeAvatar = (img) => {
+    this.setState({avatar: img});
+    let newAvatar = document.createElement("img");
+    newAvatar.src = img;
+    newAvatar.className = "avatar";
+    document
+      .querySelector("div.profile")
+      .removeChild(document.querySelector("img.avatar"));
+    document.querySelector("div.profile").appendChild(newAvatar);
+  };
+
+
+
   handleSubmit = (e) => {
     e.preventDefault();
     if (this.state.username && this.state.password && this.state.email && this.state.country
-      && this.state.security_question) {
+      && this.state.security_question && this.state.avatar) {
+        console.log(this.state.avatar);
         this.props.onAuth(
           this.state.username,
           this.state.password,
           this.state.email,
           countries[this.state.country],
-          this.state.security_question
+          this.state.security_question,
+          this.state.avatar
         );
     }
     if (!this.state.username) {
@@ -67,12 +108,32 @@ class SignUp extends Component {
     }
 
     render() {
-      
-        console.log("xxx ", this.state.invalidError)
+        const token = localStorage.getItem('token');
+        if(token !== null){
+          return <Redirect to= {'/'}/>;
+        } 
         const { country } = this.state;
         return (
             <Container component="main" maxWidth="sm">
+                
                 <div className="container">
+                    <p className="chooseAnAvatar">Choose an avatar</p>
+                    <div className="profile">
+                      <img src={images[3].src} className="avatar" />
+                    </div>
+                    <div className="avatarOptions">
+                      {images.map((image, i) => {
+                        return (
+                          <img
+                            src={image.src}
+                            className="avatarOption"
+                            onClick={(e) => {
+                              this.handleChangeAvatar(e.target.currentSrc);
+                            }}
+                          />
+                        );
+                      })}
+                    </div>
                     <form onSubmit={this.handleSubmit}>
                         <h5 className="grey-text text-darken-3">Sign Up</h5>
 
@@ -114,12 +175,12 @@ class SignUp extends Component {
                         </div> : null}
 
                         <div className="input-field">
-                            <label htmlFor="security_question">Security Question: What is your mother's middle name?</label>
+                            <label htmlFor="security_question">Security: Middle name of the person you know most?</label>
                             <input className="input-field" type="text" id="security_question" onChange={this.handleChange} />
                         </div>
 
                         {this.state.answerError ? <div style={{ fontSize: 12, color: "red" }}>{this.state.answerError}
-                        </div> : null}
+                        </div> : null}     
 
                         <Link href="/login" variant="body2">
                             {"Already have an account? Login"}
@@ -128,8 +189,6 @@ class SignUp extends Component {
                         <div className="input-field">
                             <button className="btn  blue darken-3 z-depth-0">Sign Up</button>
                         </div>
-
-
                     </form>
                 </div>
             </Container>
@@ -146,7 +205,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = dispatch => {
   return {
-      onAuth: (username, password, email, country_id, answer) => dispatch(actions.authSignup(username, password, email, country_id, answer)) 
+      onAuth: (username, password, email, country_id, answer, avatar) => dispatch(actions.authSignup(username, password, email, country_id, answer, avatar)) 
   }
 }
 

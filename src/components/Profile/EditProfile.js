@@ -82,23 +82,23 @@ class EditProfile extends React.Component {
   handleSubmit = (e) => {
     e.preventDefault();
 
-    fetch(
-      `https://disaster-broadcaster.herokuapp.com/api/disaster_broadcaster/user/${this.state.user.userId}/`,
-      {
-        method: "PATCH",
-        headers: { "Content-type": "application/json" },
-        body: JSON.stringify(this.state.user),
-      }
-    )
-      .then((response) => {
-        console.log(response.status);
-        return response.json();
-      })
-      .then((data) =>
-        this.setState({
-          saved: true,
-        })
-      );
+    // fetch(
+    //   `https://disaster-broadcaster.herokuapp.com/api/disaster_broadcaster/user/${this.state.user.userId}/`,
+    //   {
+    //     method: "PATCH",
+    //     headers: { "Content-type": "application/json" },
+    //     body: JSON.stringify(this.state.user),
+    //   }
+    // )
+    //   .then((response) => {
+    //     console.log(response.status);
+    //     return response.json();
+    //   })
+    //   .then((data) =>
+    //     this.setState({
+    //       saved: true,
+    //     })
+    //   );
   };
 
   deleteUser = (e) => {

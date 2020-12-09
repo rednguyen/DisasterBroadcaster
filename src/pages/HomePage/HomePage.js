@@ -6,6 +6,7 @@ import Donate from "../../components/Donate/Donate";
 import NewsServices from "../../api-services/News";
 import PostServices from "../../api-services/Post";
 import "../../components/NavBar/NavBar.css";
+import { connect } from 'react-redux';
 
 const newsServices = new NewsServices();
 const postServices = new PostServices();
@@ -15,14 +16,14 @@ class HomePage extends Component {
     super(props);
     this.state = {
       posts: [],
-      news: [],
+      newss: [],
     };
   }
 
   componentDidMount() {
     newsServices.list().then((res) => {
-      const news = res.data;
-      this.setState({ news });
+      const newss = res.data;
+      this.setState({ newss });
     });
     postServices.list().then((res) => {
       const posts = res.data;
@@ -33,7 +34,9 @@ class HomePage extends Component {
   render() {
     return (
       <div className="Body">
-        {Body(this.state.posts, this.state.news)}
+        <div>
+          <Body posts={this.state.posts} newss={this.state.newss}/>
+        </div>
         <div id="DonateSection">
           {" "}
           <Donate />
@@ -42,5 +45,15 @@ class HomePage extends Component {
     );
   }
 }
+
+// const mapStateToProps = state => {
+//   return {
+//     posts: state.posts,
+//     newss: state.newss
+//   }
+// }
+
+// export default connect(mapStateToProps, null)(HomePage);
+
 
 export default HomePage;

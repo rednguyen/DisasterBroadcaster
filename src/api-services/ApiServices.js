@@ -18,7 +18,7 @@ export default class ApiServices {
     try {
       return await axios.post(`${this.url()}/`, postBody,{
         headers: {
-          'content-type': 'multipart/form-data'
+          'content-type': undefined
         }
       });
     } catch (error) {
