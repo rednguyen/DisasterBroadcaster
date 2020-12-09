@@ -6,18 +6,33 @@ import { Button } from "../Button/Button";
 import { Redirect } from "react-router-dom";
 import { NavLink } from "react-router-dom";
 import { useHistory } from "react-router-dom";
+import UserServices from "../../api-services/User";
 
 class NavBarTwo extends Component {
-  // state = {
-  //     clicked:false,
-  //     redirect:false
-  // }
   constructor(props) {
     super(props);
     this.state = {
       redirect: false,
     };
     this.logout = this.logout.bind(this);
+  }
+
+  componentDidMount() {
+    const token_data = {
+      token: localStorage.getItem("token"),
+    };
+    let userServices = new UserServices();
+
+    userServices.currentUser(token_data).then((res) => {
+      console.log(res.data);
+      if (res.data.username.substring(0, 7) === "DELETED") {
+        this.props.onLogout();
+      }
+      this.setState({
+        avatar: res.data.avatar,
+        userId: res.data.id,
+      });
+    });
   }
 
   componentWillMount() {
@@ -46,7 +61,7 @@ class NavBarTwo extends Component {
   render() {
     return (
       <nav className="NavbarItems">
-        <img className="navbar-logo" src={Logo} alt="" />
+        <img className="navbar-logo" src={Logo} />
         <div className="menu-icon" onClick={this.handleClick}>
           <i
             className={this.state.clicked ? "fas fa-times" : "fas fa-bars"}
@@ -64,14 +79,17 @@ class NavBarTwo extends Component {
               );
             })}
           </>
-        </ul>
+        </ul>{" "}
         <Button onClick={this.logout}>
           Logout<span>&nbsp;&nbsp;</span>
           <i class="fas fa-user"></i>
         </Button>
         <ul>
-          <NavLink to="/" className="btn btn-floating blue darken-3">
-            JM
+          <NavLink
+            to="/profile"
+            className="btn btn-floating blue darken-3 avatarSmall"
+          >
+            <img src={this.state.avatar} alt="" className="avatarSmall" />
           </NavLink>{" "}
         </ul>
       </nav>

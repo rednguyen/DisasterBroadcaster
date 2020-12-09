@@ -4,10 +4,12 @@ import Container from "@material-ui/core/Container";
 import "./auth.css";
 import Grid from "@material-ui/core/Grid";
 import axios from "axios";
+import UserServices from "../../api-services/User";
+
+const userServices = new UserServices();
 class CreateNewPw extends Component {
   state = {
     new_password: "",
-    message: "",
   };
   handleChange = (e) => {
     this.setState({
@@ -17,29 +19,22 @@ class CreateNewPw extends Component {
   handleSubmit = (e) => {
     e.preventDefault(this.state);
     console.log(this.state);
-    const token = localStorage.getItem("token");
-    const reset = {
+
+    const user = {
       new_password: this.state.new_password,
-      token: token,
     };
     axios
       .post(
-        "https://disaster-broadcaster.herokuapp.com/api/disaster_broadcaster/user/new_password/",
-        reset
+        "https://disaster-broadcaster.herokuapp.com/api/disaster_broadcaster/password-reset/"
       )
+      // userServices.passwordReset()
       .then((res) => {
-        if (res.status !== 200) {
-          this.setState({ message: "Invalid!" });
-          throw new Error(res.status);
-        }
-        this.setState({ message: "Successful!" });
         console.log(res);
       })
       .catch((err) => {
         console.log(err);
       });
   };
-
   render() {
     return (
       <Container component="main" maxWidth="sm">
@@ -55,9 +50,11 @@ class CreateNewPw extends Component {
                 onChange={this.handleChange}
               />
             </div>
-
+            {/* <div className = "input-field">
+                    <label htmlFor="new_comfirm_password">Comfirm New Password</label>
+                    <input type="password" id="new_comfirm_password" onChange={this.handleChange}/>
+                </div> */}
             <div className="input-field">
-              {this.state.message}
               <Grid container>
                 <Grid container xs={12} sm={6}>
                   <button

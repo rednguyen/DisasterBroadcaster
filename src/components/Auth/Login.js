@@ -2,18 +2,22 @@ import React, { Component } from "react";
 import Link from "@material-ui/core/Link";
 import Container from "@material-ui/core/Container";
 import Grid from "@material-ui/core/Grid";
+import Paper from "@material-ui/core/Paper";
+import Button from "@material-ui/core/Button";
+import UserServices from "../../api-services/User";
 import "./auth.css";
+import axios from "axios";
 import { Redirect } from "react-router-dom";
-import * as actions from "../../actions/auth";
-import { connect } from "react-redux";
-
+// const useStyles = makeStyles()
+const userServices = new UserServices();
 const initialState = {
   username: "",
   password: "",
+  loggedIn: false,
   usernameError: "",
   passwordError: "",
+  invaildError: "",
 };
-
 class Login extends Component {
   state = initialState;
   handleChange = (e) => {
@@ -21,11 +25,29 @@ class Login extends Component {
       [e.target.id]: e.target.value,
     });
   };
-
   handleSubmit = (e) => {
     e.preventDefault(this.state);
+    const user = {
+      username: this.state.username,
+      password: this.state.password,
+    };
     if (this.state.username && this.state.password) {
-      this.props.onAuth(this.state.username, this.state.password);
+      axios
+        .post(
+          "https://disaster-broadcaster.herokuapp.com/api/disaster_broadcaster/user-authenticate/",
+          user
+        )
+        .then((res) => {
+          let responseJSON = res;
+          sessionStorage.setItem("userData", responseJSON);
+          this.setState({ loggedIn: true });
+          // console.log(res)
+        })
+        .catch((err) => {
+          this.setState({
+            invaildError: "*Username/Password incorrect",
+          });
+        });
     }
     if (!this.state.username) {
       this.setState({ usernameError: "*Username is required" });
@@ -34,17 +56,12 @@ class Login extends Component {
       this.setState({ passwordError: "*Password cannot be Empty" });
     }
   };
-
   render() {
-    if (this.props.isauthenticated) {
+    if (this.state.loggedIn) {
       return <Redirect to={"/"} />;
     }
-
-    let errorMessage = "";
-    if (this.props.error === null) {
-      errorMessage = "";
-    } else {
-      errorMessage = "*Username/Password incorrect";
+    if (sessionStorage.getItem("userData")) {
+      return <Redirect to={"/"} />;
     }
 
     return (
@@ -53,8 +70,10 @@ class Login extends Component {
           <form onSubmit={this.handleSubmit} className="white" class="form1">
             <h5 className="grey-text text-darken-3">Login</h5>
 
-            {errorMessage ? (
-              <div style={{ fontSize: 12, color: "red" }}>{errorMessage}</div>
+            {this.state.invaildError ? (
+              <div style={{ fontSize: 12, color: "red" }}>
+                {this.state.invaildError}
+              </div>
             ) : null}
 
             <div className="input-field">
@@ -97,24 +116,10 @@ class Login extends Component {
               <button className="btn  blue darken-3 z-depth-0">Login</button>
             </div>
           </form>
-        </div>
+        </div>{" "}
       </Container>
     );
   }
 }
-const mapStateToProps = (state) => {
-  return {
-    loading: state.loading,
-    error: state.error,
-    isauthenticated: state.token !== null && state.token != undefined,
-  };
-};
-
-const mapDispatchToProps = (dispatch) => {
-  return {
-    onAuth: (username, password) =>
-      dispatch(actions.authLogin(username, password)),
-  };
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(Login);
+// export default SignIn;
+export default Login;

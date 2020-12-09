@@ -1,15 +1,25 @@
-.countybg{
-    min-height: 100vh;
-    margin: auto;
-    position: relative;
-    overflow: hidden;
-    display: block;
-    justify-content: center;
-    align-items: center;
+.TopPage {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: "Montserrat", sans-serif;
+}
 
-    background-image: url("world1.jpg");
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    
-  }
+.countybg {
+  min-height: 100vh;
+  margin: auto;
+  position: relative;
+  overflow: hidden;
+  display: block;
+  justify-content: center;
+  align-items: center;
+
+  background-image: url("world1.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.BottomPage {
+  margin-bottom: auto;
+}
