@@ -5,6 +5,7 @@ import React from "react";
 import countries from "./countries.js";
 import Select from "react-select";
 import UserServices from "../../api-services/User";
+import NavBarTwo from "../../components/NavBar/NavBarTwo";
 
 class Profile extends React.Component {
   constructor(props) {
@@ -40,48 +41,47 @@ class Profile extends React.Component {
   render() {
     console.log(this.state.country);
     return (
-      <div className="Wrapper">
-        <form className="main">
-          <div className="mainprofile">
-            <img src={this.state.user.avatar} className="avatar" />
+      <form className="main">
+        <div className="myprofile">My Profile</div>
+        <div className="mainprofile">
+          <img src={this.state.user.avatar} className="avatar" />
+        </div>
+        <div className="formcontent">
+          <div className="label">
+            <label htmlFor="userName">Username</label>
+            <input
+              type="text"
+              id="userName"
+              name="userName"
+              value={this.state.user.username}
+              disabled
+            ></input>
           </div>
-          <div className="formcontent">
-            <div className="label">
-              <label htmlFor="userName">Username</label>
-              <input
-                type="text"
-                id="userName"
-                name="userName"
-                value={this.state.user.username}
-                disabled
-              ></input>
-            </div>
-            <div className="label">
-              <label htmlFor="email">Email</label>
-              <input
-                type="text"
-                id="email"
-                name="email"
-                value={this.state.user.email}
-                disabled
-              ></input>
-            </div>
-            <div className="label">
-              <label htmlFor="country">Country</label>
-              <Select
-                name="country"
-                options={countries}
-                value={this.state.country_id}
-                isDisabled={true}
-              />
-            </div>
+          <div className="label">
+            <label htmlFor="email">Email</label>
+            <input
+              type="text"
+              id="email"
+              name="email"
+              value={this.state.user.email}
+              disabled
+            ></input>
+          </div>
+          <div className="label">
+            <label htmlFor="country">Country</label>
+            <Select
+              name="country"
+              options={countries}
+              value={this.state.country_id}
+              isDisabled={true}
+            />
+          </div>
 
-            <a className="editprofile" href="/editprofile">
-              Edit Profile
-            </a>
-          </div>
-        </form>
-      </div>
+          <a className="editprofile" href="/editprofile">
+            Edit Profile
+          </a>
+        </div>
+      </form>
     );
   }
 }
