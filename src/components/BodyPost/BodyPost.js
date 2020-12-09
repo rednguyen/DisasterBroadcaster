@@ -182,7 +182,7 @@ class Post extends Component {
         </Grid>
         <Grid item sm = {12}>
           <Paper style = {{padding: 10}}>
-            <div>
+            <div text-align='center'>
               <div className="comment-header">
                 Community Comments and Reactions 
               </div>
@@ -201,13 +201,13 @@ class Post extends Component {
                 </form>
               </div>
               
-              <div>
+              <div className="comment-section">
                 {this.state.comments.map(comment => 
                   <ul>
                     <p Paper style = {{padding: 20, fontSize: 10}}>
                     <li><img src = {comment.avatar} alt="" width="50" height="50px"/></li>
-                    <p>{comment.comment}</p>
-                    <p>Posted by {comment.username} on {this.makeDate(comment.date_created).toDateString()}</p>
+                    <p className="post-description">{comment.comment}</p>
+                    <p className="posted-by">Posted by {comment.username} on {this.makeDate(comment.date_created).toDateString()}</p>
                     </p>
                   </ul>
                 )}    
