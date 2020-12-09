@@ -43,9 +43,7 @@
 }
 
 .comment-header{
-  width: 600px;
   height: 38px;
-
   font-family: Raleway;
   font-style: normal;
   font-weight: bold;
@@ -59,15 +57,23 @@
   grid-column: 2;
 }
 
-.comment-section{
-  position: relative;
-  height: 672px;
-  left: 0;
-  right:0;
-
-  background: #ECECEC;
+.comment-box{
+  text-align: center;
+  max-width: 800px;
+  margin: auto;
 }
 
-.comment-box{
-  
+.comment-section{
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+}
+
+.post-description{
+  font-size: 20px;
+}
+
+.posted-by{
+  font-size: 15px;
 }
