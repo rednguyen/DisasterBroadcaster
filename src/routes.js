@@ -26,7 +26,7 @@ import ChangeAvatar from "./components/Profile/ChangeAvatar.js";
 import EditPost from "./pages/Post/EditPost.js";
 import ViewPost from "./pages/viewPost/viewPost.js";
 import DonateSection from "./components/Donate/Donate";
-import Donate from "./components/Donate/Donate"
+import Donate from "./components/Donate/Donate";
 
 const BaseRouter = () => (
   <div>
@@ -48,7 +48,7 @@ const BaseRouter = () => (
     <Route path="/editprofile" component={EditProfile} exact />
     <Route path="/changeavatar" component={ChangeAvatar} exact />
     {/* Post:  */}
-    <Route path = "/viewpost" component={ViewPost} exact />
+    <Route path="/viewpost" component={ViewPost} exact />
     <Route path="/editpost/:id" component={EditPost} exact />
 
     <Route path="/DonateSection" component={DonateSection} exact />

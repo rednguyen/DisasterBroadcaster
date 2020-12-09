@@ -6,6 +6,8 @@ import countries from "./countries.js";
 import Select from "react-select";
 import Link from "@material-ui/core/Link";
 import UserServices from "../../api-services/User";
+import NavBarTwo from "../../components/NavBar/NavBarTwo";
+import { Button } from "../Button/Button";
 
 class EditProfile extends React.Component {
   constructor(props) {
@@ -14,7 +16,9 @@ class EditProfile extends React.Component {
       user: {},
       saved: false,
       country_id: {},
+      redirect: false,
     };
+    this.logout = this.logout.bind(this);
   }
   componentDidMount() {
     const token_data = {
@@ -114,23 +118,39 @@ class EditProfile extends React.Component {
       this.handleDeleteAccount();
     }, 1000);
   };
+
+  logout() {
+    // userServices.logout()
+    sessionStorage.setItem("userData", "");
+    sessionStorage.clear();
+    this.setState({
+      redirect: true,
+    });
+    window.location.href = "/";
+  }
+
+  componentWillMount() {
+    if (sessionStorage.getItem("userData")) {
+      console.log("Call");
+    } else {
+      this.setState({ redirect: true });
+    }
+  }
+
   handleDeleteAccount = () => {
-    // fetch(
-    //   `https://disaster-broadcaster.herokuapp.com/api/disaster_broadcaster/user/${this.state.user.userId}/`,
-    //   {
-    //     method: "PATCH",
-    //     headers: { "Content-type": "application/json" },
-    //     body: JSON.stringify(this.state.user),
-    //   }
-    // )
-    //   .then((response) => {
-    //     return response.json();
-    //   })
-    //   .then((data) => {
-    //     console.log(data);
-    //     window.location.reload(false);
-    //     window.location.href = "/";
-    //   });
+    fetch(
+      `https://disaster-broadcaster.herokuapp.com/api/disaster_broadcaster/user/${this.state.user.userId}/`,
+      {
+        method: "DELETE",
+      }
+    )
+      .then((response) => {
+        response.text();
+      })
+      .then((response) => {
+        console.log(response);
+      })
+      .then(this.logout);
   };
 
   render() {
@@ -141,6 +161,7 @@ class EditProfile extends React.Component {
     return (
       <div className="container">
         <form className="main">
+          <div className="myprofile">Edit My Profile</div>
           <div className="profile">
             <img src={this.state.user.avatar} className="avatar" />
           </div>
@@ -189,12 +210,16 @@ class EditProfile extends React.Component {
         <Link href="/createnewpw" variant="body2">
           <button className="reset">Change Password</button>
         </Link>
-        <input
-          name="delete"
-          type="submit"
-          value="Delete Account"
-          onClick={this.deleteUser}
-        />
+        {/* <input
+            name="delete"
+            type="submit"
+            value="Delete Account"
+            onClick={this.handleDeleteAccount}
+          /> */}
+        <Button onClick={this.handleDeleteAccount}>
+          Delete Account<span>&nbsp;&nbsp;</span>
+          <i class="fas fa-user"></i>
+        </Button>
       </div>
     );
   }

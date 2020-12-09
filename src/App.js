@@ -24,14 +24,6 @@ class App extends Component {
 }
 
 const mapStateToProps = state => {
-
-  // let user = {};
-  // let userServices = new UserServices();
-  // userServices.currentUser({token: state.token})
-  // .then(
-  //   res => {
-  //     user = res.data
-  // })
   return {
     isauthenticated: state.token !== null,
     token: state.token,

@@ -6,30 +6,11 @@ import { NavLink } from "react-router-dom";
 import {Button} from "../Button/Button"
 import { connect } from 'react-redux';
 import * as actions from '../../actions/auth';
-import UserServices from "../../api-services/User";
-
-
 
 class NavBar extends Component{
     state = {
       clicked:false,
-      // avatar: avatar,
-      token: localStorage.getItem('token')
-    }
 
-    componentDidMount(){
-      const token_data = {
-        token: localStorage.getItem("token"),
-      };
-
-      let userServices = new UserServices();
-      userServices.currentUser(token_data)
-      .then(
-        res => {
-          this.setState({
-            avatar: res.data.avatar
-          })
-      })
     }
 
     handleClick = () => {
@@ -39,7 +20,7 @@ class NavBar extends Component{
     render(){
       var button = null;
       var link = null;
-      console.log(this.props.user === null || this.props.user === undefined ? null: this.props.user.avatar);
+
       if(this.props.isauthenticated){
         button = <Button onClick={(e) => {
                     e.preventDefault();
