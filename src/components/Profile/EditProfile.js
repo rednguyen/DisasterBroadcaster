@@ -7,6 +7,7 @@ import Select from "react-select";
 import Link from "@material-ui/core/Link";
 import UserServices from "../../api-services/User";
 import NavBarTwo from "../../components/NavBar/NavBarTwo";
+import { Button } from "../Button/Button";
 
 class EditProfile extends React.Component {
   constructor(props) {
@@ -15,7 +16,9 @@ class EditProfile extends React.Component {
       user: {},
       saved: false,
       country_id: {},
+      redirect: false,
     };
+    this.logout = this.logout.bind(this);
   }
   componentDidMount() {
     const token_data = {
@@ -115,6 +118,25 @@ class EditProfile extends React.Component {
       this.handleDeleteAccount();
     }, 1000);
   };
+
+  logout() {
+    // userServices.logout()
+    sessionStorage.setItem("userData", "");
+    sessionStorage.clear();
+    this.setState({
+      redirect: true,
+    });
+    window.location.href = "/";
+  }
+
+  componentWillMount() {
+    if (sessionStorage.getItem("userData")) {
+      console.log("Call");
+    } else {
+      this.setState({ redirect: true });
+    }
+  }
+
   handleDeleteAccount = () => {
     fetch(
       `https://disaster-broadcaster.herokuapp.com/api/disaster_broadcaster/user/${this.state.user.userId}/`,
@@ -195,12 +217,16 @@ class EditProfile extends React.Component {
           <Link href="/createnewpw" variant="body2">
             <button className="reset">Change Password</button>
           </Link>
-          <input
+          {/* <input
             name="delete"
             type="submit"
             value="Delete Account"
             onClick={this.handleDeleteAccount}
-          />
+          /> */}
+          <Button onClick={(this.logout, this.handleDeleteAccount)}>
+            Delete Account<span>&nbsp;&nbsp;</span>
+            <i class="fas fa-user"></i>
+          </Button>
         </div>
         <div class="BottomPage">
           <Footer />

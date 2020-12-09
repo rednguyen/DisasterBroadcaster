@@ -45,7 +45,6 @@ class NavBarTwo extends Component {
 
   logout() {
     // userServices.logout()
-
     sessionStorage.setItem("userData", "");
     sessionStorage.clear();
     this.setState({

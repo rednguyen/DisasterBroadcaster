@@ -1,34 +1,48 @@
-.banner{
-    height: 60vh;
-    width: 100%;
-    background-image: url("https://image.freepik.com/free-photo/fantasy-sky_90839-278.jpg");
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center top;
-   
-
+.banner {
+  height: 60vh;
+  width: 100%;
+  background-image: url("https://image.freepik.com/free-photo/fantasy-sky_90839-278.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center top;
 }
 
-
-.donation{
-    position: relative;
-    text-align: center;
-    color: #000000;
-    width: 30%;
-    height: 50%;
-    top: 25%;
-    left:35%;
-    opacity: 100%;
-    justify-content: center;
-    text-justify: center;
-    align-items: center;
+.donation {
+  position: relative;
+  text-align: center;
+  color: #000000;
+  width: 30%;
+  height: 50%;
+  top: 25%;
+  left: 35%;
+  opacity: 100%;
+  justify-content: center;
+  text-justify: center;
+  align-items: center;
 }
 
+.Org1 {
+  position: relative;
+  text-align: center;
+  height: 30vh;
+}
 
-.Org{
-    position:relative;
-    text-align:center;
-    height: 30vh;
-    top: 5%;
+.Org2 {
+  position: relative;
+  text-align: center;
+  height: 30vh;
+  top: 5%;
+}
 
+.Org3 {
+  position: relative;
+  text-align: center;
+  height: 30vh;
+}
+
+.Org4 {
+  position: relative;
+  text-align: center;
+  height: 30vh;
+  top: 5%;
 }

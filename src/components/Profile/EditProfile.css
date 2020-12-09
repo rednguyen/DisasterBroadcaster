@@ -7,6 +7,7 @@ div.container {
   align-items: center;
   justify-content: center;
 }
+
 form.main {
   display: flex;
   flex-direction: column;
@@ -16,6 +17,7 @@ form.main {
   height: 50%;
   margin: 10px;
 }
+
 div.profile {
   width: 120px;
   height: 120px;
@@ -136,7 +138,7 @@ button.deleteaccount {
 }
 
 input[type="submit"]:hover,
-button.reset:hover,
+button.resetpassword:hover,
 button.deleteaccount:hover {
   cursor: pointer;
 }
