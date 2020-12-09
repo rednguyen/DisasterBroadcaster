@@ -26,6 +26,7 @@ class Login extends Component {
         e.preventDefault(this.state)
         if (this.state.username && this.state.password) {
             this.props.onAuth(this.state.username, this.state.password);
+            
         }
         if (!this.state.username) {
             this.setState({ usernameError: "*Username is required" })
@@ -102,7 +103,7 @@ const mapStateToProps = (state) => {
   return {
       loading: state.loading,
       error: state.error,
-      isauthenticated: state.token !== null && state.token != undefined
+      isauthenticated: state.token !== null && state.token !== undefined
   }
 }
 

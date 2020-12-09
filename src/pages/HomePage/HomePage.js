@@ -35,7 +35,8 @@ class HomePage extends Component {
 
   render(){
     return (
-      <div className = "Body">{Body(this.state.posts, this.state.news)}
+      <div>
+      <div className = "Body">{Body(this.state.posts, this.state.news)}</div>
       <div id="DonateSection"> <Donate/></div>
       </div>
     )

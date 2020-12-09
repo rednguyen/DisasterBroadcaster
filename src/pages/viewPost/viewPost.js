@@ -11,7 +11,7 @@ const viewPost = ()=> {
         <div className="Wrapper">
           <div className ="Top" ></div>
         <div className="Body"><PostBody /></div>
-        <div class = "BottomPage">></div>
+        <div class = "BottomPage"></div>
       </div>
     )
 }

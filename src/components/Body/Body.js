@@ -19,7 +19,6 @@ function Body(posts, newss) {
                   <h1 className = "col-bd1">NEWS</h1>
                 </Link>
                 <div>
-                {console.log(newss[1])}
                 {newss.map(news => 
                   <ul>
                     <a href={news.url} className = "a">
