@@ -8,50 +8,36 @@ import { TextBoxComponent } from "@syncfusion/ej2-react-inputs";
 import countries from "../Profile/countries.js";
 import Select from "react-select";
 import { Button } from "../Button/Button";
+import NavBarTwo from "../../components/NavBar/NavBarTwo";
 import UserServices from "../../api-services/User";
-
-const userServices = new UserServices();
 
 class Country extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      user: {},
       country_id: null,
       id: null,
     };
   }
+
   componentDidMount() {
     const token_data = {
-        "token": localStorage.getItem('token')
-      }
-      userServices.currentUser(token_data)
-      .then(
-        res => {
-        console.log(res.data.id)
-         this.setState({
-           country_id: countries[res.data.country_id],
-           id: res.data.country_id
-        })
-          console.log(this.state.username)
-          })
-    
-}
+      token: localStorage.getItem("token"),
+    };
+    let userServices = new UserServices();
 
-  // componentDidMount() {
-  //   fetch(
-  //     "https://disaster-broadcaster.herokuapp.com/api/disaster_broadcaster/user/4/"
-  //   )
-  //     .then((response) => response.json())
-  //     .then((data) => {
-  //       console.log(data);
-  //       this.setState({
-  //         //country_id is an object, id is the index
-  //         country_id: countries[data.country_id],
-  //         id: data.country_id,
-  //       });
-  //       console.log(this.state);
-  //     });
-  // }
+    userServices.currentUser(token_data).then((res) => {
+      console.log(res.data);
+      this.setState({
+        user: {
+          country_id: res.data.country_id,
+        },
+        country_id: countries[res.data.country_id],
+      });
+      console.log(this.state);
+    });
+  }
 
   handleSubmit = (e) => {
     e.preventDefault();
@@ -75,7 +61,7 @@ class Country extends Component {
         <form onSubmit={this.handleSubmit}>
           <div className="post">
             <h5 className="grey-text text-darken-3">
-              SEARCH DISASTER BY COUNTRY
+              SEARCH DISASTER BY WORLD
             </h5>
             <div className="label">
               <Select
