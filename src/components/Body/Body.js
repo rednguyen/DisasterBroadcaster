@@ -119,7 +119,7 @@ function Body(posts, newss) {
                     </div>      
                 </Paper>
             </Grid>
-            </Grid>
+          </Grid>
         </div>
       )
     } else if (newss.length > 0) {
