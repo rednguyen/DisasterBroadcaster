@@ -105,6 +105,7 @@ input[name="delete"] {
   margin: 10px;
   text-align: center;
 }
+
 button.reset {
   padding: 15px;
   width: 150px;
@@ -117,6 +118,7 @@ button.reset {
   border: none;
   outline: none;
   margin-bottom: 10px;
+  margin-top: 40px;
 }
 
 button.deleteaccount {
@@ -134,7 +136,7 @@ button.deleteaccount {
 }
 
 input[type="submit"]:hover,
-button.resetpassword:hover,
+button.reset:hover,
 button.deleteaccount:hover {
   cursor: pointer;
 }

@@ -5,6 +5,7 @@ import React from "react";
 import countries from "./countries.js";
 import Select from "react-select";
 import UserServices from "../../api-services/User";
+import NavBarTwo from "../../components/NavBar/NavBarTwo";
 
 class Profile extends React.Component {
   constructor(props) {
@@ -41,7 +42,12 @@ class Profile extends React.Component {
     console.log(this.state.country);
     return (
       <div className="Wrapper">
+        <div className="TopPage">
+          <NavBarTwo />
+        </div>
+
         <form className="main">
+          <div className="myprofile">My Profile</div>
           <div className="mainprofile">
             <img src={this.state.user.avatar} className="avatar" />
           </div>
@@ -81,6 +87,9 @@ class Profile extends React.Component {
             </a>
           </div>
         </form>
+        <div class="BottomPage">
+          <Footer />
+        </div>
       </div>
     );
   }

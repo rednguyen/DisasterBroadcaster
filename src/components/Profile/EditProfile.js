@@ -6,6 +6,7 @@ import countries from "./countries.js";
 import Select from "react-select";
 import Link from "@material-ui/core/Link";
 import UserServices from "../../api-services/User";
+import NavBarTwo from "../../components/NavBar/NavBarTwo";
 
 class EditProfile extends React.Component {
   constructor(props) {
@@ -118,7 +119,7 @@ class EditProfile extends React.Component {
     fetch(
       `https://disaster-broadcaster.herokuapp.com/api/disaster_broadcaster/user/${this.state.user.userId}/`,
       {
-        method: "PATCH",
+        method: "DELETE",
         headers: { "Content-type": "application/json" },
         body: JSON.stringify(this.state.user),
       }
@@ -139,62 +140,71 @@ class EditProfile extends React.Component {
     }
 
     return (
-      <div className="container">
-        <form className="main">
-          <div className="profile">
-            <img src={this.state.user.avatar} className="avatar" />
-          </div>
-          <a className="changeprofile" href="/changeavatar">
-            Change profile avatar
-          </a>
-          <div className="formcontent">
-            <div className="label">
-              <label htmlFor="userName">Username</label>
-              <input
-                type="text"
-                id="userName"
-                name="userName"
-                value={this.state.user.username}
-                onChange={(e) => this.handleNameChange(e.target.value)}
-              ></input>
+      <div className="Wrapper">
+        <div className="TopPage">
+          <NavBarTwo />
+        </div>
+        <div className="container">
+          <form className="main">
+            <div className="myprofile">Edit My Profile</div>
+            <div className="profile">
+              <img src={this.state.user.avatar} className="avatar" />
             </div>
-            <div className="label">
-              <label htmlFor="email">Email</label>
+            <a className="changeprofile" href="/changeavatar">
+              Change profile avatar
+            </a>
+            <div className="formcontent">
+              <div className="label">
+                <label htmlFor="userName">Username</label>
+                <input
+                  type="text"
+                  id="userName"
+                  name="userName"
+                  value={this.state.user.username}
+                  onChange={(e) => this.handleNameChange(e.target.value)}
+                ></input>
+              </div>
+              <div className="label">
+                <label htmlFor="email">Email</label>
+                <input
+                  type="text"
+                  id="email"
+                  name="email"
+                  value={this.state.user.email}
+                  onChange={(e) => this.handleEmailChange(e.target.value)}
+                ></input>
+              </div>
+              <div className="label">
+                <label htmlFor="country">Country</label>
+                <Select
+                  name="country"
+                  options={countries}
+                  value={this.state.country_id}
+                  onChange={(value) => this.handleCountryChange(value)}
+                  defaultValue={{ label: "United States", value: "US" }}
+                />
+              </div>
               <input
-                type="text"
-                id="email"
-                name="email"
-                value={this.state.user.email}
-                onChange={(e) => this.handleEmailChange(e.target.value)}
-              ></input>
-            </div>
-            <div className="label">
-              <label htmlFor="country">Country</label>
-              <Select
-                name="country"
-                options={countries}
-                value={this.state.country_id}
-                onChange={(value) => this.handleCountryChange(value)}
-                defaultValue={{ label: "United States", value: "US" }}
+                type="submit"
+                value="Save Changes"
+                name="submit"
+                onClick={this.handleSubmit}
               />
             </div>
-            <input
-              type="submit"
-              value="Save Changes"
-              name="submit"
-              onClick={this.handleSubmit}
-            />
-          </div>
-        </form>
-        <Link href="/createnewpw" variant="body2">
-          <button className="reset">Change Password</button>
-        </Link>
-        <input
-          name="delete"
-          type="submit"
-          value="Delete Account"
-          onClick={this.deleteUser}
-        />
+          </form>
+          <Link href="/createnewpw" variant="body2">
+            <button className="reset">Change Password</button>
+          </Link>
+          <input
+            name="delete"
+            type="submit"
+            value="Delete Account"
+            onClick={this.handleDeleteAccount}
+          />
+        </div>
+        <div class="BottomPage">
+          <Footer />
+        </div>
       </div>
     );
   }

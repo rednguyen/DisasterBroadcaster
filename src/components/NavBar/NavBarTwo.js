@@ -90,7 +90,7 @@ class NavBarTwo extends Component {
             className="btn btn-floating blue darken-3 avatarSmall"
           >
             <img src={this.state.avatar} alt="" className="avatarSmall" />
-          </NavLink>{" "}
+          </NavLink>
         </ul>
       </nav>
     );
