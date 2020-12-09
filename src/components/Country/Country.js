@@ -22,19 +22,21 @@ class Country extends Component {
   }
 
   componentDidMount() {
-    fetch(
-      "https://disaster-broadcaster.herokuapp.com/api/disaster_broadcaster/user/4/"
-    )
-      .then((response) => response.json())
-      .then((data) => {
-        console.log(data);
-        this.setState({
-          //country_id is an object, id is the index
-          country_id: countries[data.country_id],
-          id: data.country_id,
-        });
-        console.log(this.state);
+    const token_data = {
+      token: localStorage.getItem("token"),
+    };
+    let userServices = new UserServices();
+
+    userServices.currentUser(token_data).then((res) => {
+      console.log(res.data);
+      this.setState({
+        user: {
+          country_id: res.data.country_id,
+        },
+        country_id: countries[res.data.country_id],
       });
+      console.log(this.state);
+    });
   }
 
   handleSubmit = (e) => {
