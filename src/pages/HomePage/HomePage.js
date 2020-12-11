@@ -33,7 +33,7 @@ class HomePage extends Component {
     return (
       <div className="Body">
         <div>
-          <Slider/>
+          <Slider newss = {this.state.newss}/>
           <Body posts={this.state.posts} newss={this.state.newss}/>
         </div>
       </div>
