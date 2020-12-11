@@ -35,6 +35,14 @@ export default class UserServices extends ApiServices {
     }
   };
 
+  changePassword = async (reset) => {
+    try {
+      return await axios.post(`${this.url()}/new_password/`, reset);
+    } catch (error) {
+      return this.handleError(error, {});
+    }
+  };
+
   currentUser = async (token) => {
     try {
       return await axios.post(`${this.url()}/current_user/`, token);

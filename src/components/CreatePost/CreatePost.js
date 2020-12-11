@@ -1,10 +1,9 @@
-import React, { Component, useState } from 'react';
-import TextField from '@material-ui/core/TextField';
+import React, { Component } from 'react';
 import { CountryDropdown} from 'react-country-region-selector';
 import Container from '@material-ui/core/Container';
 import UserServices from "../../api-services/User"
 import PostServices from "../../api-services/Post";
-
+import { Redirect } from "react-router-dom";
 import { countries } from "../../api-services/countries";
 
 const postServices = new PostServices();
@@ -18,6 +17,7 @@ class CreatePost extends Component {
             country: '',
             description: '',
             img: null,
+            saved: true
         };
         this.handleSubmit = this.handleSubmit.bind(this);
         this.onChange = this.onChange.bind(this);
@@ -59,7 +59,6 @@ componentDidMount() {
 handleSubmit = (e) => {
     
     e.preventDefault(this.state)
-     //this.setState({username: res.data.id})
 
     let formData = new FormData();
     formData.append('user_id', this.state.username);
@@ -68,17 +67,14 @@ handleSubmit = (e) => {
     formData.append('country_id',countries[this.state.country]);
     
     console.log(this.state)
-    // const post = {
-    //     user_id:5,
-    //     country_id: countries[this.state.country], 
-    //     content: this.state.description,
-    //     media: this.state.img
-    // };
 
     postServices.create(formData)
     .then(
         res => {
             console.log(res);
+            this.setState({
+              saved: true,
+            })
         }).catch(
             err => {
                 console.log(err);     
@@ -87,6 +83,9 @@ handleSubmit = (e) => {
   }
 
     render() {
+        if (this.state.saved) {
+          return <Redirect to={"/profile"} />;
+        }
         const { country } = this.state;
         return(
             <Container component="main" maxWidth = "sm">

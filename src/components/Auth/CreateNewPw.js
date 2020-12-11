@@ -1,13 +1,17 @@
 import React, { Component } from "react";
-import Link from "@material-ui/core/Link";
 import Container from "@material-ui/core/Container";
+import { Redirect } from "react-router-dom";
 import "./auth.css";
 import Grid from "@material-ui/core/Grid";
-import axios from "axios";
+import UserServices from "../../api-services/User";
+
+const userServices = new UserServices();
+
 class CreateNewPw extends Component {
     state = {
         new_password: '',
         message: '',
+        saved: false
         
 }
 handleChange = (e) => {
@@ -23,23 +27,29 @@ handleSubmit = (e) => {
       new_password: this.state.new_password,
       token: token
     };
-    axios.post('https://disaster-broadcaster.herokuapp.com/api/disaster_broadcaster/user/new_password/', reset)
+
+    userServices.changePassword(reset)
     .then(
-        res => {
-            if(res.status !== 200){
-              this.setState({ message: "Invalid!" });
-              throw new Error(res.status)
-            }
-            this.setState({ message: "Successful!" });
-            console.log(res);
-        }).catch(
-            err => {
-                console.log(err);     
-            }
-        )
+      res => {
+          if(res.status !== 200){
+            this.setState({ message: "Invalid!" });
+            throw new Error(res.status)
+          }
+          this.setState({
+            saved: true,
+          })
+          alert("Password reset successful!");
+      }).catch(
+          err => {
+              console.log(err);     
+          }
+      )
   } 
 
   render() {
+    if (this.state.saved) {
+      return <Redirect to={"/profile"} />;
+    }
     return (
         <Container component="main" maxWidth = "sm">
         <div className = "container">

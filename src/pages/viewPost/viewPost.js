@@ -1,19 +1,34 @@
-import React from 'react';
-import NavBar from '../../components/NavBar/NavBar';
+import React, { Component } from 'react';
 import PostBody from '../../components/Post/postBody';
-import Footer from '../../components/Footer/Container/FooterContainer';
 import './viewPost.css';
+import PostServices from "../../api-services/Post";
 
+class ViewPost extends Component {
+  constructor(props) {
+    super(props);
+    this.state ={
+      posts: []
+    };
+  }
 
+  componentDidMount() {
+    let postServices = new PostServices();
+    const token_data = {
+      "token": localStorage.getItem('token')
+    }
+    postServices.getUserPosts(token_data)
+    .then(
+      res => {this.setState({posts: res.data})})
+  }
 
-const viewPost = ()=> {
+  render(){
     return(
-        <div className="Wrapper">
-          <div className ="Top" ></div>
-        <div className="Body"><PostBody /></div>
-        <div class = "BottomPage"></div>
+      <div className="body">
+        <div className="Body"><PostBody posts={this.state.posts}/></div>
       </div>
     )
+  }
+
 }
 
-export default viewPost;
+export default ViewPost;

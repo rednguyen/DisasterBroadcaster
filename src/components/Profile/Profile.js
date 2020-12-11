@@ -1,11 +1,10 @@
 import "./Profile.css";
-import NavBar from "../NavBar/NavBar";
-import Footer from "../Footer/Container/FooterContainer";
 import React from "react";
 import countries from "./countries.js";
 import Select from "react-select";
+import Button from '@material-ui/core/Button';
 import UserServices from "../../api-services/User";
-import NavBarTwo from "../../components/NavBar/NavBarTwo";
+import EditIcon from '@material-ui/icons/Edit';
 
 class Profile extends React.Component {
   constructor(props) {
@@ -44,7 +43,7 @@ class Profile extends React.Component {
       <form className="main">
         <div className="myprofile">My Profile</div>
         <div className="mainprofile">
-          <img src={this.state.user.avatar} className="avatar" />
+          <img src={this.state.user.avatar} className="avatar" alt=''/>
         </div>
         <div className="formcontent">
           <div className="label">
@@ -77,9 +76,15 @@ class Profile extends React.Component {
             />
           </div>
 
-          <a className="editprofile" href="/editprofile">
-            Edit Profile
-          </a>
+        <br></br>
+        <Button variant="contained" color="primary" href="/editprofile" endIcon={<EditIcon />}>
+          Edit Profile
+        </Button>
+        <br></br>
+        <Button variant="contained" color="primary" href="/viewmypost">
+          View My Posts
+        </Button>
+
         </div>
       </form>
     );

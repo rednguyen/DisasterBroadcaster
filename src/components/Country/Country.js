@@ -1,15 +1,10 @@
-import Link from "@material-ui/core/Link";
 import React, { Component } from "react";
-import NavBar from "../NavBar/NavBar";
-import Footer from "../Footer/Container/FooterContainer";
 import Container from "@material-ui/core/Container";
-import Grid from "@material-ui/core/Grid";
-import { TextBoxComponent } from "@syncfusion/ej2-react-inputs";
 import countries from "../Profile/countries.js";
 import Select from "react-select";
-import { Button } from "../Button/Button";
-import NavBarTwo from "../../components/NavBar/NavBarTwo";
+import Button from '@material-ui/core/Button';
 import UserServices from "../../api-services/User";
+import SearchIcon from '@material-ui/icons/Search';
 
 class Country extends Component {
   constructor(props) {
@@ -34,6 +29,7 @@ class Country extends Component {
           country_id: res.data.country_id,
         },
         country_id: countries[res.data.country_id],
+        id: res.data.country_id
       });
       console.log(this.state);
     });
@@ -54,8 +50,6 @@ class Country extends Component {
   };
 
   render() {
-    const { country } = this.state;
-
     return (
       <Container component="main" maxWidth="sm">
         <form onSubmit={this.handleSubmit}>
@@ -72,16 +66,9 @@ class Country extends Component {
                 defaultValue={{ label: "----------", value: "--" }}
               />
             </div>
-
-            <Link variant="body2">
-              <Button
-                className="btn  blue darken-3 z-depth-0"
-                type="button"
-                onClick={this.handleSubmit}
-              >
-                SUBMIT
-              </Button>
-            </Link>
+            <Button variant="contained" color="primary" onClick={this.handleSubmit} endIcon={<SearchIcon />}>
+              SUBMIT
+            </Button>
           </div>
         </form>
       </Container>

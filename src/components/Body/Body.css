@@ -61,11 +61,42 @@
 .headline{
     font-weight: bold;
 }
-.border{
-    border-bottom: 1px solid black;
-    width: 100%;
-  }
 
 .newsImg{
-    padding: 15px;
+    float: left;
+    /* margin: 1rem; */
+    padding: 1rem;
+}
+
+.news{
+    align-items: center;
+    text-align: left;
+    align-content: center;
+    align-self: center;
+}
+
+.news-text{
+  margin-left: 400px;
+  padding: 10px;
+}
+
+.news-text-small{
+  padding: 10px;
+}
+
+.component{
+  background-color: #eee;
+  margin: 2rem;
+  padding: 2rem;
+  overflow: auto;
+}
+
+.thumb{
+  display: block;
+}
+
+.home-media-post{
+  width: 55%;
+  max-width: 100ch;
+  justify-self: center;
 }

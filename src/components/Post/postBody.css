@@ -1,15 +1,12 @@
-h3 {
-    text-align:center;
-}
 .post-img{
-    width:20%;
-    float:left;
+  padding: 1rem;
+  /* width: auto;
+  height: auto; */
 }
 .posts{
     width:50%;
     margin: 150px auto 150px auto;
     text-align:left;
-    
 }
 .Button{
     float:right;

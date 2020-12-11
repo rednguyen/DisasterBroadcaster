@@ -1,90 +1,78 @@
-import React, { Component, useState } from 'react';
+import React, { Component } from 'react';
 import "./postBody.css";
 import Grid from '@material-ui/core/Grid';
 import Button from '@material-ui/core/Button';
-/* Image */
-import PostServices from "../../api-services/Post";
-import UserServices from "../../api-services/User";
-import axios from "axios";
-const postServices = new PostServices();
-const userServices = new UserServices();
+import Link from '@material-ui/core/Link';
+import PublishIcon from '@material-ui/icons/Publish';
+import EditIcon from '@material-ui/icons/Edit';
 
-
-  function mapPost(props) {
-   return(
-     <div className = "posts">
-               <img className="post-img" src = {props.media} alt="Image"></img>
-               <p className = "info">{props.content}</p>
-               <Button className = "Button" variant="outlined" size="medium" color="primary" href="/editpost">
-         Edit Post
-       </Button>
-     </div>
-   )
-  }
 class PostBody extends Component {
   constructor(props) {
     super(props);
-    this.state ={
-        contentArray: []
-    };
-    
+    this.state = { width: 0, height: 0 };
+    this.updateWindowDimensions = this.updateWindowDimensions.bind(this);
+  }
+
+  componentDidMount() {
+    this.updateWindowDimensions();
+    window.addEventListener('resize', this.updateWindowDimensions);
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener('resize', this.updateWindowDimensions);
+  }
+
+  updateWindowDimensions() {
+    this.setState({ width: window.innerWidth, height: window.innerHeight });
   }
 
 
-componentDidMount() {
-  const token_data = {
-    "token": localStorage.getItem('token')
+  makeDate(date) {
+    return new Date(date);
   }
-  postServices.getUserPosts(token_data)
-  .then(
-    res => {
-      console.log(res.data)
-      const content = {
-        user_post: res.data,
+
+  render(){
+    let posts = this.props.posts;
+    let posts_render = '';
+
+    if(posts.length > 0){
+      posts_render = <Grid item sm = "12">
+                          <div className = "post">
+                          <h3>My Posts</h3>
+                          <Button variant="contained" color="primary" href='/post' endIcon={<PublishIcon />}>
+                            Make a Post 
+                          </Button>
+                            {posts.map(post => 
+                              <ul>
+                                <div className="component">
+                                <Link href={"/post/" + post.id.toString()} color="inherit" variant="body2" style={{ textDecoration:'none'}}>
+                                  <li><img className="media-post" src = {post.media} alt=""/></li>
+                                  <li><p style= {{fontSize: 35}}>{post.content}</p></li>
+                                </Link>
+                                <p>Posted on {this.makeDate(post.date_created).toDateString()}</p>
+                                <Button href={"/editpost/" + post.id} variant="contained" color="primary" endIcon={<EditIcon />}>
+                                  Edit Post
+                                </Button>
+                                </div>     
+                              </ul>
+                            )}    
+                          </div>      
+                      </Grid>
+    } else {
+      posts_render =<h2>{'No posts here yet.'}</h2>
     }
-    this.setState({contentArray: content.user_post})
-     console.log(this.state.contentArray)
-     })
-}
 
-
-render(){
-  return(
-    <div>
-      <h3>Post</h3>
-      {(this.state.contentArray).map(mapPost)}
-    </div>
- );
-}
+    return(
+      <div>
+        <Grid container spacing={3}>
+          {this.state.width <= 1620 ? '': <Grid item xs></Grid>}
+          {this.state.width <= 1620 ? <Grid item xs={12}>{posts_render}</Grid>: <Grid item xs={6}>{posts_render}</Grid>} 
+          {this.state.width <= 1620 ? '': <Grid item xs></Grid>} 
+        </Grid>
+      </div>
+    );
+  }
     
 }
-
 
 export default PostBody;
-/* <div>
-<h1> View My Post</h1>
-<div className = "posts">
-    <img className="post-img" src = {SUN_IMG} alt="SUNPOST"></img>
-    <h2>Title 1</h2>
-    <p className = "info">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.</p>
-    <Button className = "Button" variant="outlined" size="medium" color="primary" >
-Edit Post
-</Button>
-</div>
-<div className = "posts">
-    <img className="post-img" src = {WIND_IMG} alt="WINDPOST"></img>
-    <h2>Title 2</h2>
-    <p className = "info">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.</p>
-    <Button className = "Button" variant="outlined" size="medium" color="primary" >
-Edit Post
-</Button>
-</div>
-<div className = "posts">
-    <img className="post-img" src = {HUR_IMG} alt="HURICANE POST"></img>
-    <h2>Title 3</h2>
-    <p className = "info">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.</p>
-    <Button className = "Button" variant="outlined" size="medium" color="primary" >
-Edit Post
-</Button>
-</div>
-</div> */

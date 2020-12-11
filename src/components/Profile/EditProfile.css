@@ -1,6 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Raleway:wght@500&display=swap");
 div.container {
-  height: 100vh;
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -148,4 +147,9 @@ div.formcontent {
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+
+.avatar{
+  border-radius: 5px/10px;
+  border-radius: 50%;
 }

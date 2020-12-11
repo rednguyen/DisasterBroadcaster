@@ -3,9 +3,11 @@ import {Menu} from "./Menu";
 import './NavBar.css'
 import Logo from './Logo.png';
 import { NavLink } from "react-router-dom";
-import {Button} from "../Button/Button"
+// import {Button} from "../Button/Button"
+import Button from '@material-ui/core/Button';
 import { connect } from 'react-redux';
 import * as actions from '../../actions/auth';
+import PersonIcon from '@material-ui/icons/Person';
 
 class NavBar extends Component{
     state = {
@@ -22,13 +24,14 @@ class NavBar extends Component{
       var link = null;
 
       if(this.props.isauthenticated){
-        button = <Button onClick={(e) => {
+        button = <Button variant="contained" color="secondary" onClick={(e) => {
                     e.preventDefault();
                     this.props.onLogout();
-                  }}>
+                  }} 
+                  endIcon={<PersonIcon />}>
                     Logout
-                    <span>&nbsp;&nbsp;</span><i class="fas fa-user"></i>
-                </Button>
+                 </Button>
+
         link = <NavLink
                 to="/profile"
                 className="btn btn-floating blue darken-3 avatarSmall"
@@ -36,11 +39,9 @@ class NavBar extends Component{
                 <img src={this.props.user === null || this.props.user === undefined ? null: this.props.user.avatar} alt="" className="avatarSmall" />
               </NavLink>
       } else {
-        button = <Button onClick={(e) => {e.preventDefault(); window.location.href='/login'}}>
+        button = <Button variant="contained" color="primary" href='/login' endIcon={<PersonIcon />}>
                   Login
-                  <span>&nbsp;&nbsp;</span><i class="fas fa-user"></i>
-                </Button>
-
+                 </Button>
       }
 
         return(

@@ -8,22 +8,24 @@ class AllNews extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      news: []
+      newss: []
     };
   }
 
   componentDidMount() {
     newsServices.list()
       .then(res => {
-        const news = res.data;
-        this.setState({ news });
+        const newss = res.data;
+        this.setState({ newss });
       })
   }
 
   render() {
 
     return (
-      <div className = "Body">{Body([], this.state.news)}</div>
+      <div className="body">
+        <Body posts={[]} newss={this.state.newss}/>
+      </div>
     )
   }
 }

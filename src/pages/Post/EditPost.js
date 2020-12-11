@@ -1,12 +1,9 @@
-import React, { Component, useState } from "react";
-import TextField from "@material-ui/core/TextField";
+import React from "react";
 import { CountryDropdown } from "react-country-region-selector";
 import Container from "@material-ui/core/Container";
 import PostServices from "../../api-services/Post";
 import { countries } from "../../api-services/countries";
 import countriesArray from "./countries.js";
-import UserServices from "../../api-services/User";
-import axios from "axios";
 
 const postServices = new PostServices();
 
@@ -35,21 +32,6 @@ class EditPost extends React.Component {
           img: data.media,
         });
       })
-
-
-    // fetch(
-    //   "https://disaster-broadcaster.herokuapp.com/api/disaster_broadcaster/post/39/"
-    // )
-    //   .then((response) => response.json())
-    //   .then((data) => {
-    //     console.log(data);
-    //     this.setState({
-    //       country: countriesArray[data.country_id.id],
-    //       description: data.content,
-    //       img: data.media,
-    //     });
-    //     console.log(this.state);
-    //   });
   }
 
   onChange(e) {
@@ -74,18 +56,15 @@ class EditPost extends React.Component {
 
   handleSubmit = (e) => {
     e.preventDefault(this.state);
-    let formData = new FormData();
-    formData.append("media", this.state.img, this.state.img.name);
-    formData.append("content", this.state.description);
-    formData.append("country_id", countries[this.state.country]);
+
     const post = {
       country_id: countries[this.state.country],
       content: this.state.description,
       media: this.state.img,
     };
-
+    console.log(post);
     postServices
-      .partial_update(this.state.post.id, formData)
+      .partial_update(this.state.post.id, post)
       .then((res) => {
         console.log(res);
       })
@@ -96,13 +75,12 @@ class EditPost extends React.Component {
 
 
   render() {
-    const { country } = this.state;
     return (
       <Container component="main" maxWidth="sm">
         <form onSubmit={this.handleSubmit}>
           <div className="post">
             <h5>EDIT A POST</h5>
-            <img className="thumbnail" src={this.state.img} />
+            <img className="media-post" src={this.state.img} alt=''/>
             <input
               type="file"
               name="myImage"

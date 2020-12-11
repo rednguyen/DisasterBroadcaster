@@ -1,8 +1,8 @@
 import "./ChangeAvatar.css";
-import NavBar from "../NavBar/NavBar";
-import Footer from "../Footer/Container/FooterContainer";
 import React from "react";
+import { Redirect } from "react-router-dom";
 import UserServices from "../../api-services/User";
+const userServices = new UserServices();
 
 class ChangeAvatar extends React.Component {
   constructor(props) {
@@ -10,13 +10,13 @@ class ChangeAvatar extends React.Component {
     this.state = {
       user: {},
       original: "",
+      saved: false
     };
   }
   componentDidMount() {
     const token_data = {
       token: localStorage.getItem("token"),
     };
-    let userServices = new UserServices();
 
     userServices.currentUser(token_data).then((res) => {
       this.setState({
@@ -51,24 +51,18 @@ class ChangeAvatar extends React.Component {
     document.querySelector("div.profile").appendChild(newAvatar);
   };
 
-  handleSubmit = () => {
-    // console.log("before submit:", this.state.user);
-    // fetch(
-    //   `https://disaster-broadcaster.herokuapp.com/api/disaster_broadcaster/user/${this.state.user.userId}`,
-    //   {
-    //     method: "PATCH",
-    //     headers: { "Content-type": "application/json" },
-    //     body: JSON.stringify(this.state.user),
-    //   }
-    // )
-    //   .then((response) => {
-    //     console.log(response.status);
-    //     return response.json();
-    //   })
-    //   .then((data) => {
-    //     console.log(data);
-    //     window.location.href = `/editprofile`;
-    //   });
+  handleSubmit = (e) => {
+    e.preventDefault();
+    userServices.partial_update(this.state.user.userId, this.state.user)
+    .then(res => {
+      if(res.status !== 200){
+        throw new Error(res.status)
+      }
+      console.log(res.status)
+      this.setState({
+        saved: true,
+      })
+    })
   };
 
   handleDelete = () => {
@@ -82,6 +76,10 @@ class ChangeAvatar extends React.Component {
   };
 
   render() {
+    if (this.state.saved) {
+      return <Redirect to={"/editprofile"} />;
+    }
+
     let images = [
       {
         name: "moon",
@@ -109,7 +107,7 @@ class ChangeAvatar extends React.Component {
         <div className="main">
           <p className="chooseAnAvatar">Choose an avatar</p>
           <div className="profile">
-            <img src={this.state.original} className="avatar" />
+            <img src={this.state.original} className="avatar" alt=''/>
           </div>
           <div className="avatarOptions">
             {images.map((image, i) => {
@@ -120,6 +118,7 @@ class ChangeAvatar extends React.Component {
                   onClick={(e) => {
                     this.handleChange(e.target.currentSrc);
                   }}
+                  alt=''
                 />
               );
             })}

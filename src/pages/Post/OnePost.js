@@ -25,7 +25,7 @@ class OnePost extends Component {
   }
 
   render() {
-    const { post, isLoaded } = this.state;
+    const isLoaded = this.state.isLoaded;
     if (isLoaded) {
       return (
         <div className = "BodyPost"><Post {...this.state}/></div>
