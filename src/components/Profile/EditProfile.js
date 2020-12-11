@@ -4,9 +4,9 @@ import countries from "./countries.js";
 import Select from "react-select";
 import UserServices from "../../api-services/User";
 import { Redirect } from "react-router-dom";
-import Button from '@material-ui/core/Button';
-import SaveIcon from '@material-ui/icons/Save';
-import EditIcon from '@material-ui/icons/Edit';
+import Button from "@material-ui/core/Button";
+import SaveIcon from "@material-ui/icons/Save";
+import EditIcon from "@material-ui/icons/Edit";
 
 const userServices = new UserServices();
 
@@ -82,16 +82,17 @@ class EditProfile extends React.Component {
 
   handleSubmit = (e) => {
     e.preventDefault();
-    userServices.partial_update(this.state.user.userId, this.state.user)
-    .then(res => {
-      if(res.status !== 200){
-        throw new Error(res.status)
-      }
-      console.log(res.status)
-      this.setState({
-        saved: true,
-      })
-    })
+    userServices
+      .partial_update(this.state.user.userId, this.state.user)
+      .then((res) => {
+        if (res.status !== 200) {
+          throw new Error(res.status);
+        }
+        console.log(res.status);
+        this.setState({
+          saved: true,
+        });
+      });
   };
 
   logout() {
@@ -113,15 +114,16 @@ class EditProfile extends React.Component {
 
   render() {
     if (this.state.saved) {
-      return <Redirect to={"/profile"} />;
+      // return <Redirect to={"/profile"} />;
+      return window.location.reload();
     }
-    const token =  localStorage.getItem('token');
+    const token = localStorage.getItem("token");
     return (
       <div className="container">
         <form className="main">
           <div className="myprofile">Edit My Profile</div>
           <div className="profile">
-            <img src={this.state.user.avatar} className="avatar" alt=''/>
+            <img src={this.state.user.avatar} className="avatar" alt="" />
           </div>
           <a className="changeprofile" href="/changeavatar">
             Change profile avatar
@@ -161,11 +163,21 @@ class EditProfile extends React.Component {
           </div>
         </form>
         <br></br>
-        <Button variant="contained" color="primary" onClick={this.handleSubmit} endIcon={<SaveIcon />}>
+        <Button
+          variant="contained"
+          color="primary"
+          onClick={this.handleSubmit}
+          endIcon={<SaveIcon />}
+        >
           Save Changes
         </Button>
         <br></br>
-        <Button variant="contained" color="primary" href={"/createnewpw/" + token} endIcon={<EditIcon />}>
+        <Button
+          variant="contained"
+          color="primary"
+          href={"/createnewpw/" + token}
+          endIcon={<EditIcon />}
+        >
           Change Password
         </Button>
       </div>

@@ -10,7 +10,7 @@ class ChangeAvatar extends React.Component {
     this.state = {
       user: {},
       original: "",
-      saved: false
+      saved: false,
     };
   }
   componentDidMount() {
@@ -53,16 +53,25 @@ class ChangeAvatar extends React.Component {
 
   handleSubmit = (e) => {
     e.preventDefault();
-    userServices.partial_update(this.state.user.userId, this.state.user)
-    .then(res => {
-      if(res.status !== 200){
-        throw new Error(res.status)
-      }
-      console.log(res.status)
-      this.setState({
-        saved: true,
-      })
-    })
+    userServices
+      .partial_update(this.state.user.userId, this.state.user)
+      .then((res) => {
+        if (res.status !== 200) {
+          throw new Error(res.status);
+        }
+
+        const user = {
+          id: res.data.id,
+          username: res.data.username,
+          avatar: res.data.avatar,
+        };
+        localStorage.setItem("user", JSON.stringify(user));
+
+        console.log(res.status);
+        this.setState({
+          saved: true,
+        });
+      });
   };
 
   handleDelete = () => {
@@ -107,7 +116,7 @@ class ChangeAvatar extends React.Component {
         <div className="main">
           <p className="chooseAnAvatar">Choose an avatar</p>
           <div className="profile">
-            <img src={this.state.original} className="avatar" alt=''/>
+            <img src={this.state.original} className="avatar" alt="" />
           </div>
           <div className="avatarOptions">
             {images.map((image, i) => {
@@ -118,7 +127,7 @@ class ChangeAvatar extends React.Component {
                   onClick={(e) => {
                     this.handleChange(e.target.currentSrc);
                   }}
-                  alt=''
+                  alt=""
                 />
               );
             })}
