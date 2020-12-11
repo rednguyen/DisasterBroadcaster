@@ -17,7 +17,6 @@ class EditProfile extends React.Component {
       saved: false,
       country_id: {}
     };
-    this.logout = this.logout.bind(this);
   }
   componentDidMount() {
     const token_data = {
