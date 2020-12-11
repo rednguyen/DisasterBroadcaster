@@ -26,7 +26,6 @@ import ChangeAvatar from "./components/Profile/ChangeAvatar.js";
 import EditPost from "./pages/Post/EditPost.js";
 import ViewPost from "./pages/viewPost/viewPost.js";
 import DonateSection from "./components/Donate/Donate";
-import Donate from "./components/Donate/Donate";
 
 const BaseRouter = () => (
   <div>

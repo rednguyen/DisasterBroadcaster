@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import Container from "@material-ui/core/Container";
-import Grid from "@material-ui/core/Grid";
 import countries from "../Profile/countries.js";
 import Select from "react-select";
 import Button from '@material-ui/core/Button';
@@ -51,8 +50,6 @@ class Country extends Component {
   };
 
   render() {
-    const { country } = this.state;
-
     return (
       <Container component="main" maxWidth="sm">
         <form onSubmit={this.handleSubmit}>

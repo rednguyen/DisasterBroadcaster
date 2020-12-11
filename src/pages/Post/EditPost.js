@@ -1,5 +1,4 @@
-import React, { Component, useState } from "react";
-import TextField from "@material-ui/core/TextField";
+import React from "react";
 import { CountryDropdown } from "react-country-region-selector";
 import Container from "@material-ui/core/Container";
 import PostServices from "../../api-services/Post";
@@ -33,21 +32,6 @@ class EditPost extends React.Component {
           img: data.media,
         });
       })
-
-
-    // fetch(
-    //   "https://disaster-broadcaster.herokuapp.com/api/disaster_broadcaster/post/39/"
-    // )
-    //   .then((response) => response.json())
-    //   .then((data) => {
-    //     console.log(data);
-    //     this.setState({
-    //       country: countriesArray[data.country_id.id],
-    //       description: data.content,
-    //       img: data.media,
-    //     });
-    //     console.log(this.state);
-    //   });
   }
 
   onChange(e) {
@@ -91,13 +75,12 @@ class EditPost extends React.Component {
 
 
   render() {
-    const { country } = this.state;
     return (
       <Container component="main" maxWidth="sm">
         <form onSubmit={this.handleSubmit}>
           <div className="post">
             <h5>EDIT A POST</h5>
-            <img className="media-post" src={this.state.img} />
+            <img className="media-post" src={this.state.img} alt=''/>
             <input
               type="file"
               name="myImage"

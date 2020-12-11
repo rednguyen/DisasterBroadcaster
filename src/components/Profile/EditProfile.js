@@ -121,7 +121,7 @@ class EditProfile extends React.Component {
         <form className="main">
           <div className="myprofile">Edit My Profile</div>
           <div className="profile">
-            <img src={this.state.user.avatar} className="avatar" />
+            <img src={this.state.user.avatar} className="avatar" alt=''/>
           </div>
           <a className="changeprofile" href="/changeavatar">
             Change profile avatar

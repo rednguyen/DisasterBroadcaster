@@ -1,6 +1,4 @@
-import NavBar from '../../components/NavBar/NavBar';
 import GuideBody from '../../components/Guide/GuideBody';
-import Footer from '../../components/Footer/Container/FooterContainer';
 import './Guide.css';
 import { Component } from 'react';
 

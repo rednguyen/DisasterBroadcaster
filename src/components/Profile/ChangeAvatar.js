@@ -1,6 +1,4 @@
 import "./ChangeAvatar.css";
-import NavBar from "../NavBar/NavBar";
-import Footer from "../Footer/Container/FooterContainer";
 import React from "react";
 import UserServices from "../../api-services/User";
 
@@ -109,7 +107,7 @@ class ChangeAvatar extends React.Component {
         <div className="main">
           <p className="chooseAnAvatar">Choose an avatar</p>
           <div className="profile">
-            <img src={this.state.original} className="avatar" />
+            <img src={this.state.original} className="avatar" alt=''/>
           </div>
           <div className="avatarOptions">
             {images.map((image, i) => {
@@ -120,6 +118,7 @@ class ChangeAvatar extends React.Component {
                   onClick={(e) => {
                     this.handleChange(e.target.currentSrc);
                   }}
+                  alt=''
                 />
               );
             })}

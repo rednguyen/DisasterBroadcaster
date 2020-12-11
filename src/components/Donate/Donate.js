@@ -2,19 +2,11 @@ import React, { Component } from "react";
 import "materialize-css/dist/css/materialize.min.css";
 import 'materialize-css'
 import Grid from '@material-ui/core/Grid';
-import Paper from '@material-ui/core/Paper';
-import {Button} from '../Button/Button';
 import "./Donate.css";
 import Org1 from "./ARC.png";
 import Org2 from "./AV.png";
 import Org3 from "./FA.png";
 import Org4 from "./SA.png";
-import PostServices from "../../api-services/Organization";
-
-
-const classes = {
-    Paper:{padding: 20, marginTop: 10, marginBottom: 10}
-}
 
 class Donate extends Component {
   

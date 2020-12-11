@@ -119,7 +119,7 @@ class SignUp extends Component {
                 <div className="container">
                     <p className="chooseAnAvatar">Choose an avatar</p>
                     <div className="profile">
-                      <img src={images[3].src} className="avatar" />
+                      <img src={images[3].src} className="avatar" alt=''/>
                     </div>
                     <div className="avatarOptions">
                       {images.map((image, i) => {
@@ -130,6 +130,7 @@ class SignUp extends Component {
                             onClick={(e) => {
                               this.handleChangeAvatar(e.target.currentSrc);
                             }}
+                            alt=''
                           />
                         );
                       })}

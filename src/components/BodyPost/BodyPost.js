@@ -1,9 +1,7 @@
-import React, { userState } from 'react';
+import React from 'react';
 import "./BodyPost.css";
-import Link from '@material-ui/core/Link';
 import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
-import {Button} from '../Button/Button';
 import { IconButton } from '@material-ui/core';
 import { Component } from 'react';
 import ThumbUpOutlinedIcon from '@material-ui/icons/ThumbUpOutlined';

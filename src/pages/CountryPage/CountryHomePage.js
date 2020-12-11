@@ -1,9 +1,6 @@
-import NavBar from '../../components/NavBar/NavBar';
 import Body from '../../components/Body/Body';
-import Footer from '../../components/Footer/Container/FooterContainer';
 import { Component } from 'react';
 import Slider from '../../components/Slider';
-import Donate from '../../components/Donate/Donate';
 import NewsServices from "../../api-services/News";
 import PostServices from "../../api-services/Post";
 

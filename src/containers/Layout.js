@@ -2,7 +2,6 @@ import React from 'react';
 import { withRouter } from 'react-router-dom';
 import NavBar from '../components/NavBar/NavBar';
 import { default as StyledFooter } from '../components/Footer/Container/FooterContainer';
-import { Layout } from 'antd';
 import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
 

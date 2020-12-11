@@ -53,7 +53,7 @@ class Body extends Component {
                             <div className='component'>
                             <a href={news.url} className = "a">
                             
-                            <div className='thumb'><img className = "newsImg" src = {news.media} width="400px" height="270px"/></div>
+                            <div className='thumb'><img className = "newsImg" src = {news.media} width="400px" height="270px" alt=''/></div>
                             <h4 className="headline">{news.headline}</h4>
                             {this.state.width <= 1620 ? <div className='news-text-small'>{news.content}</div> : <div className='news-text'>{news.content}</div>}     
                             
@@ -81,11 +81,11 @@ class Body extends Component {
                               <ul>
                                 <div className='component'>
                                   <Link href={"/post/" + post.id.toString()} color="inherit" variant="body2" style={{ textDecoration:'none'}}>
-                                  <div><p style = {{fontSize: 20}}>{post.user_id.username}</p><img src = {post.user_id.avatar} width="5%" height="5%"/></div>
+                                  <div><p style = {{fontSize: 20}}>{post.user_id.username}</p><img src = {post.user_id.avatar} width="5%" height="5%" alt=''/></div>
                                   
                                   <p Paper style = {{fontSize: 20}}>
                                   <li>{post.content}</li>
-                                  <li><img className = "home-media-post" src = {post.media}/></li>
+                                  <li><img className = "home-media-post" src = {post.media} alt=''/></li>
                                   </p>
                                   </Link>
                                   <p>Posted on {this.makeDate(post.date_created).toDateString()}</p>

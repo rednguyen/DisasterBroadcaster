@@ -43,7 +43,7 @@ class Profile extends React.Component {
       <form className="main">
         <div className="myprofile">My Profile</div>
         <div className="mainprofile">
-          <img src={this.state.user.avatar} className="avatar" />
+          <img src={this.state.user.avatar} className="avatar" alt=''/>
         </div>
         <div className="formcontent">
           <div className="label">

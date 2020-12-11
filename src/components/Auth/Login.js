@@ -106,7 +106,7 @@ const mapStateToProps = (state) => {
   return {
     loading: state.loading,
     error: state.error,
-    isauthenticated: state.token !== null && state.token != undefined,
+    isauthenticated: state.token !== null && state.token !== undefined,
   };
 };
 
