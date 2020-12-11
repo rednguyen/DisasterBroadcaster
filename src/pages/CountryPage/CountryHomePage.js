@@ -15,7 +15,7 @@ class CountryHomePage extends Component {
     super(props);
     this.state = {
       posts: [],
-      news: []
+      newss: []
     };
   }
 
@@ -28,8 +28,8 @@ class CountryHomePage extends Component {
 
     newsServices.getCountryNews(parseInt(this.props.match.params.id))
       .then(res => {
-        const news = res.data;
-        this.setState({ news });
+        const newss = res.data;
+        this.setState({ newss });
       })
   }
 
@@ -38,7 +38,7 @@ class CountryHomePage extends Component {
     return (
       <div>
         <Slider/>
-        <div className = "Body">{Body(this.state.posts, this.state.news)}</div>
+        <Body posts={this.state.posts} newss={this.state.newss}/>
       </div>
     )
   }

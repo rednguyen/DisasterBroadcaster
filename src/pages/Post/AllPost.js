@@ -23,7 +23,9 @@ class AllPost extends Component {
   render() {
 
     return (
-      <div className = "Body">{Body(this.state.posts, [])}</div>
+      <div className="body">
+        <Body newss={[]}  posts={this.state.posts}/>
+      </div>
     )
   }
 }

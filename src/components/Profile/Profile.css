@@ -77,8 +77,8 @@ input[name="country"] {
   color: black;
 }
 
-button.editprofile,
-a.editprofile {
+button.profile,
+a.profile {
   padding: 15px;
   width: 150px;
   border-radius: 0px;

@@ -153,8 +153,10 @@ class Post extends Component {
     var d = this.makeDate(post.date_created);
     return (
       <div>
-      <Grid container>
-        <Grid item sm = {12}>
+      <Grid container spacing={3}>
+        <Grid item xs>
+        </Grid>
+        <Grid item xs={6}>
             <Paper style = {{padding: 10}}>
             <img className="header-post" src={post.user_id.avatar} alt="" width="50px" height="50px"/>
             <p className="credential-post header-post">Posted by {post.user_id.username} on {d.toDateString()}</p>
@@ -176,11 +178,16 @@ class Post extends Component {
                 <img className="media-post" src={post.media} alt=""/>
                 <p className="content-post">{post.content}</p>
             </div>
-            
             </Paper>
-            
         </Grid>
-        <Grid item sm = {12}>
+        <Grid item xs>
+        </Grid>
+      </Grid>
+
+      <Grid container spacing={3}>
+          <Grid item xs>
+          </Grid>
+          <Grid item xs={6}>
           <Paper style = {{padding: 10}}>
             <div text-align='center'>
               <div className="comment-header">
@@ -214,8 +221,11 @@ class Post extends Component {
               </div>
             </div>
           </Paper>
+          </Grid>
+          <Grid item xs>
+          </Grid>
         </Grid>
-      </Grid>
+      
       </div>
     )
   }

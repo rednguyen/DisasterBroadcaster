@@ -1,13 +1,14 @@
 import "./EditProfile.css";
-import NavBar from "../NavBar/NavBar";
-import Footer from "../Footer/Container/FooterContainer";
 import React from "react";
 import countries from "./countries.js";
 import Select from "react-select";
-import Link from "@material-ui/core/Link";
 import UserServices from "../../api-services/User";
-import NavBarTwo from "../../components/NavBar/NavBarTwo";
-import { Button } from "../Button/Button";
+import { Redirect } from "react-router-dom";
+import Button from '@material-ui/core/Button';
+import SaveIcon from '@material-ui/icons/Save';
+import EditIcon from '@material-ui/icons/Edit';
+
+const userServices = new UserServices();
 
 class EditProfile extends React.Component {
   constructor(props) {
@@ -81,46 +82,19 @@ class EditProfile extends React.Component {
 
   handleSubmit = (e) => {
     e.preventDefault();
-
-    // fetch(
-    //   `https://disaster-broadcaster.herokuapp.com/api/disaster_broadcaster/user/${this.state.user.userId}/`,
-    //   {
-    //     method: "PATCH",
-    //     headers: { "Content-type": "application/json" },
-    //     body: JSON.stringify(this.state.user),
-    //   }
-    // )
-    //   .then((response) => {
-    //     console.log(response.status);
-    //     return response.json();
-    //   })
-    //   .then((data) =>
-    //     this.setState({
-    //       saved: true,
-    //     })
-    //   );
-  };
-
-  deleteUser = (e) => {
-    e.preventDefault();
-
-    var deleted = "DELETED" + this.state.user.username;
-    this.setState({
-      user: {
-        username: deleted,
-        email: this.state.user.email,
-        country_id: this.state.user.country_id,
-        avatar: this.state.user.avatar,
-        userId: this.state.user.userId,
-      },
-    });
-    setTimeout(() => {
-      this.handleDeleteAccount();
-    }, 1000);
+    userServices.partial_update(this.state.user.userId, this.state.user)
+    .then(res => {
+      if(res.status !== 200){
+        throw new Error(res.status)
+      }
+      console.log(res.status)
+      this.setState({
+        saved: true,
+      })
+    })
   };
 
   logout() {
-    // userServices.logout()
     sessionStorage.setItem("userData", "");
     sessionStorage.clear();
     this.setState({
@@ -137,27 +111,11 @@ class EditProfile extends React.Component {
     }
   }
 
-  handleDeleteAccount = () => {
-    fetch(
-      `https://disaster-broadcaster.herokuapp.com/api/disaster_broadcaster/user/${this.state.user.userId}/`,
-      {
-        method: "DELETE",
-      }
-    )
-      .then((response) => {
-        response.text();
-      })
-      .then((response) => {
-        console.log(response);
-      })
-      .then(this.logout);
-  };
-
   render() {
     if (this.state.saved) {
-      window.location.href = "/profile";
+      return <Redirect to={"/profile"} />;
     }
-
+    const token =  localStorage.getItem('token');
     return (
       <div className="container">
         <form className="main">
@@ -168,6 +126,7 @@ class EditProfile extends React.Component {
           <a className="changeprofile" href="/changeavatar">
             Change profile avatar
           </a>
+          <br></br>
           <div className="formcontent">
             <div className="label">
               <label htmlFor="userName">Username</label>
@@ -199,26 +158,15 @@ class EditProfile extends React.Component {
                 defaultValue={{ label: "United States", value: "US" }}
               />
             </div>
-            <input
-              type="submit"
-              value="Save Changes"
-              name="submit"
-              onClick={this.handleSubmit}
-            />
           </div>
         </form>
-        <Link href="/createnewpw" variant="body2">
-          <button className="reset">Change Password</button>
-        </Link>
-        {/* <input
-            name="delete"
-            type="submit"
-            value="Delete Account"
-            onClick={this.handleDeleteAccount}
-          /> */}
-        <Button onClick={this.handleDeleteAccount}>
-          Delete Account<span>&nbsp;&nbsp;</span>
-          <i class="fas fa-user"></i>
+        <br></br>
+        <Button variant="contained" color="primary" onClick={this.handleSubmit} endIcon={<SaveIcon />}>
+          Save Changes
+        </Button>
+        <br></br>
+        <Button variant="contained" color="primary" href={"/createnewpw/" + token} endIcon={<EditIcon />}>
+          Change Password
         </Button>
       </div>
     );
