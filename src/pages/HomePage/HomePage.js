@@ -1,7 +1,7 @@
 import Body from "../../components/Body/Body";
 import "./HomePage.css";
 import { Component } from "react";
-// import Slider from "../../components/Slider";
+import Slider from "../../components/Slider";
 import NewsServices from "../../api-services/News";
 import PostServices from "../../api-services/Post";
 import "../../components/NavBar/NavBar.css";
@@ -33,7 +33,7 @@ class HomePage extends Component {
     return (
       <div className="Body">
         <div>
-          {/* <Slider newss={this.state.newss}/> */}
+          <Slider newss = {this.state.newss}/>
           <Body posts={this.state.posts} newss={this.state.newss}/>
         </div>
       </div>

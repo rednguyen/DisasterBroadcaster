@@ -61,7 +61,6 @@ class EditPost extends React.Component {
     e.preventDefault(this.state);
 
     let formData = new FormData();
-    console.log(this.state.img)
     if(this.state.img_uploaded !== null){
       formData.append("media", this.state.img, this.state.img.name)
     }
@@ -84,6 +83,7 @@ class EditPost extends React.Component {
 
   render() {
     if (this.state.saved) {
+      alert("Post update successful!");
       return <Redirect to={"/viewmypost"} />;
     }
     return (

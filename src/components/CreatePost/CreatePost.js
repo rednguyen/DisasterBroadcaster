@@ -52,7 +52,6 @@ class CreatePost extends Component {
           userServices.currentUser(token_data)
           .then(
             res => {
-              console.log(res.data.id)
             this.setState({
               user_id: res.data.id,
               country_id: res.data.country_id,
@@ -62,7 +61,6 @@ class CreatePost extends Component {
      }
 
     handleSubmit = (e) => {
-        
         e.preventDefault(this.state)
 
         let formData = new FormData();
@@ -72,8 +70,6 @@ class CreatePost extends Component {
         }
         formData.append('content',this.state.content);
         formData.append('country_id',this.state.country_id);
-        
-        console.log(this.state)
 
         postServices.create(formData)
         .then(
@@ -91,6 +87,7 @@ class CreatePost extends Component {
 
     render() {
         if (this.state.saved) {
+          alert("Post created successfully!");
           return <Redirect to={"/viewmypost"} />;
         }
 

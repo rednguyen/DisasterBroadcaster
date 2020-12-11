@@ -5,8 +5,6 @@ import CreateNewPw from '../../components/Auth/CreateNewPw';
 class CreateNewPwPage extends Component {
     render(){
       const token =  localStorage.getItem('token');
-      console.log(token);
-      console.log(this.props.match.params.token);
       if(token !== null && token === this.props.match.params.token){
         return (
           <div className = "PwReset"><CreateNewPw/></div>

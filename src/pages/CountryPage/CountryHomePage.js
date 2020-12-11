@@ -4,7 +4,7 @@ import NewsServices from "../../api-services/News";
 import PostServices from "../../api-services/Post";
 import CountryServices from "../../api-services/Country";
 
-const countryServices = new CountryServices;
+const countryServices = new CountryServices();
 const newsServices = new NewsServices();
 const postServices = new PostServices();
 

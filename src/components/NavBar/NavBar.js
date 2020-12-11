@@ -3,7 +3,6 @@ import {Menu} from "./Menu";
 import './NavBar.css'
 import Logo from './Logo.png';
 import { NavLink } from "react-router-dom";
-// import {Button} from "../Button/Button"
 import Button from '@material-ui/core/Button';
 import { connect } from 'react-redux';
 import * as actions from '../../actions/auth';
@@ -77,7 +76,3 @@ const mapDispatchToProps = dispatch => {
 }
 
 export default connect(null, mapDispatchToProps)(NavBar);
-
-
-
-

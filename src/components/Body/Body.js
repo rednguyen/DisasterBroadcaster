@@ -43,7 +43,8 @@ class Body extends Component {
 
 
     if(newss.length > 0){
-      newss_render =  <Paper style = {{padding: 10}}>
+      newss_render =  
+      <Paper style = {{padding: 10}}>
                         <Link href="/allnews" variant="body2">
                           <h1 className = "col-bd1">NEWS</h1>
                         </Link>
@@ -52,11 +53,9 @@ class Body extends Component {
                           <ul>
                             <div className='component'>
                             <a href={news.url} className = "a">
-                            
                             <div className='thumb'><img className = "newsImg" src = {news.media} width="400px" height="270px" alt=''/></div>
                             <h4 className="headline">{news.headline}</h4>
                             {this.state.width <= 1620 ? <div className='news-text-small'>{news.content}</div> : <div className='news-text'>{news.content}</div>}     
-                            
                             </a>
                             </div>
                           </ul>

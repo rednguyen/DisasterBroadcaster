@@ -22,7 +22,6 @@ class PwReset extends Component {
     } 
     handleSubmit = (e) => {
         e.preventDefault(this.state)
-        console.log(this.state)
         const user = { 
             email: this.state.email,
             answer: this.state.security_question 
