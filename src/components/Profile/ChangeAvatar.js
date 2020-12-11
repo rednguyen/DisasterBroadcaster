@@ -58,6 +58,12 @@ class ChangeAvatar extends React.Component {
       if(res.status !== 200){
         throw new Error(res.status)
       }
+      const user = {
+        id: res.data.id,
+        username: res.data.username,
+        avatar: res.data.avatar
+      }
+      localStorage.setItem('user', JSON.stringify(user));
       console.log(res.status)
       this.setState({
         saved: true,

@@ -1,9 +1,10 @@
 import React from "react";
-import { CountryDropdown } from "react-country-region-selector";
 import Container from "@material-ui/core/Container";
 import PostServices from "../../api-services/Post";
-import { countries } from "../../api-services/countries";
-import countriesArray from "./countries.js";
+import TextField from '@material-ui/core/TextField';
+import { Redirect } from "react-router-dom";
+import countries from "../../components/Profile/countries";
+import Select from "react-select";
 
 const postServices = new PostServices();
 
@@ -11,10 +12,13 @@ class EditPost extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      country: "",
+      country_id: null,
+      country_name: null,
       description: "",
       img: null,
-      post: {}
+      post: {},
+      saved: false,
+      img_uploaded: null
     };
     this.handleSubmit = this.handleSubmit.bind(this);
     this.onChange = this.onChange.bind(this)
@@ -27,26 +31,17 @@ class EditPost extends React.Component {
         const data = res.data;
         this.setState({ 
           post: data,
-          country: countriesArray[data.country_id.id],
+          country_id: data.country_id.id,
+          country_name: countries[data.country_id.id],
           description: data.content,
-          img: data.media,
+          img: data.media
         });
       })
   }
 
   onChange(e) {
-    this.setState({ img: e.target.files[0] });
+    this.setState({ img: e.target.files[0], img_uploaded: URL.createObjectURL(e.target.files[0]) });
   }
-
-  selectCountry(val) {
-    this.setState({ country: val });
-  }
-
-  handleCountryChange = (country) => {
-    this.setState({
-      country: country,
-    });
-  };
 
   handleChange = (e) => {
     this.setState({
@@ -54,19 +49,32 @@ class EditPost extends React.Component {
     });
   };
 
+  handleCountryChange = (country_id) => {
+    var index = countries.indexOf(country_id);
+    this.setState({
+      country_name: countries[index],
+      country_id: country_id,
+    });
+  };
+
   handleSubmit = (e) => {
     e.preventDefault(this.state);
 
-    const post = {
-      country_id: countries[this.state.country],
-      content: this.state.description,
-      media: this.state.img,
-    };
-    console.log(post);
+    let formData = new FormData();
+    console.log(this.state.img)
+    if(this.state.img_uploaded !== null){
+      formData.append("media", this.state.img, this.state.img.name)
+    }
+    formData.append("content", this.state.description);
+    formData.append("country_id", this.state.country_id);
+
     postServices
-      .partial_update(this.state.post.id, post)
+      .partial_update(this.state.post.id, formData)
       .then((res) => {
         console.log(res);
+        this.setState({
+          saved: true,
+        })
       })
       .catch((err) => {
         console.log(err);
@@ -75,12 +83,28 @@ class EditPost extends React.Component {
 
 
   render() {
+    if (this.state.saved) {
+      return <Redirect to={"/viewmypost"} />;
+    }
     return (
       <Container component="main" maxWidth="sm">
         <form onSubmit={this.handleSubmit}>
           <div className="post">
             <h5>EDIT A POST</h5>
-            <img className="media-post" src={this.state.img} alt=''/>
+            <div>
+            <Select
+                name="country"
+                options={countries}
+                value={this.state.country_name}
+                onChange={(value) => this.handleCountryChange(value)}
+                defaultValue={{ label: "----------", value: "--" }}
+              />
+            </div>
+
+            <br></br>
+
+            {this.state.img_uploaded !== null ? <img className="media-post" src={this.state.img_uploaded} alt=''/> : <img className="media-post" src={this.state.img} alt=''/>}
+
             <input
               type="file"
               name="myImage"
@@ -90,26 +114,19 @@ class EditPost extends React.Component {
             />
 
             <h6>CONTENT</h6>
-            <div className="TextandCountry">
-              <textarea
-                rows="50"
-                cols="50"
-                type="text"
-                id="description"
-                value={this.state.description}
+            <div>
+              <TextField
+                id="content"
+                multiline
                 onChange={this.handleChange}
-              />
+                rows={6}
+                fullWidth="true"
+                defaultValue={this.state.description}
+                variant="outlined"/>
+              
             </div>
 
             <h6>COUNTRY</h6>
-            <div>
-              <CountryDropdown
-                className="browser-default"
-                id="country"
-                value={this.state.country}
-                onChange={(val) => this.selectCountry(val)}
-              />
-            </div>
 
             <div className="input-field">
               <button className="btn  blue darken-3 z-depth-0">

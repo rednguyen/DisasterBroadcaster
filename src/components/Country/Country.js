@@ -31,7 +31,9 @@ class Country extends Component {
         country_id: countries[res.data.country_id],
         id: res.data.country_id
       });
-      console.log(this.state);
+
+      console.log(this.state.id)
+      console.log(this.state.country_id)
     });
   }
 

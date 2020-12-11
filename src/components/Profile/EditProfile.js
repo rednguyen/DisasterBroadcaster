@@ -3,7 +3,6 @@ import React from "react";
 import countries from "./countries.js";
 import Select from "react-select";
 import UserServices from "../../api-services/User";
-import { Redirect } from "react-router-dom";
 import Button from '@material-ui/core/Button';
 import SaveIcon from '@material-ui/icons/Save';
 import EditIcon from '@material-ui/icons/Edit';
@@ -113,7 +112,7 @@ class EditProfile extends React.Component {
 
   render() {
     if (this.state.saved) {
-      return <Redirect to={"/profile"} />;
+      return window.location.reload();
     }
     const token =  localStorage.getItem('token');
     return (
