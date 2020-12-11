@@ -74,6 +74,7 @@ class CreatePost extends Component {
         postServices.create(formData)
         .then(
             res => {
+                alert("Post created successfully!");
                 console.log(res);
                 this.setState({
                   saved: true,
@@ -87,7 +88,6 @@ class CreatePost extends Component {
 
     render() {
         if (this.state.saved) {
-          alert("Post created successfully!");
           return <Redirect to={"/viewmypost"} />;
         }
 

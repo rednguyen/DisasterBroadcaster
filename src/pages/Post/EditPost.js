@@ -71,6 +71,7 @@ class EditPost extends React.Component {
       .partial_update(this.state.post.id, formData)
       .then((res) => {
         console.log(res);
+        alert("Post update successful!");
         this.setState({
           saved: true,
         })
@@ -83,7 +84,6 @@ class EditPost extends React.Component {
 
   render() {
     if (this.state.saved) {
-      alert("Post update successful!");
       return <Redirect to={"/viewmypost"} />;
     }
     return (
