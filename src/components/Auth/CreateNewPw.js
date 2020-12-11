@@ -21,7 +21,6 @@ handleChange = (e) => {
 } 
 handleSubmit = (e) => {
     e.preventDefault(this.state)
-    console.log(this.state)
     const token = localStorage.getItem('token')
     const reset = { 
       new_password: this.state.new_password,
@@ -88,5 +87,5 @@ handleSubmit = (e) => {
     );
   }
 }
-// export default SignIn;
+
 export default CreateNewPw;

@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
 import Link from '@material-ui/core/Link';
 import Container from '@material-ui/core/Container';
-import { CountryDropdown } from 'react-country-region-selector';
-import { countries } from "../../api-services/countries";
+import countries from "../Profile/countries";
+import Select from "react-select";
 import { connect } from 'react-redux';
 import * as actions from '../../actions/auth';
 import { Redirect } from "react-router-dom";
@@ -34,7 +34,8 @@ const initialState = {
     username: '',
     email: '',
     password: '',
-    country: '',
+    country_id: '',
+    country_name: '',
     security_question: '',
     avatar: images[3].src,
 
@@ -50,9 +51,14 @@ const initialState = {
 class SignUp extends Component {
   state = initialState
 
-  selectCountry(val) {
-      this.setState({ country: val });
-    }
+  handleCountryChange = (country) => {
+    var index = countries.indexOf(country);
+    this.setState({
+      country_name: countries[index],
+      country_id: index,
+    });
+  };
+
   handleChange = (e) => {
       this.setState({
           [e.target.id]: e.target.value
@@ -74,14 +80,13 @@ class SignUp extends Component {
 
   handleSubmit = (e) => {
     e.preventDefault();
-    if (this.state.username && this.state.password && this.state.email && this.state.country
+    if (this.state.username && this.state.password && this.state.email && this.state.country_id
       && this.state.security_question && this.state.avatar) {
-        console.log(this.state.avatar);
         this.props.onAuth(
           this.state.username,
           this.state.password,
           this.state.email,
-          countries[this.state.country],
+          this.state.country_id,
           this.state.security_question,
           this.state.avatar
         );
@@ -95,7 +100,7 @@ class SignUp extends Component {
     if (!this.state.email) {
         this.setState({ emailError: "*Email is required" })
     }
-    if (!this.state.country) {
+    if (!this.state.country_id) {
         this.setState({ countryError: "*Please select your country" })
     }
     if (!this.state.security_question) {
@@ -112,7 +117,6 @@ class SignUp extends Component {
       if(token !== null){
         return <Redirect to= {'/'}/>;
       } 
-      const { country } = this.state;
       return (
           <Container component="main" maxWidth="sm">
               
@@ -138,6 +142,16 @@ class SignUp extends Component {
                   <form onSubmit={this.handleSubmit}>
                       <h5 className="grey-text text-darken-3">Sign Up</h5>
 
+                      <label>Country</label>
+                      <Select
+                        name="country"
+                        options={countries}
+                        value={this.state.country_name}
+                        onChange={(value) => this.handleCountryChange(value)}
+                        defaultValue={{ label: "United States", value: "US" }}
+                      />
+                      <br></br>
+
                       {this.state.invalidError ? <div style={{ fontSize: 12, color: "red" }}>{this.state.invalidError}
                       </div> : null}
 
@@ -148,13 +162,6 @@ class SignUp extends Component {
 
                       {this.state.usernameError ? <div style={{ fontSize: 12, color: "red" }}>{this.state.usernameError}
                       </div> : null}
-
-                      <label>Country</label>
-                      <div>
-                          <CountryDropdown className="browser-default"
-                              value={country}
-                              onChange={(val) => this.selectCountry(val)} />
-                      </div>
 
                       {this.state.countryError ? <div style={{ fontSize: 12, color: "red" }}>{this.state.countryError}
                       </div> : null}

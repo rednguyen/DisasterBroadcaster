@@ -33,12 +33,19 @@ class Slider extends Component {
     let newss_render = ''
     const min = Math.ceil(1);
     const max = Math.floor(18);;
-    const rand = Math.floor(Math.random() * (max - min ) + min);
-    const rand2 = Math.floor(Math.random() * (max - min ) + min);
-    const rand3 = Math.floor(Math.random() * (max - min) + min);
-    const rand4 = Math.floor(Math.random() * (max - min) + min);
-    console.log("random1: ", rand)
-    console.log("random2: ", rand2)
+
+    // Ensure 4 random numbers are different from each other
+    var arr = [];
+    while(arr.length < 4){
+        var r = Math.floor(Math.random() * (max - min ) + min);
+        if(arr.indexOf(r) === -1) arr.push(r);
+    }
+    
+    const rand = arr[0];
+    const rand2 = arr[1];
+    const rand3 = arr[2];
+    const rand4 = arr[3];
+
 
     if (newss.length > 0) {
       newss_render =

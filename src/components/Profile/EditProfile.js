@@ -3,10 +3,9 @@ import React from "react";
 import countries from "./countries.js";
 import Select from "react-select";
 import UserServices from "../../api-services/User";
-import { Redirect } from "react-router-dom";
-import Button from "@material-ui/core/Button";
-import SaveIcon from "@material-ui/icons/Save";
-import EditIcon from "@material-ui/icons/Edit";
+import Button from '@material-ui/core/Button';
+import SaveIcon from '@material-ui/icons/Save';
+import EditIcon from '@material-ui/icons/Edit';
 
 const userServices = new UserServices();
 
@@ -16,8 +15,7 @@ class EditProfile extends React.Component {
     this.state = {
       user: {},
       saved: false,
-      country_id: {},
-      redirect: false,
+      country_id: {}
     };
     this.logout = this.logout.bind(this);
   }
@@ -28,7 +26,6 @@ class EditProfile extends React.Component {
     let userServices = new UserServices();
 
     userServices.currentUser(token_data).then((res) => {
-      console.log(res.data);
       this.setState({
         user: {
           username: res.data.username,
@@ -39,7 +36,6 @@ class EditProfile extends React.Component {
         },
         country_id: countries[res.data.country_id],
       });
-      console.log(this.state);
     });
   }
   handleNameChange = (name) => {
@@ -95,26 +91,9 @@ class EditProfile extends React.Component {
       });
   };
 
-  logout() {
-    sessionStorage.setItem("userData", "");
-    sessionStorage.clear();
-    this.setState({
-      redirect: true,
-    });
-    window.location.href = "/";
-  }
-
-  componentWillMount() {
-    if (sessionStorage.getItem("userData")) {
-      console.log("Call");
-    } else {
-      this.setState({ redirect: true });
-    }
-  }
-
   render() {
     if (this.state.saved) {
-      // return <Redirect to={"/profile"} />;
+      alert("Profile update successful!");
       return window.location.reload();
     }
     const token = localStorage.getItem("token");

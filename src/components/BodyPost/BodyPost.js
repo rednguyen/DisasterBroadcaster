@@ -57,7 +57,6 @@ class Post extends Component {
     commentServices.create(comment)
     .then(
         res => {
-          console.log(res);
           if(res.status !== 201){
             throw new Error(res.status)
           }
@@ -84,7 +83,6 @@ class Post extends Component {
     userServices.currentUser(token_data)
     .then(
       res => {
-        console.log(res.data)
         var t = new Date()
         const new_comment = {
           user_id: res.data.id,
@@ -111,7 +109,6 @@ class Post extends Component {
     reactionServices.create(reaction)
     .then(
       res => {
-        console.log(res.data)
         this.setState({
           reaction_id: res.data.id,
         })

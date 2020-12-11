@@ -23,7 +23,6 @@ class Country extends Component {
     let userServices = new UserServices();
 
     userServices.currentUser(token_data).then((res) => {
-      console.log(res.data);
       this.setState({
         user: {
           country_id: res.data.country_id,
@@ -31,7 +30,6 @@ class Country extends Component {
         country_id: countries[res.data.country_id],
         id: res.data.country_id
       });
-      console.log(this.state);
     });
   }
 
@@ -42,7 +40,6 @@ class Country extends Component {
 
   handleCountryChange = (country) => {
     var index = countries.indexOf(country);
-    console.log(index);
     this.setState({
       country_id: countries[index],
       id: index,

@@ -22,7 +22,6 @@ class Profile extends React.Component {
     let userServices = new UserServices();
 
     userServices.currentUser(token_data).then((res) => {
-      console.log(res.data);
       this.setState({
         user: {
           username: res.data.username,
@@ -33,12 +32,10 @@ class Profile extends React.Component {
         },
         country_id: countries[res.data.country_id],
       });
-      console.log(this.state);
     });
   }
 
   render() {
-    console.log(this.state.country);
     return (
       <form className="main">
         <div className="myprofile">My Profile</div>
