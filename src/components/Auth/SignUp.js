@@ -105,96 +105,96 @@ class SignUp extends Component {
         invalidError: this.props.error
     })
 
-    }
+  }
 
-    render() {
-        const token = localStorage.getItem('token');
-        if(token !== null){
-          return <Redirect to= {'/'}/>;
-        } 
-        const { country } = this.state;
-        return (
-            <Container component="main" maxWidth="sm">
-                
-                <div className="container">
-                    <p className="chooseAnAvatar">Choose an avatar</p>
-                    <div className="profile">
-                      <img src={images[3].src} className="avatar" alt=''/>
-                    </div>
-                    <div className="avatarOptions">
-                      {images.map((image, i) => {
-                        return (
-                          <img
-                            src={image.src}
-                            className="avatarOption"
-                            onClick={(e) => {
-                              this.handleChangeAvatar(e.target.currentSrc);
-                            }}
-                            alt=''
-                          />
-                        );
-                      })}
-                    </div>
-                    <form onSubmit={this.handleSubmit}>
-                        <h5 className="grey-text text-darken-3">Sign Up</h5>
+  render() {
+      const token = localStorage.getItem('token');
+      if(token !== null){
+        return <Redirect to= {'/'}/>;
+      } 
+      const { country } = this.state;
+      return (
+          <Container component="main" maxWidth="sm">
+              
+              <div className="container">
+                  <p className="chooseAnAvatar">Choose an avatar</p>
+                  <div className="profile">
+                    <img src={images[3].src} className="avatar" alt=''/>
+                  </div>
+                  <div className="avatarOptions">
+                    {images.map((image, i) => {
+                      return (
+                        <img
+                          src={image.src}
+                          className="avatarOption"
+                          onClick={(e) => {
+                            this.handleChangeAvatar(e.target.currentSrc);
+                          }}
+                          alt=''
+                        />
+                      );
+                    })}
+                  </div>
+                  <form onSubmit={this.handleSubmit}>
+                      <h5 className="grey-text text-darken-3">Sign Up</h5>
 
-                        {this.state.invalidError ? <div style={{ fontSize: 12, color: "red" }}>{this.state.invalidError}
-                        </div> : null}
+                      {this.state.invalidError ? <div style={{ fontSize: 12, color: "red" }}>{this.state.invalidError}
+                      </div> : null}
 
-                        <div className="input-field">
-                            <label htmlFor="username">Username</label>
-                            <input type="text" id="username" onChange={this.handleChange} />
-                        </div>
+                      <div className="input-field">
+                          <label htmlFor="username">Username</label>
+                          <input type="text" id="username" onChange={this.handleChange} />
+                      </div>
 
-                        {this.state.usernameError ? <div style={{ fontSize: 12, color: "red" }}>{this.state.usernameError}
-                        </div> : null}
+                      {this.state.usernameError ? <div style={{ fontSize: 12, color: "red" }}>{this.state.usernameError}
+                      </div> : null}
 
-                        <label>Country</label>
-                        <div>
-                            <CountryDropdown className="browser-default"
-                                value={country}
-                                onChange={(val) => this.selectCountry(val)} />
-                        </div>
+                      <label>Country</label>
+                      <div>
+                          <CountryDropdown className="browser-default"
+                              value={country}
+                              onChange={(val) => this.selectCountry(val)} />
+                      </div>
 
-                        {this.state.countryError ? <div style={{ fontSize: 12, color: "red" }}>{this.state.countryError}
-                        </div> : null}
+                      {this.state.countryError ? <div style={{ fontSize: 12, color: "red" }}>{this.state.countryError}
+                      </div> : null}
 
-                        <div className="input-field">
-                            <label htmlFor="email">Email</label>
-                            <input type="email" id="email" onChange={this.handleChange} />
-                        </div>
+                      <div className="input-field">
+                          <label htmlFor="email">Email</label>
+                          <input type="email" id="email" onChange={this.handleChange} />
+                      </div>
 
-                        {this.state.emailError ? <div style={{ fontSize: 12, color: "red" }}>{this.state.emailError}
-                        </div> : null}
+                      {this.state.emailError ? <div style={{ fontSize: 12, color: "red" }}>{this.state.emailError}
+                      </div> : null}
 
-                        <div className="input-field">
-                            <label htmlFor="password">password</label>
-                            <input type="password" id="password" onChange={this.handleChange} />
-                        </div>
+                      <div className="input-field">
+                          <label htmlFor="password">password</label>
+                          <input type="password" id="password" onChange={this.handleChange} />
+                      </div>
 
-                        {this.state.passwordError ? <div style={{ fontSize: 12, color: "red" }}>{this.state.passwordError}
-                        </div> : null}
+                      {this.state.passwordError ? <div style={{ fontSize: 12, color: "red" }}>{this.state.passwordError}
+                      </div> : null}
 
-                        <div className="input-field">
-                            <label htmlFor="security_question">Security: Middle name of the person you know most?</label>
-                            <input className="input-field" type="text" id="security_question" onChange={this.handleChange} />
-                        </div>
+                      <div className="input-field">
+                          <label htmlFor="security_question">Security: Middle name of the person you know most?</label>
+                          <input className="input-field" type="text" id="security_question" onChange={this.handleChange} />
+                      </div>
 
-                        {this.state.answerError ? <div style={{ fontSize: 12, color: "red" }}>{this.state.answerError}
-                        </div> : null}     
+                      {this.state.answerError ? <div style={{ fontSize: 12, color: "red" }}>{this.state.answerError}
+                      </div> : null}     
 
-                        <Link href="/login" variant="body2">
-                            {"Already have an account? Login"}
-                        </Link>
+                      <Link href="/login" variant="body2">
+                          {"Already have an account? Login"}
+                      </Link>
 
-                        <div className="input-field">
-                            <button className="btn  blue darken-3 z-depth-0">Sign Up</button>
-                        </div>
-                    </form>
-                </div>
-            </Container>
-        )
-    }
+                      <div className="input-field">
+                          <button className="btn  blue darken-3 z-depth-0">Sign Up</button>
+                      </div>
+                  </form>
+              </div>
+          </Container>
+      )
+  }
 }
 
 const mapStateToProps = (state) => {
