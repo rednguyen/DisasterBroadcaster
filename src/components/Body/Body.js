@@ -7,6 +7,10 @@ import Paper from '@material-ui/core/Paper';
 import Button from '@material-ui/core/Button';
 import PublishIcon from '@material-ui/icons/Publish';
 import EditIcon from '@material-ui/icons/Edit';
+import DeleteOutlineIcon from '@material-ui/icons/DeleteOutline';
+import PostServices from "../../api-services/Post";
+
+const postServices = new PostServices();
 
 class Body extends Component {
   constructor(props) {
@@ -28,7 +32,17 @@ class Body extends Component {
     this.setState({ width: window.innerWidth, height: window.innerHeight });
   }
 
-
+  handlePostDelete(post_id){
+    postServices.destroy(post_id)
+    .then((res) => {
+      console.log(res.status);
+      alert("Post delete successful!");
+      window.location.reload();
+    })
+    .catch((err) => {
+      console.log(err);
+    })
+  }
 
   makeDate(date) {
     return new Date(date);
@@ -53,6 +67,7 @@ class Body extends Component {
                           <ul>
                             <div className='component'>
                             <a href={news.url} className = "a">
+                            <p className="credential-post header-post">Country: {news.country_id.name}</p>
                             <div className='thumb'><img className = "newsImg" src = {news.media} width="400px" height="270px" alt=''/></div>
                             <h4 className="headline">{news.headline}</h4>
                             {this.state.width <= 1620 ? <div className='news-text-small'>{news.content}</div> : <div className='news-text'>{news.content}</div>}     
@@ -74,18 +89,22 @@ class Body extends Component {
                           </Link>
 
                           <div className = "post">
-                          {token !== null && token !== undefined ? <Button variant="contained" color="primary" href='/post' endIcon={<PublishIcon />}> Make a Post </Button> : ''}
+                          {token !== null && token !== undefined ? <Button variant="contained" color="primary" href='/createpost' endIcon={<PublishIcon />}> Make a Post </Button> : ''}
 
                             {posts.map(post => 
                               <ul>
                                 <div className='component'>
                                   <Link href={"/post/" + post.id.toString()} color="inherit" variant="body2" style={{ textDecoration:'none'}}>
-                                  <div><p style = {{fontSize: 20}}>{post.user_id.username}</p><img src = {post.user_id.avatar} width="5%" height="5%" alt=''/></div>
-                                  
-                                  <p Paper style = {{fontSize: 20}}>
-                                  <li>{post.content}</li>
-                                  <li><img className = "home-media-post" src = {post.media} alt=''/></li>
+                                  <div></div>
+                                  <p className="credential-post header-post">
+                                    <p style = {{fontSize: 20}}>{post.user_id.username}</p>
+                                    <img src = {post.user_id.avatar} width="5%" height="5%" alt=''/>
+                                    <p style = {{fontSize: 20}}>Country: {post.country_id.name}</p>
                                   </p>
+
+                                  <li><p Paper style = {{fontSize: 20, padding:"5px"}}>{post.content}</p></li>
+                                  
+                                  <li><img className = "home-media-post" src = {post.media} alt=''/></li>
                                   </Link>
                                   <p>Posted on {this.makeDate(post.date_created).toDateString()}</p>
 
@@ -94,11 +113,17 @@ class Body extends Component {
                                       Edit Post
                                     </Button>: ''}
                                   </div>
+                                  <br></br>
+                                  <div>
+                                    { user !== null && user.id === post.user_id.id ?
+                                    <Button variant="contained" color="secondary" onClick={() => this.handlePostDelete(post.id)} endIcon={<DeleteOutlineIcon />}>
+                                      Delete Post
+                                    </Button> : ''}
+                                  </div>
                                 </div>
                               </ul>
                             )}    
                           </div>      
-                          
                       </Paper>
     }
     return(

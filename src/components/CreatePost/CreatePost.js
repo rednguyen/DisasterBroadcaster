@@ -27,6 +27,21 @@ class CreatePost extends Component {
         this.handleChange = this.handleChange.bind(this);
     }
 
+    componentDidMount() {
+      const token_data = {
+          "token": localStorage.getItem('token')
+        }
+        userServices.currentUser(token_data)
+        .then(
+          res => {
+          this.setState({
+            user_id: res.data.id,
+            country_id: res.data.country_id,
+            country_name: countries[res.data.country_id]
+          })}
+        )
+   }
+
     onChange(e) {
         this.setState({ img: e.target.files[0], img_uploaded: URL.createObjectURL(e.target.files[0]) });
     }
@@ -37,28 +52,13 @@ class CreatePost extends Component {
         })
     }
 
-    handleCountryChange = (country_id) => {
-      var index = countries.indexOf(country_id);
+    handleCountryChange = (country_value) => {
+      var index = countries.indexOf(country_value);
       this.setState({
         country_name: countries[index],
-        country_id: country_id,
+        country_id: index,
       });
     };
-
-    componentDidMount() {
-        const token_data = {
-            "token": localStorage.getItem('token')
-          }
-          userServices.currentUser(token_data)
-          .then(
-            res => {
-            this.setState({
-              user_id: res.data.id,
-              country_id: res.data.country_id,
-              country_name: countries[res.data.country_id]
-            })}
-          )
-     }
 
     handleSubmit = (e) => {
         e.preventDefault(this.state)
@@ -74,6 +74,9 @@ class CreatePost extends Component {
         postServices.create(formData)
         .then(
             res => {
+                if(res.status !== 201){
+                  throw new Error(res.status)
+                }
                 alert("Post created successfully!");
                 console.log(res);
                 this.setState({

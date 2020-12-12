@@ -18,6 +18,7 @@ class EditProfile extends React.Component {
       country_id: {}
     };
   }
+  
   componentDidMount() {
     const token_data = {
       token: localStorage.getItem("token"),
@@ -37,6 +38,7 @@ class EditProfile extends React.Component {
       });
     });
   }
+
   handleNameChange = (name) => {
     this.setState({
       user: {

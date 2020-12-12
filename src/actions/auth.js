@@ -1,5 +1,6 @@
 import * as actionTypes from './actionTypes';
 import UserServices from "../api-services/User";
+
 const userServices = new UserServices();
 
 export const authStart = () => {
@@ -62,7 +63,7 @@ export const authLogin = (username, password) => {
       localStorage.setItem('user', JSON.stringify(user));
       localStorage.setItem('expirationDate', expirationDate);
       dispatch(authSuccess(token, user));
-      dispatch(checkAuthTimeout(86400));
+      dispatch(checkAuthTimeout(3600));
     })
     .catch(err => {
       dispatch(authFail(err))

@@ -10,7 +10,7 @@ import SignUpPage from "./pages/LoginAndSignUp/SignUpPage";
 import { Route } from "react-router-dom";
 import PwResetPage from "./pages/LoginAndSignUp/PwResetPage";
 import CreateNewPwPage from "./pages/LoginAndSignUp/CreateNewPwPage";
-import Post from "./components/CreatePost/CreatePost";
+import CreatePost from "./components/CreatePost/CreatePost";
 import Earthquake from "./pages/Guide/Disasters/Earthquake";
 import Wildfire from "./pages/Guide/Disasters/Wildfire";
 import Volcano from "./pages/Guide/Disasters/Volcano";
@@ -39,7 +39,7 @@ const BaseRouter = () => (
     <Route path="/signup" component={SignUpPage} exact />
     <Route path="/pwreset" component={PwResetPage} exact />
     <Route path="/createnewpw/:token" component={CreateNewPwPage} exact />
-    <Route path="/post" component={Post} exact />
+    <Route path="/createpost" component={CreatePost} exact />
     <Route path="/searchbycountry" component={Country} exact />
     <Route path="/country/:id" component={CountryHomePage} exact />
     {/* Profile:  */}
