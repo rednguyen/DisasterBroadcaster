@@ -49,7 +49,7 @@ class Slider extends Component {
 
     if (newss.length > 0) {
       newss_render =
-        <div className="slider">
+        <div className="slider" style={{zIndex:-1}}>
           <ul className="slides">
             <li>
               <a href={newss[rand].url} className = "a">
