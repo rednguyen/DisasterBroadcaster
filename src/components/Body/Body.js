@@ -10,6 +10,16 @@ import EditIcon from '@material-ui/icons/Edit';
 import DeleteOutlineIcon from '@material-ui/icons/DeleteOutline';
 import PostServices from "../../api-services/Post";
 
+import {FacebookShareButton, 
+        TwitterShareButton, 
+        EmailShareButton, 
+        RedditShareButton, 
+        FacebookIcon, 
+        TwitterIcon, 
+        EmailIcon, 
+        RedditIcon}
+from "react-share";
+
 const postServices = new PostServices();
 
 class Body extends Component {
@@ -68,11 +78,46 @@ class Body extends Component {
                             <div className='component'>
                             <a href={news.url} className = "a">
                             <p className="credential-post header-post">Country: {news.country_id.name}</p>
+                            <div className="social">
+                              <div style={{margin:"auto"}}>
+                                  <FacebookShareButton 
+                                    url={news.url}
+                                    quote={news.headline}
+                                    hashtag="#naturaldisasters"
+                                    >
+                                    <FacebookIcon size={45} />
+                                  </FacebookShareButton>
+
+                                  <TwitterShareButton 
+                                    url={news.url}
+                                    title={news.headline}
+                                    hashtags={["#naturaldisasters"]}
+                                    >
+                                    <TwitterIcon size={45} />
+                                  </TwitterShareButton>
+
+                                  <RedditShareButton 
+                                    url={news.url}
+                                    title={news.headline}
+                                    >
+                                    <RedditIcon size={45} />
+                                  </RedditShareButton>
+
+                                  <EmailShareButton 
+                                    url={news.url}
+                                    subject = "Latest disaster"
+                                    >
+                                    <EmailIcon size={45} />
+                                  </EmailShareButton>
+
+                              </div>
+                            </div>
                             <div className='thumb'><img className = "newsImg" src = {news.media} width="400px" height="270px" alt=''/></div>
                             <h4 className="headline">{news.headline}</h4>
                             {this.state.width <= 1620 ? <div className='news-text-small'>{news.content}</div> : <div className='news-text'>{news.content}</div>}     
                             </a>
                             </div>
+                            
                           </ul>
                         )}
                         </div>
