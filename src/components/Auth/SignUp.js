@@ -6,6 +6,7 @@ import Select from "react-select";
 import { connect } from 'react-redux';
 import * as actions from '../../actions/auth';
 import { Redirect } from "react-router-dom";
+import "./SignUp.css";
 
 const images = [
   {
@@ -31,21 +32,21 @@ const images = [
 ];
 
 const initialState = {
-    username: '',
-    email: '',
-    password: '',
-    country_id: '',
-    country_name: '',
-    security_question: '',
-    avatar: images[3].src,
+  username: '',
+  email: '',
+  password: '',
+  country_id: '',
+  country_name: '',
+  security_question: '',
+  avatar: images[3].src,
 
-    usernameError: '',
-    passwordError: '',
-    emailError: '',
-    countryError: '',
-    answerError: '',
+  usernameError: '',
+  passwordError: '',
+  emailError: '',
+  countryError: '',
+  answerError: '',
 
-    invalidError: ''
+  invalidError: ''
 }
 
 class SignUp extends Component {
@@ -60,13 +61,13 @@ class SignUp extends Component {
   };
 
   handleChange = (e) => {
-      this.setState({
-          [e.target.id]: e.target.value
-      })
-  } 
+    this.setState({
+      [e.target.id]: e.target.value
+    })
+  }
 
   handleChangeAvatar = (img) => {
-    this.setState({avatar: img});
+    this.setState({ avatar: img });
     let newAvatar = document.createElement("img");
     newAvatar.src = img;
     newAvatar.className = "avatar";
@@ -82,138 +83,145 @@ class SignUp extends Component {
     e.preventDefault();
     if (this.state.username && this.state.password && this.state.email && this.state.country_id
       && this.state.security_question && this.state.avatar) {
-        this.props.onAuth(
-          this.state.username,
-          this.state.password,
-          this.state.email,
-          this.state.country_id,
-          this.state.security_question,
-          this.state.avatar
-        );
+      this.props.onAuth(
+        this.state.username,
+        this.state.password,
+        this.state.email,
+        this.state.country_id,
+        this.state.security_question,
+        this.state.avatar
+      );
     }
     if (!this.state.username) {
-        this.setState({ usernameError: "*Username is required" })
+      this.setState({ usernameError: "*Username is required" })
     }
     if (!this.state.password) {
-        this.setState({ passwordError: "*Password cannot be Empty" })
+      this.setState({ passwordError: "*Password cannot be Empty" })
     }
     if (!this.state.email) {
-        this.setState({ emailError: "*Email is required" })
+      this.setState({ emailError: "*Email is required" })
     }
     if (!this.state.country_id) {
-        this.setState({ countryError: "*Please select your country" })
+      this.setState({ countryError: "*Please select your country" })
     }
     if (!this.state.security_question) {
-        this.setState({ answerError: "*Security answer is required" })
+      this.setState({ answerError: "*Security answer is required" })
     }
-      this.setState({
-        invalidError: this.props.error
+    this.setState({
+      invalidError: this.props.error
     })
 
   }
 
   render() {
-      const token = localStorage.getItem('token');
-      if(token !== null){
-        return <Redirect to= {'/'}/>;
-      } 
-      return (
-          <Container component="main" maxWidth="sm">
-              
-              <div className="container">
-                  <p className="chooseAnAvatar">Choose an avatar</p>
-                  <div className="profile">
-                    <img src={images[3].src} className="avatar" alt=''/>
-                  </div>
-                  <div className="avatarOptions">
-                    {images.map((image, i) => {
-                      return (
-                        <img
-                          src={image.src}
-                          className="avatarOption"
-                          onClick={(e) => {
-                            this.handleChangeAvatar(e.target.currentSrc);
-                          }}
-                          alt=''
-                        />
-                      );
-                    })}
-                  </div>
-                  <form onSubmit={this.handleSubmit}>
-                      <h5 className="grey-text text-darken-3">Sign Up</h5>
+    const token = localStorage.getItem('token');
+    if (token !== null) {
+      return <Redirect to={'/'} />;
+    }
+    let errorMessage = "";
+    if (this.props.error === null) {
+      errorMessage = "";
+    } else {
+      errorMessage = "*Username/Email already exist";
+    }
 
-                      <label>Country</label>
-                      <Select
-                        name="country"
-                        options={countries}
-                        value={this.state.country_name}
-                        onChange={(value) => this.handleCountryChange(value)}
-                        defaultValue={{ label: "United States", value: "US" }}
-                      />
-                      <br></br>
+    return (
+      <Container component="main" maxWidth="sm">
 
-                      {this.state.invalidError ? <div style={{ fontSize: 12, color: "red" }}>{this.state.invalidError}
-                      </div> : null}
+        <div className="container">
+          <p className="chooseAnAvatar">Choose an avatar</p>
+          <div className="profile">
+            <img src={images[3].src} className="avatar" alt='' />
+          </div>
+          <div className="avatarOptions">
+            {images.map((image, i) => {
+              return (
+                <img
+                  src={image.src}
+                  className="avatarOption"
+                  onClick={(e) => {
+                    this.handleChangeAvatar(e.target.currentSrc);
+                  }}
+                  alt=''
+                />
+              );
+            })}
+          </div>
+          <form className="signUpForm" onSubmit={this.handleSubmit}>
+            <h5 className="grey-text text-darken-3">Sign Up</h5>
 
-                      <div className="input-field">
-                          <label htmlFor="username">Username</label>
-                          <input type="text" id="username" onChange={this.handleChange} />
-                      </div>
+            <label>Country</label>
+            <Select
+              name="country"
+              options={countries}
+              value={this.state.country_name}
+              onChange={(value) => this.handleCountryChange(value)}
+              defaultValue={{ label: "United States", value: "US" }}
+            />
+            <br></br>
 
-                      {this.state.usernameError ? <div style={{ fontSize: 12, color: "red" }}>{this.state.usernameError}
-                      </div> : null}
+            {errorMessage ? <div style={{ fontSize: 12, color: "red" }}>{errorMessage}
+            </div> : null}
 
-                      {this.state.countryError ? <div style={{ fontSize: 12, color: "red" }}>{this.state.countryError}
-                      </div> : null}
+            <div className="input-field">
+              <label htmlFor="username">Username</label>
+              <input type="text" id="username" onChange={this.handleChange} />
+            </div>
 
-                      <div className="input-field">
-                          <label htmlFor="email">Email</label>
-                          <input type="email" id="email" onChange={this.handleChange} />
-                      </div>
+            {this.state.usernameError ? <div style={{ fontSize: 12, color: "red" }}>{this.state.usernameError}
+            </div> : null}
 
-                      {this.state.emailError ? <div style={{ fontSize: 12, color: "red" }}>{this.state.emailError}
-                      </div> : null}
+            {this.state.countryError ? <div style={{ fontSize: 12, color: "red" }}>{this.state.countryError}
+            </div> : null}
 
-                      <div className="input-field">
-                          <label htmlFor="password">password</label>
-                          <input type="password" id="password" onChange={this.handleChange} />
-                      </div>
+            <div className="input-field">
+              <label htmlFor="email">Email</label>
+              <input type="email" id="email" onChange={this.handleChange} />
+            </div>
 
-                      {this.state.passwordError ? <div style={{ fontSize: 12, color: "red" }}>{this.state.passwordError}
-                      </div> : null}
+            {this.state.emailError ? <div style={{ fontSize: 12, color: "red" }}>{this.state.emailError}
+            </div> : null}
 
-                      <div className="input-field">
-                          <label htmlFor="security_question">Security: Middle name of the person you know most?</label>
-                          <input className="input-field" type="text" id="security_question" onChange={this.handleChange} />
-                      </div>
+            <div className="input-field">
+              <label htmlFor="password">password</label>
+              <input type="password" id="password" onChange={this.handleChange} />
+            </div>
 
-                      {this.state.answerError ? <div style={{ fontSize: 12, color: "red" }}>{this.state.answerError}
-                      </div> : null}     
+            {this.state.passwordError ? <div style={{ fontSize: 12, color: "red" }}>{this.state.passwordError}
+            </div> : null}
 
-                      <Link href="/login" variant="body2">
-                          {"Already have an account? Login"}
-                      </Link>
+            <div className="input-field">
+              <label htmlFor="security_question">Security: Middle name of the person you know most?</label>
+              <input className="input-field" type="text" id="security_question" onChange={this.handleChange} />
+            </div>
 
-                      <div className="input-field">
-                          <button className="btn  blue darken-3 z-depth-0">Sign Up</button>
-                      </div>
-                  </form>
-              </div>
-          </Container>
-      )
+            {this.state.answerError ? <div style={{ fontSize: 12, color: "red" }}>{this.state.answerError}
+            </div> : null}
+
+            <Link href="/login" variant="body2">
+              {"Already have an account? Login"}
+            </Link>
+
+            <div className="input-field">
+              <button className="btn  blue darken-3 z-depth-0">Sign Up</button>
+            </div>
+          </form>
+        </div>
+      </Container>
+    )
   }
 }
 
 const mapStateToProps = (state) => {
   return {
-      loading: state.loading,
-      error: state.error
+    loading: state.loading,
+    error: state.error
   }
 }
 
 const mapDispatchToProps = dispatch => {
   return {
-      onAuth: (username, password, email, country_id, answer, avatar) => dispatch(actions.authSignup(username, password, email, country_id, answer, avatar)) 
+    onAuth: (username, password, email, country_id, answer, avatar) => dispatch(actions.authSignup(username, password, email, country_id, answer, avatar))
   }
 }
 
