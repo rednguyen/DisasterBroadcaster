@@ -26,15 +26,5 @@ export const Menu = [
         title: 'Donate',
         url: '/DonateSection',
         cName: 'nav-links'
-    },
-    {
-        title: 'Login',
-        url: '#',
-        cName: 'nav-links-mobile'
-    },
-    {
-        title: 'SignUp',
-        url: '/viewPost',
-        cName: 'nav-links-mobile'
     }
 ]
