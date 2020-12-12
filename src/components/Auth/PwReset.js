@@ -71,7 +71,7 @@ class PwReset extends Component {
                         </div> : null}
 
                         <div className="input-field">
-                            <label htmlFor="security_question">What is the middle name of the person you know most?</label>
+                            <label htmlFor="security_question">What is the name of your first car?</label>
                             <input className="input-field" type="text" id="security_question" onChange={this.handleChange} />
                         </div>
 
@@ -79,14 +79,7 @@ class PwReset extends Component {
                         </div> : null}
 
                         <div className="input-field">
-                            <Grid container>
-                                <Grid container xs={12} sm={6}>
-                                <button className="btn  blue darken-3 z-depth-0">Next</button>
-                                </Grid>
-                                <Grid container xs={12} sm={6} justify="flex-end">
-                                    <button onClick={(e) => { e.preventDefault(); window.location.href = '/login' }} className="btn  blue darken-3 z-depth-0" href="/about">Back</button>
-                                </Grid>
-                            </Grid>
+                            <button className="btn  blue darken-3 z-depth-0" style={{float:"right"}}>Request link for password reset</button>
                         </div>
                     </form>
                 </div>

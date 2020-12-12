@@ -36,8 +36,8 @@ class NavBar extends Component{
     render(){
       var button = null;
       var link = null;
-
-      if(this.props.isauthenticated){
+      var user = JSON.parse(localStorage.getItem('user'));
+      if(this.props.isauthenticated && user !== null){
         button = <Button variant="contained" color="secondary" onClick={(e) => {
                     e.preventDefault();
                     this.props.onLogout();

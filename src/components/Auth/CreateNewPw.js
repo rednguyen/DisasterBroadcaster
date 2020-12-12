@@ -1,57 +1,61 @@
 import React, { Component } from "react";
 import Container from "@material-ui/core/Container";
-import { Redirect } from "react-router-dom";
 import "./auth.css";
-import Grid from "@material-ui/core/Grid";
 import UserServices from "../../api-services/User";
 
 const userServices = new UserServices();
 
 class CreateNewPw extends Component {
-    state = {
+    constructor(props) {
+      super(props);
+      this.state = { 
         new_password: '',
         message: '',
         saved: false
-        
-}
-handleChange = (e) => {
-    this.setState({
-        [e.target.id]: e.target.value
-    })
-} 
-handleSubmit = (e) => {
-    e.preventDefault(this.state)
-    const token = localStorage.getItem('token')
-    const reset = { 
-      new_password: this.state.new_password,
-      token: token
-    };
+      };
+    }
 
-    userServices.changePassword(reset)
-    .then(
-      res => {
-          if(res.status !== 200){
-            this.setState({ message: "Invalid!" });
-            throw new Error(res.status)
-          }
-          this.setState({
-            saved: true,
-          })
-          alert("Password reset successful!");
-      }).catch(
-          err => {
-              console.log(err);     
-          }
-      )
+  handleChange = (e) => {
+      this.setState({
+          [e.target.id]: e.target.value
+      })
+  } 
+  
+  handleSubmit = (e) => {
+      e.preventDefault(this.state)
+      const token = localStorage.getItem('token')
+      const reset = { 
+        new_password: this.state.new_password,
+        token: token
+      };
+
+      userServices.changePassword(reset)
+      .then(
+        res => {
+            if(res.status !== 200){
+              this.setState({ message: "Invalid!" });
+              throw new Error(res.status)
+            }
+            const user = {
+              id: res.data.id,
+              username: res.data.username,
+              avatar: res.data.avatar
+            };
+            localStorage.setItem('user', JSON.stringify(user));
+            userServices.login(user.username, this.state.new_password)
+            alert("Password reset successful!");
+            window.location.href = "/profile";
+        }).catch(
+            err => {
+                console.log(err);     
+            }
+        )
   } 
 
   render() {
-    if (this.state.saved) {
-      return <Redirect to={"/profile"} />;
-    }
     return (
-        <Container component="main" maxWidth = "sm">
-        <div className = "container">
+        <Container component="main" maxWidth = "2sm">
+        <div className = "container-input">
             <form onSubmit={this.handleSubmit} >
                 
                 <h5 className= "grey-text text-darken-3">Create New Password</h5>
@@ -63,23 +67,8 @@ handleSubmit = (e) => {
 
                 <div className = "input-field">
                 {this.state.message}
-                <Grid container>
-                    <Grid container xs={12} sm={6}>
-                        <button className = "btn  blue darken-3 z-depth-0" href="/about">Reset</button>
-                </Grid>
-                <Grid container xs={12} sm={6} justify="flex-end">
-                  <button
-                    onClick={(e) => {
-                      e.preventDefault();
-                      window.location.href = "/PwReset";
-                    }}
-                    className="btn  blue darken-3 z-depth-0"
-                    href="/about"
-                  >
-                    Back
-                  </button>
-                </Grid>
-              </Grid>
+                <button className = "btn  blue darken-3 z-depth-0" style={{float:"right"}}>Reset</button>
+
             </div>
           </form>
         </div>

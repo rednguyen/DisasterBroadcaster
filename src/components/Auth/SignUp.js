@@ -193,7 +193,7 @@ class SignUp extends Component {
             </div> : null}
 
             <div className="input-field">
-              <label htmlFor="security_question">What is the middle name of the person you know most?</label>
+              <label htmlFor="security_question">What is the name of your first car?</label>
               <input className="input-field" type="text" id="security_question" onChange={this.handleChange} />
             </div>
 
