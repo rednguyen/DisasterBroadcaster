@@ -100,3 +100,8 @@
   max-width: 100ch;
   justify-self: center;
 }
+
+.social{
+  display:flex;
+  text-align:center;
+}
