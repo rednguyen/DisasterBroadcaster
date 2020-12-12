@@ -124,7 +124,7 @@ class SignUp extends Component {
     } else {
       errorMessage = "*Username/Email already exist";
     }
-
+    
     return (
       <Container component="main" maxWidth="sm">
 
@@ -149,7 +149,9 @@ class SignUp extends Component {
           </div>
           <form className="signUpForm" onSubmit={this.handleSubmit}>
             <h5 className="grey-text text-darken-3">Sign Up</h5>
-
+            
+            {this.state.countryError ? <div style={{ fontSize: 12, color: "red" }}>{this.state.countryError}
+            </div> : null}
             <label>Country</label>
             <Select
               name="country"
@@ -158,7 +160,8 @@ class SignUp extends Component {
               onChange={(value) => this.handleCountryChange(value)}
               defaultValue={{ label: "United States", value: "US" }}
             />
-            <br></br>
+            {this.state.countryError ? <div style={{ fontSize: 12, color: "red" }}>{this.state.countryError}
+            </div> : null}
 
             {errorMessage ? <div style={{ fontSize: 12, color: "red" }}>{errorMessage}
             </div> : null}
@@ -171,9 +174,6 @@ class SignUp extends Component {
             {this.state.usernameError ? <div style={{ fontSize: 12, color: "red" }}>{this.state.usernameError}
             </div> : null}
 
-            {this.state.countryError ? <div style={{ fontSize: 12, color: "red" }}>{this.state.countryError}
-            </div> : null}
-
             <div className="input-field">
               <label htmlFor="email">Email</label>
               <input type="email" id="email" onChange={this.handleChange} />
@@ -183,7 +183,7 @@ class SignUp extends Component {
             </div> : null}
 
             <div className="input-field">
-              <label htmlFor="password">password</label>
+              <label htmlFor="password">Password</label>
               <input type="password" id="password" onChange={this.handleChange} />
             </div>
 
@@ -191,7 +191,7 @@ class SignUp extends Component {
             </div> : null}
 
             <div className="input-field">
-              <label htmlFor="security_question">Security: Middle name of the person you know most?</label>
+              <label htmlFor="security_question">What was your first car?</label>
               <input className="input-field" type="text" id="security_question" onChange={this.handleChange} />
             </div>
 
