@@ -70,7 +70,6 @@ class Post extends Component {
           if(res.status !== 201){
             throw new Error(res.status)
           }
-          console.log(res.data)
           this.setState({
             comment: {
               id: res.data.id,
@@ -156,8 +155,6 @@ class Post extends Component {
     console.log(this.state.comment_id);
     commentServices.partial_update(this.state.comment_id, comment_patch)
     .then((res) => {
-      console.log(res.status)
-      console.log(res.data)
       alert("Comment update successful!");
       this.setState({
         comment_id: '',
@@ -257,7 +254,7 @@ class Post extends Component {
             <div className="single-post">
                 <img className="media-post" src={post.media} alt=""/>
                 <p className="content-post">{post.content}</p>
-            </div>
+            </div>z
             
             </Paper>
         </Grid>
