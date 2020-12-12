@@ -7,6 +7,7 @@ import Button from '@material-ui/core/Button';
 import { connect } from 'react-redux';
 import * as actions from '../../actions/auth';
 import PersonIcon from '@material-ui/icons/Person';
+import Link from "@material-ui/core/Link";
 
 class NavBar extends Component{
     state = {
@@ -45,7 +46,7 @@ class NavBar extends Component{
 
         return(
             <nav className="NavbarItems">
-                <img className="navbar-logo" src={Logo} alt=""/>
+                <Link href="/" variant="body2"><img className="navbar-logo" src={Logo} alt=""/></Link>
                 <div className="menu-icon" onClick={this.handleClick}>
                     <i className={this.state.clicked? 'fas fa-times' : 'fas fa-bars'}></i>
                 </div>
