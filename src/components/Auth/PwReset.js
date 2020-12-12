@@ -36,6 +36,7 @@ class PwReset extends Component {
                 const expirationDate = new Date(new Date().getTime() + 3600* 1000);
                 localStorage.setItem('token', token);
                 localStorage.setItem('expirationDate', expirationDate);
+                alert("Please check your email - we have sent a password reset link");
             }).catch(
                 err => {
                     console.log(err);
