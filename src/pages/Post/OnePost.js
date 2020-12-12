@@ -28,7 +28,7 @@ class OnePost extends Component {
     const isLoaded = this.state.isLoaded;
     if (isLoaded) {
       return (
-        <div className = "BodyPost"><Post {...this.state}/></div>
+        <div className = "BodyPost"><Post post={this.state.post} {...this.props}/></div>
       )
     } else {
       return <div>Loading...</div>;

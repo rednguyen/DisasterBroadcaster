@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import PostBody from '../../components/Post/postBody';
+import ViewMyPost from '../../components/Post/ViewMyPost';
 import './viewPost.css';
 import PostServices from "../../api-services/Post";
 
@@ -24,7 +24,7 @@ class ViewPost extends Component {
   render(){
     return(
       <div className="body">
-        <div className="Body"><PostBody posts={this.state.posts}/></div>
+        <div className="Body"><ViewMyPost posts={this.state.posts} {...this.props}/></div>
       </div>
     )
   }

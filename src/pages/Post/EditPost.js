@@ -14,7 +14,7 @@ class EditPost extends React.Component {
     this.state = {
       country_id: null,
       country_name: null,
-      description: "",
+      content: "",
       img: null,
       post: {},
       saved: false,
@@ -29,11 +29,12 @@ class EditPost extends React.Component {
     postServices.retrieve(parseInt(this.props.match.params.id))
       .then(res => {
         const data = res.data;
+        console.log(data)
         this.setState({ 
           post: data,
           country_id: data.country_id.id,
           country_name: countries[data.country_id.id],
-          description: data.content,
+          content: data.content,
           img: data.media
         });
       })
@@ -49,11 +50,11 @@ class EditPost extends React.Component {
     });
   };
 
-  handleCountryChange = (country_id) => {
-    var index = countries.indexOf(country_id);
+  handleCountryChange = (value) => {
+    var index = countries.indexOf(value);
     this.setState({
       country_name: countries[index],
-      country_id: country_id,
+      country_id: index,
     });
   };
 
@@ -64,13 +65,12 @@ class EditPost extends React.Component {
     if(this.state.img_uploaded !== null){
       formData.append("media", this.state.img, this.state.img.name)
     }
-    formData.append("content", this.state.description);
+    formData.append("content", this.state.content);
     formData.append("country_id", this.state.country_id);
 
     postServices
       .partial_update(this.state.post.id, formData)
       .then((res) => {
-        console.log(res);
         alert("Post update successful!");
         this.setState({
           saved: true,
@@ -80,7 +80,6 @@ class EditPost extends React.Component {
         console.log(err);
       });
   };
-
 
   render() {
     if (this.state.saved) {
@@ -121,7 +120,7 @@ class EditPost extends React.Component {
                 onChange={this.handleChange}
                 rows={6}
                 fullWidth="true"
-                defaultValue={this.state.description}
+                defaultValue={this.state.content}
                 variant="outlined"/>
               
             </div>
