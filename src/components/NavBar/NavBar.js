@@ -10,9 +10,23 @@ import PersonIcon from '@material-ui/icons/Person';
 import Link from "@material-ui/core/Link";
 
 class NavBar extends Component{
-    state = {
-      clicked:false,
-
+    constructor(props) {
+      super(props);
+      this.state = { width: 0, height: 0, clicked:false };
+      this.updateWindowDimensions = this.updateWindowDimensions.bind(this);
+    }
+  
+    componentDidMount() {
+      this.updateWindowDimensions();
+      window.addEventListener('resize', this.updateWindowDimensions);
+    }
+  
+    componentWillUnmount() {
+      window.removeEventListener('resize', this.updateWindowDimensions);
+    }
+  
+    updateWindowDimensions() {
+      this.setState({ width: window.innerWidth, height: window.innerHeight });
     }
 
     handleClick = () => {
@@ -45,27 +59,53 @@ class NavBar extends Component{
       }
 
         return(
-            <nav className="NavbarItems">
+            <div>
+            {this.state.width > 1240 ? 
+              <nav className="NavbarItems">
                 <Link href="/" variant="body2"><img className="navbar-logo" src={Logo} alt=""/></Link>
                 <div className="menu-icon" onClick={this.handleClick}>
                     <i className={this.state.clicked? 'fas fa-times' : 'fas fa-bars'}></i>
                 </div>
-                <ul className={this.state.clicked ? 'nav-menu active':'nav-menu'}>
+                <ul className='nav-menu'>
                     <>{Menu.map((item, index)=>{
                         return(
                             <li key={index}>
-                                <a className ={item.cName} href={item.url}>
+                                <a className = 'nav-links' href={item.url}>
                                     {item.title}
                                 </a>
                             </li>
                         )                        
                         })}     
                     </>
+                    
                 </ul>
-                {button}
-                <ul>{link}</ul>
-                
+                <ul>{button}</ul>
+                <ul>{link}</ul>    
             </nav>
+            : 
+            <nav className="NavbarItems">
+                <Link href="/" variant="body2"><img className="navbar-logo" src={Logo} alt=""/></Link>
+                <div className="menu-icon" onClick={this.handleClick}>
+                    <i className={this.state.clicked? 'fas fa-times' : 'fas fa-bars'}></i>
+                </div>
+                {this.state.clicked ? 
+                <ul className={this.state.clicked ? 'nav-menu active':'nav-menu'}>
+                    <>{Menu.map((item, index)=>{
+                        return(
+                            <li key={index}>
+                                <a className ='nav-links' href={item.url}>
+                                    {item.title}
+                                </a>
+                            </li>
+                        )                        
+                        })} 
+                    </>
+                    <li>{button}</li>
+                    <li>{link}</li>
+                </ul>
+                :''}
+            </nav>}
+            </div>
         );
     }
 }

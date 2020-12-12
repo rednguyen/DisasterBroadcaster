@@ -113,8 +113,10 @@ class Body extends Component {
                               </div>
                             </div>
                             <div className='thumb'><img className = "newsImg" src = {news.media} width="400px" height="270px" alt=''/></div>
+                            <div>
                             <h4 className="headline">{news.headline}</h4>
-                            {this.state.width <= 1620 ? <div className='news-text-small'>{news.content}</div> : <div className='news-text'>{news.content}</div>}     
+                            {this.state.width <= 1620 ? <div className='news-text-small'>{news.content}</div> : <div className='news-text'>{news.content}</div>}    
+                            </div> 
                             </a>
                             </div>
                             
