@@ -84,6 +84,7 @@ class EditProfile extends React.Component {
           throw new Error(res.status);
         }
         console.log(res.status);
+        alert("Profile update successful!");
         this.setState({
           saved: true,
         });
@@ -92,7 +93,6 @@ class EditProfile extends React.Component {
 
   render() {
     if (this.state.saved) {
-      alert("Profile update successful!");
       return window.location.reload();
     }
     const token = localStorage.getItem("token");
