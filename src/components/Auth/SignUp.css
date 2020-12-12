@@ -5,3 +5,21 @@
 .signUpForm{
     margin: 10px auto;
 }
+
+div.container-avatar {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+div.container-input {
+  margin: auto;
+  width: 20%;
+  padding: 10px;
+
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}

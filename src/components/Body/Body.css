@@ -85,7 +85,7 @@
 }
 
 .component{
-  background-color: #eee;
+  background-color: rgb(231, 247, 255);
   margin: 2rem;
   padding: 2rem;
   overflow: auto;

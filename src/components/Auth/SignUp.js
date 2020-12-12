@@ -126,9 +126,9 @@ class SignUp extends Component {
     }
     
     return (
-      <Container component="main" maxWidth="sm">
+      <Container component="main" maxWidth="2sm">
 
-        <div className="container">
+        <div className="container-avatar">
           <p className="chooseAnAvatar">Choose an avatar</p>
           <div className="profile">
             <img src={images[3].src} className="avatar" alt='' />
@@ -147,6 +147,8 @@ class SignUp extends Component {
               );
             })}
           </div>
+        </div>
+        <div className="container-input">
           <form className="signUpForm" onSubmit={this.handleSubmit}>
             <h5 className="grey-text text-darken-3">Sign Up</h5>
             
@@ -191,7 +193,7 @@ class SignUp extends Component {
             </div> : null}
 
             <div className="input-field">
-              <label htmlFor="security_question">What was your first car?</label>
+              <label htmlFor="security_question">What is the middle name of the person you know most?</label>
               <input className="input-field" type="text" id="security_question" onChange={this.handleChange} />
             </div>
 

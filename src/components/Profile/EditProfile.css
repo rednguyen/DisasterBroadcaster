@@ -1,6 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Raleway:wght@500&display=swap");
 div.container {
-  width: 100%;
+  width: 20%;
   display: flex;
   flex-direction: column;
   align-items: center;

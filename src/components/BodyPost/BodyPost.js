@@ -98,6 +98,11 @@ class Post extends Component {
 
   handleSubmit = (e) => {
     e.preventDefault(this.state)
+    let current_user = JSON.parse(localStorage.getItem('user'));
+    if(current_user === null){
+      alert("Please login to post a comment!");
+      return;
+    }
     const token_data = {
       "token": localStorage.getItem('token')
     }
@@ -192,6 +197,7 @@ class Post extends Component {
     this.setState(prevState => {
       return {like_count: prevState.like_count + 1}
     })
+
   }
 
   handleClickSad = (e) => {
@@ -226,6 +232,8 @@ class Post extends Component {
             <img className="header-post" src={post.user_id.avatar} alt="" width="50px" height="50px"/>
             <p className="credential-post header-post">Posted by {post.user_id.username} on {d.toDateString()}</p>
             <p className="credential-post header-post">Country: {post.country_id.name}</p>
+
+            { user !== null ? 
             <div className="credential-post header-post">
             <IconButton onClick={this.handleClickLike}>
               {this.state.like_count}
@@ -240,6 +248,24 @@ class Post extends Component {
               <SentimentVeryDissatisfiedIcon style = {{margin: 10, color: "black"}} color="primary" fontSize="large"/>
             </IconButton>
             </div>
+            :
+            <div className="credential-post header-post">
+            
+            <IconButton onClick={this.handleClickLike} disabled="true">
+              {this.state.like_count}
+              <ThumbUpOutlinedIcon style = {{margin: 10, color: "black"}} color="primary" fontSize="large"/>
+            </IconButton>
+            <IconButton onClick={this.handleClickLove} disabled="true">
+              {this.state.love_count}
+              <FavoriteBorderIcon style = {{margin: 10, color: "black"}} color="primary" fontSize="large"/>
+            </IconButton>
+            <IconButton onClick={this.handleClickSad} disabled="true">
+              {this.state.sad_count}
+              <SentimentVeryDissatisfiedIcon style = {{margin: 10, color: "black"}} color="primary" fontSize="large"/>
+            </IconButton>
+            <p style={{fontSize:"15px", color:"red"}}>Please login to make a reaction</p>
+            </div>}
+            
             <div className="editButton">
               { user !== null && user.id === post.user_id.id ? <Button href={"/editpost/" + post.id} variant="contained" color="primary" endIcon={<EditIcon />}>
                 Edit Post
@@ -254,7 +280,7 @@ class Post extends Component {
             <div className="single-post">
                 <img className="media-post" src={post.media} alt=""/>
                 <p className="content-post">{post.content}</p>
-            </div>z
+            </div>
             
             </Paper>
         </Grid>
@@ -268,6 +294,7 @@ class Post extends Component {
           <Grid item xs={6}>
           <Paper style = {{padding: 10}}>
             <div text-align='center'>
+
               <div className="comment-header">
                 Community Comments and Reactions 
               </div>
@@ -282,10 +309,9 @@ class Post extends Component {
                           <button className = "btn  blue darken-3 z-depth-0">Submit</button>
                       </div>
                   </div>
-    
                 </form>
               </div>
-              
+
               <div className="comment-section">
                 {this.state.comments.map(comment => 
                   <ul>

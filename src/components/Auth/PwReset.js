@@ -55,8 +55,8 @@ class PwReset extends Component {
 
     render() {
         return (
-            <Container component="main" maxWidth="sm">
-                <div className="container">
+            <Container component="main" maxWidth="2sm">
+                <div className="container-input">
                     <form onSubmit={this.handleSubmit}>
                         <h5 className="grey-text text-darken-3">Password Reset</h5>
                         
@@ -71,7 +71,7 @@ class PwReset extends Component {
                         </div> : null}
 
                         <div className="input-field">
-                            <label htmlFor="security_question">What was your first car?</label>
+                            <label htmlFor="security_question">What is the middle name of the person you know most?</label>
                             <input className="input-field" type="text" id="security_question" onChange={this.handleChange} />
                         </div>
 

@@ -48,8 +48,8 @@ class Login extends Component {
     }
 
     return (
-      <Container component="main" maxWidth="sm">
-        <div className="container">
+      <Container component="main" maxWidth="2sm">
+        <div className="container-input">
           <form onSubmit={this.handleSubmit} className="white" class="form1">
             <h5 className="grey-text text-darken-3">Login</h5>
 
