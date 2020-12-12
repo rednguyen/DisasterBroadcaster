@@ -1,5 +1,5 @@
 .banner{
-    height: 60vh;
+    height: 100%;
     width: 100%;
     background-image: url("https://image.freepik.com/free-photo/fantasy-sky_90839-278.jpg");
     background-repeat: no-repeat;
@@ -31,4 +31,19 @@
     height: 30vh;
     top: 5%;
 
+}
+
+.org{
+  position:relative;
+  text-align:center;
+}
+
+.component-donate{
+  background-color: #cbf3fd;
+  margin: 2rem;
+  padding: 2rem;
+  overflow: auto;
+  border-radius: 25px;
+  border: 2px solid #7dc6f6;
+  padding: 20px;
 }
