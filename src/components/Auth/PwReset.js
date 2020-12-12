@@ -71,7 +71,7 @@ class PwReset extends Component {
                         </div> : null}
 
                         <div className="input-field">
-                            <label htmlFor="security_question">What is the name of your first car?</label>
+                            <label htmlFor="security_question">What is the middle name of the person you know best?</label>
                             <input className="input-field" type="text" id="security_question" onChange={this.handleChange} />
                         </div>
 
