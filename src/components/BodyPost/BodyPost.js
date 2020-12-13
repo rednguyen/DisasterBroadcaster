@@ -98,6 +98,7 @@ class Post extends Component {
 
   handleSubmit = (e) => {
     e.preventDefault(this.state)
+
     let current_user = JSON.parse(localStorage.getItem('user'));
     if(current_user === null){
       alert("Please login to post a comment!");
@@ -150,22 +151,19 @@ class Post extends Component {
   }
 
   handleEdittingComment(comment_id){
+    console.log(comment_id);
     this.setState({comment_edit: true, comment_id: comment_id})
   }
 
   handleCommentEdit = (e) => {
+    e.preventDefault(this.state)
     const comment_patch = {
       comment: this.state.comment_content
     }
-    console.log(this.state.comment_id);
+
     commentServices.partial_update(this.state.comment_id, comment_patch)
     .then((res) => {
-      alert("Comment update successful!");
-      this.setState({
-        comment_id: '',
-        comment_edit: false,
-        comment_content: null
-      })
+      alert("Comment update succesful!");
       window.location.reload();
     })
     .catch((err) => {
@@ -193,6 +191,7 @@ class Post extends Component {
   }  
 
   handleClickLike = (e) => {
+    e.preventDefault(this.state)
     this.makeReaction('1'); 
     this.setState(prevState => {
       return {like_count: prevState.like_count + 1}
@@ -201,6 +200,7 @@ class Post extends Component {
   }
 
   handleClickSad = (e) => {
+    e.preventDefault(this.state)
     this.makeReaction('2'); 
     this.setState(prevState => {
       return {sad_count: prevState.sad_count + 1}
@@ -208,6 +208,7 @@ class Post extends Component {
   }
 
   handleClickLove = (e) => {
+    e.preventDefault(this.state)
     this.makeReaction('3'); 
     this.setState(prevState => {
       return {love_count: prevState.love_count + 1}
@@ -296,7 +297,7 @@ class Post extends Component {
             <div text-align='center'>
 
               <div className="comment-header">
-                Community Comments and Reactions 
+                Community Comments
               </div>
 
               <div className="comment-box">
